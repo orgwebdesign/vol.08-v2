@@ -214,6 +214,10 @@ p { color: var(--text-secondary); margin-bottom: 1rem; }
     font-size: 0.9rem;
 }
 
+.nav-item-cta {
+    display: none;
+}
+
 .nav-actions {
     display: flex;
     align-items: center;
@@ -1412,4 +1416,15 @@ p { color: var(--text-secondary); margin-bottom: 1rem; }
     padding: 2rem 5%;
     box-shadow: 0 10px 20px rgba(0,0,0,0.05);
     z-index: 99;
+    gap: 1rem;
+}
+
+.nav-links.active .nav-item-cta {
+    display: block;
+    margin-top: 0.5rem;
+}
+
+.mobile-nav-access-btn {
+    width: 100%;
+    justify-content: center;
 }
