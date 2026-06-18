@@ -1,3 +1,67 @@
+@font-face {
+    font-family: 'Grift';
+    src: url('../fonts/Grift-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Grift';
+    src: url('../fonts/Grift-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Grift';
+    src: url('../fonts/Grift-SemiBold.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Grift';
+    src: url('../fonts/Grift-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Grift';
+    src: url('../fonts/Grift-Italic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Grift';
+    src: url('../fonts/Grift-MediumItalic.otf') format('opentype');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Grift';
+    src: url('../fonts/Grift-SemiBoldItalic.otf') format('opentype');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Grift';
+    src: url('../fonts/Grift-BoldItalic.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
 /* Reset & Base Styles */
 * {
     margin: 0;
@@ -12,7 +76,7 @@
     --border-color: #e5e5e5;
     --dark-color: #111111;
     --footer-bg: #0f0f0f;
-    --font-primary: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --font-primary: 'Grift', 'Helvetica Neue', Arial, sans-serif;
     --max-width: 1440px;
     --section-padding: 100px 5%;
 }
@@ -54,7 +118,7 @@ img {
 
 /* Typography */
 h1, h2, h3, h4 {
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.2;
 }
 
