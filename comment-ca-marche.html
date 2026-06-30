@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+        <link rel="icon" type="image/svg+xml" href="assets/img/logo%20Vol.08.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment ça marche — VOL.08</title>
+    <meta name="description" content="Découvrez comment fonctionne VOL.08 : de la demande d'accès B2B à la livraison de vos produits sourcés au Maroc.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .how-hero {
+            padding: 60px 5%;
+            text-align: center;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .how-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+        .how-hero p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        .how-step-alt {
+            padding: 80px 5%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .how-step-alt:nth-child(even) {
+            background: var(--light-bg);
+            max-width: none;
+        }
+        .how-step-alt:nth-child(even) .how-step-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .how-step-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .how-step-inner.reverse .how-step-image { order: 2; }
+        .how-step-inner.reverse .how-step-text { order: 1; }
+        .how-step-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+        }
+        .how-step-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .how-step-text .step-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            padding: 6px 16px;
+            margin-bottom: 1rem;
+        }
+        .how-step-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .how-step-text p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .how-cta {
+            padding: 100px 5%;
+            text-align: center;
+            background: var(--dark-color);
+            color: #fff;
+        }
+        .how-cta h2 { color: #fff; margin-bottom: 1rem; }
+        .how-cta p { color: rgba(255,255,255,0.6); margin-bottom: 2rem; }
+        @media (max-width: 768px) {
+            .how-hero h1 { font-size: 2rem; }
+            .how-step-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .how-step-inner.reverse .how-step-image { order: 0; }
+            .how-step-inner.reverse .how-step-text { order: 1; }
+        }
+    </style>
+    <meta property="og:title" content="Comment ça marche — VOL.08">
+    <meta property="og:description" content="Découvrez comment fonctionne VOL.08 : de la demande d'accès B2B à la livraison de vos produits sourcés au Maroc.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" content="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/HeroSection.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Comment ça marche — VOL.08">
+    <meta name="twitter:description" content="Découvrez comment fonctionne VOL.08 : de la demande d'accès B2B à la livraison de vos produits sourcés au Maroc.">
+    <link rel="canonical" href="https://vol08.ma/comment-ca-marche.html">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "VOL.08",
+      "url": "https://vol08.ma",
+      "logo": "https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/HeroSection.webp",
+      "description": "Plateforme B2B de distribution d'ameublement et décoration sourcés au Maroc.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "contact@vol08.ma"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "VOL.08",
+      "url": "https://vol08.ma",
+      "description": "Plateforme B2B de distribution d'ameublement et décoration sourcés au Maroc."
+    }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img loading="lazy" src="assets/img/logo%20Vol.08.svg" alt="VOL.08 Logo">
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="univers.html">Univers</a></li>
+                <li><a href="sourcing.html">Sourcing</a></li>
+                <li><a href="collections.html">Collections</a></li>
+                <li><a href="catalogue.html">Catalogue</a></li>
+                <li><a href="b2b.html">Accès B2B</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="nav-item nav-item-cta"><a href="b2b.html" class="btn btn-black mobile-nav-access-btn">Demander un accès</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <span class="nav-icon search-icon"><i data-lucide="search"></i></span>
+            <span class="nav-icon user-icon"><i data-lucide="user"></i></span>
+            <a href="b2b.html" class="btn btn-black">Demander un accès</a>
+            <div <span class="theme-toggle" id="themeToggle"><i data-lucide="sun" class="sun-icon"></i><i data-lucide="moon" class="moon-icon"></i></span>
+            <div class="burger-menu"><i data-lucide="menu"></i></div>
+        </div>
+    </header>
+    <main>
+
+    <section class="how-hero">
+        <h1>Comment ça marche</h1>
+        <p>De votre demande d'accès à la livraison de vos produits, découvrez le parcours client VOL.08.</p>
+    </section>
+
+    <section class="how-step-alt">
+        <div class="how-step-inner">
+            <div class="how-step-image">
+                <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil3.webp" alt="Demande d'accès">
+            </div>
+            <div class="how-step-text">
+                <span class="step-badge">Étape 01</span>
+                <h2>Demande d'accès B2B</h2>
+                <p>Vous remplissez le formulaire de demande d'accès avec vos informations professionnelles. Nous accusons réception sous 48h ouvrées et vérifions votre profil.</p>
+                <a href="b2b.html" class="btn btn-black">Faire une demande</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-step-alt">
+        <div class="how-step-inner reverse">
+            <div class="how-step-image">
+                <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil1.webp" alt="Validation du compte">
+            </div>
+            <div class="how-step-text">
+                <span class="step-badge">Étape 02</span>
+                <h2>Validation du compte</h2>
+                <p>Après vérification de votre profil professionnel, nous activons votre compte et vous envoyons vos identifiants d'accès au catalogue privé.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-step-alt">
+        <div class="how-step-inner">
+            <div class="how-step-image">
+                <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/HeroSection.webp" alt="Consultation du catalogue">
+            </div>
+            <div class="how-step-text">
+                <span class="step-badge">Étape 03</span>
+                <h2>Consultation & sélection</h2>
+                <p>Vous parcourez le catalogue, consultez les fiches techniques, les médias HD et les tarifs. Vous sélectionnez les références pour votre projet.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-step-alt">
+        <div class="how-step-inner reverse">
+            <div class="how-step-image">
+                <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil2.webp" alt="Devis et commande">
+            </div>
+            <div class="how-step-text">
+                <span class="step-badge">Étape 04</span>
+                <h2>Devis & commande</h2>
+                <p>Générez un devis personnalisé, validez les quantités et les délais. Notre équipe traite votre commande et assure le suivi jusqu'à la livraison.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-step-alt" style="padding-bottom:100px;">
+        <div class="how-step-inner">
+            <div class="how-step-image">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80" alt="Livraison">
+            </div>
+            <div class="how-step-text">
+                <span class="step-badge">Étape 05</span>
+                <h2>Livraison & accompagnement</h2>
+                <p>Nous coordonnons la logistique depuis le Maroc jusqu'à votre adresse en Europe. Suivi en temps réel et accompagnement après-vente inclus.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-cta">
+        <h2>Prêt à commencer ?</h2>
+        <p>Accédez à notre catalogue privé en quelques clics.</p>
+        <a href="b2b.html" class="btn btn-black" style="background:#fff;color:var(--dark-color);border-color:#fff;">Demander un accès</a>
+    </section>
+
+        </main>
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h5>VOL.08</h5>
+                <p style="font-size: 0.9rem; color: #ccc;">Plateforme B2B de distribution d'ameublement & décoration.</p>
+                <form class="newsletter-form" action="https://formspree.io/f/xbdvapjy" method="POST">
+                    <input type="email" name="email" placeholder="Votre email professionnel" required>
+                    <input type="hidden" name="_subject" value="Nouvelle inscription Newsletter VOL.08">
+                    <button type="submit">S'inscrire</button>
+                </form>
+            </div>
+            <div class="footer-col">
+                <h5>Catalogue</h5>
+                <ul>
+                    <li><a href="collections.html">Mobilier</a></li>
+                    <li><a href="collections.html">Décoration</a></li>
+                    <li><a href="collections.html">Luminaires</a></li>
+                    <li><a href="collections.html">Accessoires</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>B2B</h5>
+                <ul>
+                    <li><a href="b2b.html">Demander un accès</a></li>
+                    <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
+                    <li><a href="sourcing.html">Sourcing</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="livraison.html">Livraison</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Légal</h5>
+                <ul>
+                    <li><a href="mentions-legales.html">Mentions légales</a></li>
+                    <li><a href="cgv-b2b.html">CGV B2B</a></li>
+                    <li><a href="confidentialite.html">Confidentialité</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">&copy; 2026 VOL.08 by <a href="https://havetdigital.fr/" target="_blank" rel="noopener noreferrer">Havet Digital</a> — Plateforme B2B de distribution d'ameublement et décoration.</div>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Pinterest</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

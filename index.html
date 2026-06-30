@@ -3,6 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+        <link rel="icon" type="image/svg+xml" href="assets/img/logo%20Vol.08.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VOL.08 — Plateforme B2B de distribution</title>
     <meta name="description"
@@ -11,6 +17,39 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <meta property="og:title" content="VOL.08 — Plateforme B2B de distribution d'ameublement et décoration">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" content="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/HeroSection.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VOL.08 — Plateforme B2B de distribution d'ameublement et décoration">
+    <meta name="twitter:description" content="">
+    <link rel="canonical" href="https://vol08.ma/index.html">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "VOL.08",
+      "url": "https://vol08.ma",
+      "logo": "https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/HeroSection.webp",
+      "description": "Plateforme B2B de distribution d'ameublement et décoration sourcés au Maroc.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "contact@vol08.ma"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "VOL.08",
+      "url": "https://vol08.ma",
+      "description": "Plateforme B2B de distribution d'ameublement et décoration sourcés au Maroc."
+    }
+    </script>
 </head>
 
 <body>
@@ -20,28 +59,30 @@
 
     <!-- 2. Header navigation -->
     <header class="header">
-        <a href="#" class="logo">
-            <img src="assets/img/logo%20Vol.08.svg" alt="VOL.08 Logo">
+        <a href="index.html" class="logo">
+            <img loading="lazy" src="assets/img/logo%20Vol.08.svg" alt="VOL.08 Logo">
         </a>
         <nav>
             <ul class="nav-links">
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Univers</a></li>
-                <li><a href="#">Sourcing</a></li>
-                <li><a href="#">Collections</a></li>
-                <li><a href="#">Catalogue</a></li>
-                <li><a href="#">Accès B2B</a></li>
-                <li><a href="#">Contact</a></li>
-                <li class="nav-item nav-item-cta"><a href="#b2b" class="btn btn-black mobile-nav-access-btn">Demander un accès</a></li>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="univers.html">Univers</a></li>
+                <li><a href="sourcing.html">Sourcing</a></li>
+                <li><a href="collections.html">Collections</a></li>
+                <li><a href="catalogue.html">Catalogue</a></li>
+                <li><a href="b2b.html">Accès B2B</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="nav-item nav-item-cta"><a href="b2b.html" class="btn btn-black mobile-nav-access-btn">Demander un accès</a></li>
             </ul>
         </nav>
         <div class="nav-actions">
             <span class="nav-icon search-icon"><i data-lucide="search"></i></span>
             <span class="nav-icon user-icon"><i data-lucide="user"></i></span>
-            <a href="#" class="btn btn-black">Demander un accès</a>
+            <a href="b2b.html" class="btn btn-black">Demander un accès</a>
+            <div <span class="theme-toggle" id="themeToggle"><i data-lucide="sun" class="sun-icon"></i><i data-lucide="moon" class="moon-icon"></i></span>
             <div class="burger-menu"><i data-lucide="menu"></i></div>
         </div>
     </header>
+    <main>
 
     <!-- 3. Hero section -->
     <section class="hero">
@@ -55,12 +96,12 @@
                 <li>Catalogue privé après validation</li>
             </ul>
             <div class="hero-buttons">
-                <a href="#" class="btn btn-black">Demander un accès professionnel</a>
-                <a href="#" class="btn btn-outline">Découvrir l’univers</a>
+                <a href="b2b.html" class="btn btn-black">Demander un accès professionnel</a>
+                <a href="univers.html" class="btn btn-outline">Découvrir l’univers</a>
             </div>
         </div>
         <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80"
+            <img loading="lazy" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80"
                 alt="Intérieur premium avec mobilier">
         </div>
     </section>
@@ -73,7 +114,7 @@
                     <article class="carousel-slide-card">
                         <picture>
                             <source media="(max-width: 768px)" srcset="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil3.webp">
-                            <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/HeroSection.webp"
+                            <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/HeroSection.webp"
                                 alt="Showroom digital VOL.08">
                         </picture>
                         <div class="carousel-slide-overlay"></div>
@@ -84,7 +125,7 @@
                     <article class="carousel-slide-card">
                         <picture>
                             <source media="(max-width: 768px)" srcset="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil1.webp">
-                            <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil1.webp"
+                            <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil1.webp"
                                 alt="Intérieur premium avec matériaux nobles">
                         </picture>
                         <div class="carousel-slide-overlay"></div>
@@ -95,7 +136,7 @@
                     <article class="carousel-slide-card">
                         <picture>
                             <source media="(max-width: 768px)" srcset="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil2.webp">
-                            <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil2.webp"
+                            <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil2.webp"
                                 alt="Ambiance architecturale contemporaine">
                         </picture>
                         <div class="carousel-slide-overlay"></div>
@@ -116,7 +157,7 @@
         <div class="products-grid">
             <div class="product-card"
                 style="--hover-img: url('https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil2.webp');">
-                <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil1.webp" alt="Mobilier">
+                <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil1.webp" alt="Mobilier">
                 <div class="product-card-overlay">
                     <h3>Mobilier</h3>
                     <span class="link">Découvrir</span>
@@ -124,7 +165,7 @@
             </div>
             <div class="product-card"
                 style="--hover-img: url('https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil3.webp');">
-                <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/deco1.jpg" alt="Décoration">
+                <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/deco1.jpg" alt="Décoration">
                 <div class="product-card-overlay">
                     <h3>Décoration</h3>
                     <span class="link">Découvrir</span>
@@ -132,7 +173,7 @@
             </div>
             <div class="product-card"
                 style="--hover-img: url('https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil1.webp');">
-                <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil2.webp" alt="Luminaires">
+                <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil2.webp" alt="Luminaires">
                 <div class="product-card-overlay">
                     <h3>Luminaires</h3>
                     <span class="link">Découvrir</span>
@@ -140,7 +181,7 @@
             </div>
             <div class="product-card"
                 style="--hover-img: url('https://d392ke4nwqmbdz.cloudfront.net/Images/deco1.jpg');">
-                <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/deco2.jpg" alt="Accessoires">
+                <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/deco2.jpg" alt="Accessoires">
                 <div class="product-card-overlay">
                     <h3>Accessoires</h3>
                     <span class="link">Découvrir</span>
@@ -148,7 +189,7 @@
             </div>
             <div class="product-card"
                 style="--hover-img: url('https://d392ke4nwqmbdz.cloudfront.net/Images/deco2.jpg');">
-                <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/deco3.jpg" alt="Outdoor">
+                <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/deco3.jpg" alt="Outdoor">
                 <div class="product-card-overlay">
                     <h3>Outdoor</h3>
                     <span class="link">Découvrir</span>
@@ -156,7 +197,7 @@
             </div>
             <div class="product-card"
                 style="--hover-img: url('https://d392ke4nwqmbdz.cloudfront.net/Images/deco3.jpg');">
-                <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil3.webp" alt="Collections privées">
+                <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil3.webp" alt="Collections privées">
                 <div class="product-card-overlay">
                     <h3>Collections privées</h3>
                     <span class="link">Découvrir</span>
@@ -168,7 +209,7 @@
     <!-- 6. Section promesse / sourcing -->
     <section class="promise-section">
         <div class="promise-image">
-            <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil3.webp"
+            <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil3.webp"
                 alt="Atelier d'artisanat marocain">
         </div>
         <div class="promise-content">
@@ -181,7 +222,7 @@
                 <li><i data-lucide="check" class="promise-icon"></i> Fiches techniques et médias HD</li>
                 <li><i data-lucide="check" class="promise-icon"></i> Devis, réassort et accompagnement commercial</li>
             </ul>
-            <a href="#" class="btn btn-outline">Notre approche</a>
+            <a href="sourcing.html" class="btn btn-outline">Notre approche</a>
         </div>
     </section>
 
@@ -194,7 +235,7 @@
         </div>
         <div class="collections-grid">
             <div class="collection-card">
-                <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=600&q=80"
+                <img loading="lazy" src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=600&q=80"
                     alt="Catalogue Mobilier">
                 <div class="collection-card-info">
                     <h4>Catalogue Mobilier</h4>
@@ -202,7 +243,7 @@
                 </div>
             </div>
             <div class="collection-card">
-                <img src="https://images.unsplash.com/photo-1540932239986-30128078f3c5?auto=format&fit=crop&w=600&q=80"
+                <img loading="lazy" src="https://images.unsplash.com/photo-1540932239986-30128078f3c5?auto=format&fit=crop&w=600&q=80"
                     alt="Catalogue Décoration">
                 <div class="collection-card-info">
                     <h4>Catalogue Décoration</h4>
@@ -210,7 +251,7 @@
                 </div>
             </div>
             <div class="collection-card">
-                <img src="https://images.unsplash.com/photo-1515263487990-61b07816b324?auto=format&fit=crop&w=600&q=80"
+                <img loading="lazy" src="https://images.unsplash.com/photo-1515263487990-61b07816b324?auto=format&fit=crop&w=600&q=80"
                     alt="Catalogue Luminaires">
                 <div class="collection-card-info">
                     <h4>Catalogue Luminaires</h4>
@@ -218,7 +259,7 @@
                 </div>
             </div>
             <div class="collection-card">
-                <img src="https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=600&q=80"
+                <img loading="lazy" src="https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=600&q=80"
                     alt="Inspirations & Ambiances">
                 <div class="collection-card-info">
                     <h4>Inspirations & Ambiances</h4>
@@ -247,7 +288,7 @@
                     </div>
                 </div>
                 <div class="b2b-actions">
-                    <a href="#" class="btn btn-white">Demander un accès</a>
+                    <a href="b2b.html" class="btn btn-white">Demander un accès</a>
                     <p>Réponse après vérification du profil professionnel.</p>
                 </div>
             </div>
@@ -431,48 +472,50 @@
     </section>
 
     <!-- 11. Footer noir -->
+        </main>
     <footer class="footer">
         <div class="footer-grid">
             <div class="footer-col">
                 <h5>VOL.08</h5>
                 <p style="font-size: 0.9rem; color: #ccc;">Plateforme B2B de distribution d'ameublement & décoration.
                 </p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Votre email professionnel" required>
+                <form class="newsletter-form" action="https://formspree.io/f/xbdvapjy" method="POST">
+                    <input type="email" name="email" placeholder="Votre email professionnel" required>
+                    <input type="hidden" name="_subject" value="Nouvelle inscription Newsletter VOL.08">
                     <button type="submit">S'inscrire</button>
                 </form>
             </div>
             <div class="footer-col">
                 <h5>Catalogue</h5>
                 <ul>
-                    <li><a href="#">Mobilier</a></li>
-                    <li><a href="#">Décoration</a></li>
-                    <li><a href="#">Luminaires</a></li>
-                    <li><a href="#">Accessoires</a></li>
+                    <li><a href="collections.html">Mobilier</a></li>
+                    <li><a href="collections.html">Décoration</a></li>
+                    <li><a href="collections.html">Luminaires</a></li>
+                    <li><a href="collections.html">Accessoires</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h5>B2B</h5>
                 <ul>
-                    <li><a href="#">Demander un accès</a></li>
-                    <li><a href="#">Comment ça marche</a></li>
-                    <li><a href="#">Sourcing</a></li>
+                    <li><a href="b2b.html">Demander un accès</a></li>
+                    <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
+                    <li><a href="sourcing.html">Sourcing</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h5>Support</h5>
                 <ul>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Livraison</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="livraison.html">Livraison</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h5>Légal</h5>
                 <ul>
-                    <li><a href="#">Mentions légales</a></li>
-                    <li><a href="#">CGV B2B</a></li>
-                    <li><a href="#">Confidentialité</a></li>
+                    <li><a href="mentions-legales.html">Mentions légales</a></li>
+                    <li><a href="cgv-b2b.html">CGV B2B</a></li>
+                    <li><a href="confidentialite.html">Confidentialité</a></li>
                 </ul>
             </div>
         </div>

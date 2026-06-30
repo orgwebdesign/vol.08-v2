@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+        <link rel="icon" type="image/svg+xml" href="assets/img/logo%20Vol.08.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sourcing — VOL.08</title>
+    <meta name="description" content="Notre processus de sourcing au Maroc : sélection rigoureuse de mobilier, luminaires et décoration pour professionnels.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .src-hero {
+            padding: 60px 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .src-hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .src-hero-content p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .src-hero-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+        }
+        .src-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .src-process {
+            padding: 100px 5%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .src-process h2 {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .src-process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .src-process-card {
+            border: 1px solid var(--border-color);
+            padding: 2.5rem 2rem;
+            transition: box-shadow 0.3s ease;
+        }
+        .src-process-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .src-process-card .step {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .src-process-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+        }
+        .src-process-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin: 0;
+        }
+        .src-origin {
+            padding: 100px 5%;
+            background: var(--light-bg);
+        }
+        .src-origin-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .src-origin-text h2 {
+            margin-bottom: 1.5rem;
+        }
+        .src-origin-text p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        .src-origin-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+        }
+        .src-origin-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .src-engagement {
+            padding: 100px 5%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .src-engagement h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .src-engagement-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .src-engagement-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+        .src-engagement-item .lucide {
+            width: 22px;
+            height: 22px;
+            color: var(--text-primary);
+            flex-shrink: 0;
+        }
+        .src-engagement-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+        .src-engagement-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.6;
+        }
+        .src-cta {
+            padding: 100px 5%;
+            text-align: center;
+            background: var(--dark-color);
+            color: #fff;
+        }
+        .src-cta h2 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        .src-cta p {
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 2rem;
+        }
+        .src-cta .btn-outline {
+            border-color: rgba(255,255,255,0.4);
+            color: #fff;
+        }
+        .src-cta .btn-outline:hover {
+            background: #fff;
+            color: var(--dark-color);
+            border-color: #fff;
+        }
+        @media (max-width: 768px) {
+            .src-hero { grid-template-columns: 1fr; gap: 2rem; }
+            .src-hero-content h1 { font-size: 2.2rem; }
+            .src-process-grid { grid-template-columns: 1fr; }
+            .src-origin-inner { grid-template-columns: 1fr; }
+            .src-engagement-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+    <meta property="og:title" content="Sourcing — VOL.08">
+    <meta property="og:description" content="Notre processus de sourcing au Maroc : sélection rigoureuse de mobilier, luminaires et décoration pour professionnels.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" content="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/HeroSection.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sourcing — VOL.08">
+    <meta name="twitter:description" content="Notre processus de sourcing au Maroc : sélection rigoureuse de mobilier, luminaires et décoration pour professionnels.">
+    <link rel="canonical" href="https://vol08.ma/sourcing.html">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "VOL.08",
+      "url": "https://vol08.ma",
+      "logo": "https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/HeroSection.webp",
+      "description": "Plateforme B2B de distribution d'ameublement et décoration sourcés au Maroc.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "contact@vol08.ma"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "VOL.08",
+      "url": "https://vol08.ma",
+      "description": "Plateforme B2B de distribution d'ameublement et décoration sourcés au Maroc."
+    }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img loading="lazy" src="assets/img/logo%20Vol.08.svg" alt="VOL.08 Logo">
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="univers.html">Univers</a></li>
+                <li><a href="sourcing.html">Sourcing</a></li>
+                <li><a href="collections.html">Collections</a></li>
+                <li><a href="catalogue.html">Catalogue</a></li>
+                <li><a href="b2b.html">Accès B2B</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="nav-item nav-item-cta"><a href="b2b.html" class="btn btn-black mobile-nav-access-btn">Demander un accès</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <span class="nav-icon search-icon"><i data-lucide="search"></i></span>
+            <span class="nav-icon user-icon"><i data-lucide="user"></i></span>
+            <a href="b2b.html" class="btn btn-black">Demander un accès</a>
+            <div <span class="theme-toggle" id="themeToggle"><i data-lucide="sun" class="sun-icon"></i><i data-lucide="moon" class="moon-icon"></i></span>
+            <div class="burger-menu"><i data-lucide="menu"></i></div>
+        </div>
+    </header>
+    <main>
+
+    <section class="src-hero">
+        <div class="src-hero-content">
+            <h1>Sourcing maîtrisé au Maroc</h1>
+            <p>Nous parcourons le Maroc pour identifier les meilleurs fabricants et artisans. Chaque pièce est sélectionnée pour son design, sa qualité de fabrication et sa fiabilité logistique.</p>
+            <a href="contact.html" class="btn btn-outline">Nous contacter</a>
+        </div>
+        <div class="src-hero-image">
+            <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil1.webp" alt="Sourcing Maroc">
+        </div>
+    </section>
+
+    <section class="src-process">
+        <h2>Notre processus de sourcing</h2>
+        <div class="src-process-grid">
+            <div class="src-process-card">
+                <span class="step">Étape 01</span>
+                <h3>Identification</h3>
+                <p>Nous repérons les fabricants et ateliers d'artisanat à travers le Maroc, en privilégiant ceux qui allient savoir-faire traditionnel et capacités de production modernes.</p>
+            </div>
+            <div class="src-process-card">
+                <span class="step">Étape 02</span>
+                <h3>Audit & évaluation</h3>
+                <p>Nous visitons chaque atelier, évaluons les capacités de production, les conditions de travail et la conformité aux normes d'exportation européennes.</p>
+            </div>
+            <div class="src-process-card">
+                <span class="step">Étape 03</span>
+                <h3>Sélection éditoriale</h3>
+                <p>Chaque candidature passe par un comité éditorial. Design, qualité des matériaux, délais et capacité d'export sont évalués avant intégration au catalogue.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="src-origin">
+        <div class="src-origin-inner">
+            <div class="src-origin-text">
+                <h2>Une relation de confiance avec nos partenaires</h2>
+                <p>Nous construisons des relations durables avec nos fournisseurs marocains. La transparence, le respect des délais et la qualité constante sont au cœur de notre collaboration.</p>
+                <p>Chaque partenaire signe une charte qualité VOL.08 qui garantit des standards d'excellence dans la durée.</p>
+            </div>
+            <div class="src-origin-image">
+                <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Acceuil2.webp" alt="Partenaires Maroc">
+            </div>
+        </div>
+    </section>
+
+    <section class="src-engagement">
+        <h2>Nos engagements sourcing</h2>
+        <div class="src-engagement-grid">
+            <div class="src-engagement-item">
+                <i data-lucide="search-check"></i>
+                <div>
+                    <h4>Transparence totale</h4>
+                    <p>Origine, matériaux et conditions de production sont documentés pour chaque référence.</p>
+                </div>
+            </div>
+            <div class="src-engagement-item">
+                <i data-lucide="shield-check"></i>
+                <div>
+                    <h4>Conformité export</h4>
+                    <p>Tous les produits respectent les normes européennes de sécurité et de durabilité.</p>
+                </div>
+            </div>
+            <div class="src-engagement-item">
+                <i data-lucide="clock"></i>
+                <div>
+                    <h4>Fiabilité logistique</h4>
+                    <p>Délais tenus, suivi en temps réel et gestion des imprévus avec nos partenaires transport.</p>
+                </div>
+            </div>
+            <div class="src-engagement-item">
+                <i data-lucide="badge-check"></i>
+                <div>
+                    <h4>Contrôle qualité systématique</h4>
+                    <p>Inspection avant expédition et à réception pour garantir une qualité constante.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="src-cta">
+        <h2>Vous êtes fabricant au Maroc ?</h2>
+        <p>Nous sommes toujours à la recherche de nouveaux partenaires répondant à nos critères d'exigence.</p>
+        <a href="contact.html" class="btn btn-outline">Proposer votre atelier</a>
+    </section>
+
+        </main>
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h5>VOL.08</h5>
+                <p style="font-size: 0.9rem; color: #ccc;">Plateforme B2B de distribution d'ameublement & décoration.</p>
+                <form class="newsletter-form" action="https://formspree.io/f/xbdvapjy" method="POST">
+                    <input type="email" name="email" placeholder="Votre email professionnel" required>
+                    <input type="hidden" name="_subject" value="Nouvelle inscription Newsletter VOL.08">
+                    <button type="submit">S'inscrire</button>
+                </form>
+            </div>
+            <div class="footer-col">
+                <h5>Catalogue</h5>
+                <ul>
+                    <li><a href="collections.html">Mobilier</a></li>
+                    <li><a href="collections.html">Décoration</a></li>
+                    <li><a href="collections.html">Luminaires</a></li>
+                    <li><a href="collections.html">Accessoires</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>B2B</h5>
+                <ul>
+                    <li><a href="b2b.html">Demander un accès</a></li>
+                    <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
+                    <li><a href="sourcing.html">Sourcing</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="livraison.html">Livraison</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Légal</h5>
+                <ul>
+                    <li><a href="mentions-legales.html">Mentions légales</a></li>
+                    <li><a href="cgv-b2b.html">CGV B2B</a></li>
+                    <li><a href="confidentialite.html">Confidentialité</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">&copy; 2026 VOL.08 by <a href="https://havetdigital.fr/" target="_blank" rel="noopener noreferrer">Havet Digital</a> — Plateforme B2B de distribution d'ameublement et décoration.</div>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Pinterest</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

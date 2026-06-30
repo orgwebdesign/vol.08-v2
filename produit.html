@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+        <link rel="icon" type="image/svg+xml" href="assets/img/logo%20Vol.08.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Produit — VOL.08</title>
+    <meta name="description" id="pageDesc" content="Fiche produit VOL.08">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .pd-breadcrumb {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 20px 5% 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .pd-breadcrumb a { color: var(--text-secondary); text-decoration: none; }
+        .pd-breadcrumb a:hover { color: var(--text-primary); }
+        .pd-breadcrumb span { color: var(--text-primary); }
+        .pd-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 40px 5% 80px;
+        }
+        .pd-gallery-main {
+            width: 100%;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1rem;
+            background: var(--light-bg);
+        }
+        .pd-gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+        .pd-thumbs {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+        }
+        .pd-thumb {
+            width: 80px;
+            height: 80px;
+            flex-shrink: 0;
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            overflow: hidden;
+            transition: border-color 0.2s ease;
+        }
+        .pd-thumb.active { border-color: var(--text-primary); }
+        .pd-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .pd-info { position: sticky; top: 100px; align-self: start; }
+        .pd-collection {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+        .pd-collection a { color: inherit; text-decoration: none; }
+        .pd-collection a:hover { color: var(--text-primary); }
+        .pd-name {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .pd-tagline {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        .pd-ref {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-family: monospace;
+        }
+        .pd-desc {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+        }
+        .pd-specs { margin-bottom: 2rem; }
+        .pd-spec {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+        .pd-spec-label { color: var(--text-secondary); }
+        .pd-spec-value { color: var(--text-primary); text-align: right; }
+        .pd-colors { display: flex; gap: 0.5rem; margin-bottom: 2rem; }
+        .pd-color-swatch {
+            width: 32px; height: 32px; border-radius: 50%;
+            border: 2px solid var(--border-color);
+            cursor: pointer; transition: border-color 0.2s ease;
+        }
+        .pd-color-swatch:hover, .pd-color-swatch.active { border-color: var(--text-primary); }
+        .pd-b2b-note {
+            padding: 1.5rem;
+            background: var(--light-bg);
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+        .pd-b2b-note p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0 0 0.75rem;
+        }
+        .pd-actions { display: flex; gap: 1rem; }
+        .pd-related {
+            padding: 80px 5%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            border-top: 1px solid var(--border-color);
+        }
+        .pd-related h2 { text-align: center; margin-bottom: 3rem; }
+        .pd-related-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        .pd-related-item {
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+            background: #fff;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .pd-related-item:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .pd-related-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+        .pd-related-info { padding: 1rem; }
+        .pd-related-info h3 { font-size: 0.95rem; margin-bottom: 0.25rem; }
+        .pd-related-info span { font-size: 0.8rem; color: var(--text-secondary); }
+        @media (max-width: 768px) {
+            .pd-layout { grid-template-columns: 1fr; gap: 2rem; }
+            .pd-name { font-size: 1.6rem; }
+            .pd-related-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 480px) {
+            .pd-related-grid { grid-template-columns: 1fr; }
+            .pd-actions { flex-direction: column; }
+        }
+    </style>
+    <meta property="og:title" id="ogTitle" content="Produit — VOL.08">
+    <meta property="og:description" id="ogDesc" content="Fiche produit VOL.08">
+    <meta property="og:type" content="product">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" id="ogImage" content="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/HeroSection.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" id="twTitle" content="Produit — VOL.08">
+    <meta name="twitter:description" id="twDesc" content="Fiche produit VOL.08">
+    <link rel="canonical" id="canonical" href="https://vol08.ma/produit.html">
+    <script type="application/ld+json" id="productSchema"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "VOL.08",
+      "url": "https://vol08.ma",
+      "logo": "https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/HeroSection.webp",
+      "description": "Plateforme B2B de distribution d'ameublement et décoration sourcés au Maroc."
+    }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img loading="lazy" src="assets/img/logo%20Vol.08.svg" alt="VOL.08 Logo">
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="univers.html">Univers</a></li>
+                <li><a href="sourcing.html">Sourcing</a></li>
+                <li><a href="collections.html">Collections</a></li>
+                <li><a href="catalogue.html">Catalogue</a></li>
+                <li><a href="b2b.html">Accès B2B</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="nav-item nav-item-cta"><a href="b2b.html" class="btn btn-black mobile-nav-access-btn">Demander un accès</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <span class="nav-icon search-icon"><i data-lucide="search"></i></span>
+            <span class="nav-icon user-icon"><i data-lucide="user"></i></span>
+            <a href="b2b.html" class="btn btn-black">Demander un accès</a>
+            <div <span class="theme-toggle" id="themeToggle"><i data-lucide="sun" class="sun-icon"></i><i data-lucide="moon" class="moon-icon"></i></span>
+            <div class="burger-menu"><i data-lucide="menu"></i></div>
+        </div>
+    </header>
+
+    <main id="productContent">
+        <nav class="pd-breadcrumb" id="breadcrumb">
+            <a href="index.html">Accueil</a> / <a href="collections.html">Collections</a> / <span id="bcProduct">Produit</span>
+        </nav>
+
+        <div class="pd-layout">
+            <div class="pd-gallery" id="gallery">
+                <div class="pd-gallery-main" id="mainImageWrap">
+                    <img id="mainImage" src="" alt="">
+                </div>
+                <div class="pd-thumbs" id="thumbnails"></div>
+            </div>
+
+            <div class="pd-info">
+                <p class="pd-collection" id="collectionLabel"></p>
+                <h1 class="pd-name" id="productName"></h1>
+                <p class="pd-tagline" id="productTagline"></p>
+                <p class="pd-ref" id="productRef"></p>
+                <div class="pd-desc" id="productDesc"></div>
+
+                <div class="pd-specs" id="specs"></div>
+
+                <div class="pd-colors" id="colorsContainer"></div>
+
+                <div class="pd-b2b-note">
+                    <p><strong>Accès B2B requis</strong> — Les tarifs, stocks et documents techniques sont visibles après connexion.</p>
+                    <a href="b2b.html" class="btn btn-black" style="font-size:0.85rem;padding:10px 20px;">Demander un accès</a>
+                </div>
+
+                <div class="pd-actions">
+                    <a href="contact.html" class="btn btn-black" style="flex:1;">Demander un devis</a>
+                    <a href="catalogue.html" class="btn btn-outline" style="flex:1;">Retour au catalogue</a>
+                </div>
+            </div>
+        </div>
+
+        <section class="pd-related" id="relatedSection">
+            <h2>Autres produits de la collection</h2>
+            <div class="pd-related-grid" id="relatedGrid"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h5>VOL.08</h5>
+                <p style="font-size: 0.9rem; color: #ccc;">Plateforme B2B de distribution d'ameublement & décoration.</p>
+                <form class="newsletter-form" action="https://formspree.io/f/xbdvapjy" method="POST">
+                    <input type="email" name="email" placeholder="Votre email professionnel" required>
+                    <input type="hidden" name="_subject" value="Nouvelle inscription Newsletter VOL.08">
+                    <button type="submit">S'inscrire</button>
+                </form>
+            </div>
+            <div class="footer-col">
+                <h5>Catalogue</h5>
+                <ul>
+                    <li><a href="collections.html">Mobilier</a></li>
+                    <li><a href="collections.html">Décoration</a></li>
+                    <li><a href="collections.html">Luminaires</a></li>
+                    <li><a href="collections.html">Accessoires</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>B2B</h5>
+                <ul>
+                    <li><a href="b2b.html">Demander un accès</a></li>
+                    <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
+                    <li><a href="sourcing.html">Sourcing</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="livraison.html">Livraison</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Légal</h5>
+                <ul>
+                    <li><a href="mentions-legales.html">Mentions légales</a></li>
+                    <li><a href="cgv-b2b.html">CGV B2B</a></li>
+                    <li><a href="confidentialite.html">Confidentialité</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">&copy; 2026 VOL.08 by <a href="https://havetdigital.fr/" target="_blank" rel="noopener noreferrer">Havet Digital</a> — Plateforme B2B de distribution d'ameublement et décoration.</div>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Pinterest</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/data/produits.json" id="productsData" type="application/json"></script>
+    <script src="script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const ref = urlParams.get('ref');
+        if (!ref) {
+            document.getElementById('productContent').innerHTML = '<div style="text-align:center;padding:100px 5%"><h1>Produit non trouvé</h1><p style="color:var(--text-secondary);margin-bottom:2rem;">Aucune référence spécifiée.</p><a href="collections.html" class="btn btn-black">Voir les collections</a></div>';
+            document.getElementById('relatedSection').style.display = 'none';
+            return;
+        }
+
+        fetch('assets/data/produits.json')
+            .then(r => r.json())
+            .then(products => {
+                const p = products.find(x => x.ref === ref);
+                if (!p) {
+                    document.getElementById('productContent').innerHTML = '<div style="text-align:center;padding:100px 5%"><h1>Produit non trouvé</h1><p style="color:var(--text-secondary);margin-bottom:2rem;">La référence ' + ref + ' est introuvable.</p><a href="collections.html" class="btn btn-black">Voir les collections</a></div>';
+                    document.getElementById('relatedSection').style.display = 'none';
+                    return;
+                }
+
+                const title = p.name + ' — VOL.08';
+                const desc = p.tagline + ' — ' + p.description.slice(0, 120) + '…';
+
+                document.title = title;
+                document.getElementById('pageDesc').content = desc;
+                document.getElementById('ogTitle').content = title;
+                document.getElementById('ogDesc').content = desc;
+                document.getElementById('ogImage').content = p.images[0];
+                document.getElementById('twTitle').content = title;
+                document.getElementById('twDesc').content = desc;
+                document.getElementById('canonical').href = 'https://vol08.ma/produit.html?ref=' + p.ref;
+
+                document.getElementById('bcProduct').textContent = p.name;
+                document.getElementById('collectionLabel').innerHTML = '<a href="collections.html">' + p.collection + '</a>';
+                document.getElementById('productName').textContent = p.name;
+                document.getElementById('productTagline').textContent = p.tagline;
+                document.getElementById('productRef').textContent = 'Réf. ' + p.ref;
+                document.getElementById('productDesc').textContent = p.description;
+
+                // Specs
+                const specs = [
+                    { label: 'Dimensions', value: p.dimensions },
+                    { label: 'Matériaux', value: p.materials },
+                    { label: 'Poids', value: p.weight },
+                    { label: 'Catégorie', value: p.category },
+                    { label: 'Entretien', value: p.maintenance },
+                ];
+                document.getElementById('specs').innerHTML = specs.map(s =>
+                    '<div class="pd-spec"><span class="pd-spec-label">' + s.label + '</span><span class="pd-spec-value">' + s.value + '</span></div>'
+                ).join('');
+
+                // Colors
+                document.getElementById('colorsContainer').innerHTML = p.colors.map(c =>
+                    '<div class="pd-color-swatch" title="' + c + '" style="background:' + c.toLowerCase() + '"></div>'
+                ).join('');
+
+                // Gallery
+                document.getElementById('mainImage').src = p.images[0];
+                document.getElementById('mainImage').alt = p.name;
+                document.getElementById('thumbnails').innerHTML = p.images.map((img, i) =>
+                    '<div class="pd-thumb' + (i === 0 ? ' active' : '') + '" onclick="document.getElementById(\'mainImage\').src=\'' + img + '\';document.querySelectorAll(\'.pd-thumb\').forEach(t=>t.classList.remove(\'active\'));this.classList.add(\'active\')"><img src="' + img + '" alt=""></div>'
+                ).join('');
+
+                // Related
+                const related = products.filter(x => x.collection === p.collection && x.ref !== p.ref);
+                const grid = document.getElementById('relatedGrid');
+                if (related.length === 0) {
+                    document.getElementById('relatedSection').style.display = 'none';
+                } else {
+                    grid.innerHTML = related.map(r =>
+                        '<a href="produit.html?ref=' + r.ref + '" class="pd-related-item">' +
+                            '<img loading="lazy" src="' + r.images[0] + '" alt="' + r.name + '">' +
+                            '<div class="pd-related-info"><h3>' + r.name + '</h3><span>' + r.tagline + '</span></div>' +
+                        '</a>'
+                    ).join('');
+                }
+
+                // Product schema
+                const schema = {
+                    '@context': 'https://schema.org',
+                    '@type': 'Product',
+                    'name': p.name,
+                    'description': p.description,
+                    'sku': p.ref,
+                    'image': p.images[0],
+                    'brand': { '@type': 'Brand', 'name': 'VOL.08' },
+                    'category': p.category,
+                    'material': p.materials,
+                };
+                document.getElementById('productSchema').textContent = JSON.stringify(schema, null, 2);
+            })
+            .catch(() => {
+                document.getElementById('productContent').innerHTML = '<div style="text-align:center;padding:100px 5%"><h1>Erreur de chargement</h1><p style="color:var(--text-secondary);margin-bottom:2rem;">Impossible de charger le produit.</p><a href="collections.html" class="btn btn-black">Voir les collections</a></div>';
+                document.getElementById('relatedSection').style.display = 'none';
+            });
+
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+    });
+    </script>
+</body>
+</html>

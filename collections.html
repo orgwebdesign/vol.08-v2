@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+        <link rel="icon" type="image/svg+xml" href="assets/img/logo%20Vol.08.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections — VOL.08</title>
+    <meta name="description" content="Découvrez nos collections de mobilier, décoration, luminaires et accessoires sourcés au Maroc pour professionnels.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .col-hero {
+            padding: 60px 5%;
+            text-align: center;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .col-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .col-hero p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .col-filter {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+        .col-filter button {
+            padding: 10px 20px;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            font-family: var(--font-primary);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            color: var(--text-secondary);
+        }
+        .col-filter button:hover,
+        .col-filter button.active {
+            background: var(--dark-color);
+            color: #fff;
+            border-color: var(--dark-color);
+        }
+        .col-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 5% 100px;
+        }
+        .col-item {
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: box-shadow 0.3s ease;
+            background: #fff;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .col-item:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .col-item img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+        }
+        .col-item-info {
+            padding: 1.25rem;
+        }
+        .col-item-info h3 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        .col-item-info span {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        .col-category {
+            padding: 100px 5%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .col-category h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .col-category > p {
+            text-align: center;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        .col-category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        .col-cat-card {
+            border: 1px solid var(--border-color);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .col-cat-card:hover {
+            background: var(--dark-color);
+            border-color: var(--dark-color);
+        }
+        .col-cat-card .lucide {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+        .col-cat-card:hover .lucide {
+            color: #fff;
+        }
+        .col-cat-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        .col-cat-card:hover h3 {
+            color: #fff;
+        }
+        .col-cat-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+            transition: color 0.3s ease;
+        }
+        .col-cat-card:hover p {
+            color: rgba(255,255,255,0.7);
+        }
+        @media (max-width: 768px) {
+            .col-hero h1 { font-size: 2.2rem; }
+            .col-grid { grid-template-columns: 1fr; }
+            .col-category-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 560px) {
+            .col-category-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+    <meta property="og:title" content="Collections — VOL.08">
+    <meta property="og:description" content="Découvrez nos collections de mobilier, décoration, luminaires et accessoires sourcés au Maroc pour professionnels.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" content="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/HeroSection.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Collections — VOL.08">
+    <meta name="twitter:description" content="Découvrez nos collections de mobilier, décoration, luminaires et accessoires sourcés au Maroc pour professionnels.">
+    <link rel="canonical" href="https://vol08.ma/collections.html">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "VOL.08",
+      "url": "https://vol08.ma",
+      "logo": "https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/HeroSection.webp",
+      "description": "Plateforme B2B de distribution d'ameublement et décoration sourcés au Maroc.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "contact@vol08.ma"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "VOL.08",
+      "url": "https://vol08.ma",
+      "description": "Plateforme B2B de distribution d'ameublement et décoration sourcés au Maroc."
+    }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img loading="lazy" src="assets/img/logo%20Vol.08.svg" alt="VOL.08 Logo">
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="univers.html">Univers</a></li>
+                <li><a href="sourcing.html">Sourcing</a></li>
+                <li><a href="collections.html">Collections</a></li>
+                <li><a href="catalogue.html">Catalogue</a></li>
+                <li><a href="b2b.html">Accès B2B</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="nav-item nav-item-cta"><a href="b2b.html" class="btn btn-black mobile-nav-access-btn">Demander un accès</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <span class="nav-icon search-icon"><i data-lucide="search"></i></span>
+            <span class="nav-icon user-icon"><i data-lucide="user"></i></span>
+            <a href="b2b.html" class="btn btn-black">Demander un accès</a>
+            <div <span class="theme-toggle" id="themeToggle"><i data-lucide="sun" class="sun-icon"></i><i data-lucide="moon" class="moon-icon"></i></span>
+            <div class="burger-menu"><i data-lucide="menu"></i></div>
+        </div>
+    </header>
+    <main>
+
+    <section class="col-hero">
+        <h1>Nos collections</h1>
+        <p>Une sélection cohérente de mobilier, décoration, luminaires et accessoires pour composer des espaces premium et différenciants.</p>
+    </section>
+
+    <div class="col-filter">
+        <button class="active" data-cat="all">Tout</button>
+        <button data-cat="mobilier">Mobilier</button>
+        <button data-cat="decoration">Décoration</button>
+        <button data-cat="luminaires">Luminaires</button>
+        <button data-cat="accessoires">Accessoires</button>
+    </div>
+
+    <div class="col-grid" id="colGrid">
+        <a href="produit.html?ref=TZANE-001" class="col-item" data-category="mobilier">
+            <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_1.webp" alt="Collection T.ZANE">
+            <div class="col-item-info">
+                <h3>T.ZANE</h3>
+                <span>Moderne et élégante — Mobilier</span>
+            </div>
+        </a>
+        <a href="produit.html?ref=UNITE-001" class="col-item" data-category="mobilier">
+            <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_3.webp" alt="Collection U.NITE">
+            <div class="col-item-info">
+                <h3>U.NITE</h3>
+                <span>Sophistication intemporelle — Mobilier</span>
+            </div>
+        </a>
+        <a href="produit.html?ref=ZLIGE-001" class="col-item" data-category="mobilier">
+            <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_2.webp" alt="Collection Z.LIGE">
+            <div class="col-item-info">
+                <h3>Z.LIGE</h3>
+                <span>Pureté et minimalisme — Mobilier</span>
+            </div>
+        </a>
+        <a href="produit.html?ref=TCUITE-001" class="col-item" data-category="mobilier">
+            <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_4.webp" alt="Collection T.CUITE">
+            <div class="col-item-info">
+                <h3>T.CUITE</h3>
+                <span>Élégance naturelle — Mobilier</span>
+            </div>
+        </a>
+        <a href="produit.html?ref=LUMIZE-001" class="col-item" data-category="luminaires">
+            <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_5.webp" alt="Collection L.UMIZE">
+            <div class="col-item-info">
+                <h3>L.UMIZE</h3>
+                <span>Chaleur naturelle — Luminaires</span>
+            </div>
+        </a>
+        <a href="produit.html?ref=ASSISE-001" class="col-item" data-category="mobilier">
+            <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_6.webp" alt="Collection A.SSISE">
+            <div class="col-item-info">
+                <h3>A.SSISE</h3>
+                <span>Dynamisme créatif — Mobilier</span>
+            </div>
+        </a>
+        <a href="produit.html?ref=DCORE-001" class="col-item" data-category="decoration">
+            <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_7.webp" alt="Collection D.CORE">
+            <div class="col-item-info">
+                <h3>D.CORE</h3>
+                <span>Passion vibrante — Décoration</span>
+            </div>
+        </a>
+        <a href="produit.html?ref=BOUGY-001" class="col-item" data-category="decoration">
+            <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_8.webp" alt="Collection B.OUGY">
+            <div class="col-item-info">
+                <h3>B.OUGY</h3>
+                <span>Énergie et lumière — Décoration</span>
+            </div>
+        </a>
+    </div>
+
+    <section class="col-category">
+        <h2>Explorez par univers</h2>
+        <p>Chaque univers VOL.08 est pensé pour créer une cohérence esthétique et fonctionnelle.</p>
+        <div class="col-category-grid">
+            <div class="col-cat-card">
+                <i data-lucide="armchair"></i>
+                <h3>Mobilier</h3>
+                <p>Tables, assises, rangements — des pièces structurantes pour vos espaces.</p>
+            </div>
+            <div class="col-cat-card">
+                <i data-lucide="palette"></i>
+                <h3>Décoration</h3>
+                <p>Accessoires, objets, textiles — la touche finale de vos ambiances.</p>
+            </div>
+            <div class="col-cat-card">
+                <i data-lucide="lightbulb"></i>
+                <h3>Luminaires</h3>
+                <p>Suspensions, lampadaires, appliques — la lumière comme élément de design.</p>
+            </div>
+            <div class="col-cat-card">
+                <i data-lucide="package"></i>
+                <h3>Accessoires</h3>
+                <p>Petits objets, coussins, tapis — l'art du détail qui fait la différence.</p>
+            </div>
+        </div>
+    </section>
+
+        </main>
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h5>VOL.08</h5>
+                <p style="font-size: 0.9rem; color: #ccc;">Plateforme B2B de distribution d'ameublement & décoration.</p>
+                <form class="newsletter-form" action="https://formspree.io/f/xbdvapjy" method="POST">
+                    <input type="email" name="email" placeholder="Votre email professionnel" required>
+                    <input type="hidden" name="_subject" value="Nouvelle inscription Newsletter VOL.08">
+                    <button type="submit">S'inscrire</button>
+                </form>
+            </div>
+            <div class="footer-col">
+                <h5>Catalogue</h5>
+                <ul>
+                    <li><a href="collections.html">Mobilier</a></li>
+                    <li><a href="collections.html">Décoration</a></li>
+                    <li><a href="collections.html">Luminaires</a></li>
+                    <li><a href="collections.html">Accessoires</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>B2B</h5>
+                <ul>
+                    <li><a href="b2b.html">Demander un accès</a></li>
+                    <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
+                    <li><a href="sourcing.html">Sourcing</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="livraison.html">Livraison</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Légal</h5>
+                <ul>
+                    <li><a href="mentions-legales.html">Mentions légales</a></li>
+                    <li><a href="cgv-b2b.html">CGV B2B</a></li>
+                    <li><a href="confidentialite.html">Confidentialité</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">&copy; 2026 VOL.08 by <a href="https://havetdigital.fr/" target="_blank" rel="noopener noreferrer">Havet Digital</a> — Plateforme B2B de distribution d'ameublement et décoration.</div>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Pinterest</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.col-filter button');
+            const items = document.querySelectorAll('.col-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const cat = btn.dataset.cat;
+                    items.forEach(item => {
+                        if (cat === 'all' || item.dataset.category === cat) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>

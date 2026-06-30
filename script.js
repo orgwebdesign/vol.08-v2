@@ -116,6 +116,57 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Dark Mode Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    function setTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    }
+
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else if (prefersDark) {
+        setTheme('dark');
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        });
+    }
+
+    // Form AJAX submissions (Formspree)
+    document.querySelectorAll('form[action*="formspree.io"]').forEach(form => {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = 'Envoi en cours...';
+
+            try {
+                const res = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (res.ok) {
+                    form.innerHTML = '<p class="form-success">✅ Message envoyé ! Nous vous répondrons sous 48h.</p>';
+                } else {
+                    throw new Error('Erreur serveur');
+                }
+            } catch (err) {
+                btn.disabled = false;
+                btn.textContent = originalText;
+                alert('Une erreur est survenue. Veuillez réessayer ou nous contacter par email.');
+            }
+        });
+    });
+
     // Initialize Lucide Icons
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();

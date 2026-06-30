@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+        <link rel="icon" type="image/svg+xml" href="assets/img/logo%20Vol.08.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue — VOL.08</title>
+    <meta name="description" content="Catalogue privé VOL.08 : accès réservé aux professionnels après validation. Plus de 400 références mobilier, décoration, luminaires.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .cat-hero {
+            padding: 80px 5%;
+            text-align: center;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .cat-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .cat-hero p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .cat-gate {
+            padding: 100px 5%;
+            background: var(--light-bg);
+        }
+        .cat-gate-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .cat-gate-text h2 {
+            margin-bottom: 1rem;
+        }
+        .cat-gate-text p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        .cat-gate-benefits {
+            display: grid;
+            gap: 1rem;
+        }
+        .cat-gate-benefit {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            background: #fff;
+        }
+        .cat-gate-benefit .lucide {
+            width: 20px;
+            height: 20px;
+            color: var(--text-primary);
+            flex-shrink: 0;
+        }
+        .cat-gate-benefit span {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+        .cat-gate-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+        }
+        .cat-gate-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .cat-features {
+            padding: 100px 5%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .cat-features h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .cat-features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .cat-feature-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            border: 1px solid var(--border-color);
+            transition: box-shadow 0.3s ease;
+        }
+        .cat-feature-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .cat-feature-card .lucide {
+            width: 36px;
+            height: 36px;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+        }
+        .cat-feature-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+        .cat-feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.6;
+        }
+        .cat-cta {
+            padding: 100px 5%;
+            text-align: center;
+            background: var(--dark-color);
+            color: #fff;
+        }
+        .cat-cta h2 { color: #fff; margin-bottom: 1rem; }
+        .cat-cta p { color: rgba(255,255,255,0.6); margin-bottom: 2rem; }
+        .cat-cta .btn-outline { border-color: rgba(255,255,255,0.4); color: #fff; }
+        .cat-cta .btn-outline:hover { background: #fff; color: var(--dark-color); border-color: #fff; }
+        @media (max-width: 768px) {
+            .cat-hero h1 { font-size: 2.2rem; }
+            .cat-gate-inner { grid-template-columns: 1fr; }
+            .cat-features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+    <meta property="og:title" content="Catalogue — VOL.08">
+    <meta property="og:description" content="Catalogue privé VOL.08 : accès réservé aux professionnels après validation. Plus de 400 références mobilier, décoration, luminaires.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" content="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/HeroSection.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Catalogue — VOL.08">
+    <meta name="twitter:description" content="Catalogue privé VOL.08 : accès réservé aux professionnels après validation. Plus de 400 références mobilier, décoration, luminaires.">
+    <link rel="canonical" href="https://vol08.ma/catalogue.html">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "VOL.08",
+      "url": "https://vol08.ma",
+      "logo": "https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/HeroSection.webp",
+      "description": "Plateforme B2B de distribution d'ameublement et décoration sourcés au Maroc.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "contact@vol08.ma"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "VOL.08",
+      "url": "https://vol08.ma",
+      "description": "Plateforme B2B de distribution d'ameublement et décoration sourcés au Maroc."
+    }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img loading="lazy" src="assets/img/logo%20Vol.08.svg" alt="VOL.08 Logo">
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="univers.html">Univers</a></li>
+                <li><a href="sourcing.html">Sourcing</a></li>
+                <li><a href="collections.html">Collections</a></li>
+                <li><a href="catalogue.html">Catalogue</a></li>
+                <li><a href="b2b.html">Accès B2B</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="nav-item nav-item-cta"><a href="b2b.html" class="btn btn-black mobile-nav-access-btn">Demander un accès</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <span class="nav-icon search-icon"><i data-lucide="search"></i></span>
+            <span class="nav-icon user-icon"><i data-lucide="user"></i></span>
+            <a href="b2b.html" class="btn btn-black">Demander un accès</a>
+            <div <span class="theme-toggle" id="themeToggle"><i data-lucide="sun" class="sun-icon"></i><i data-lucide="moon" class="moon-icon"></i></span>
+            <div class="burger-menu"><i data-lucide="menu"></i></div>
+        </div>
+    </header>
+    <main>
+
+    <section class="cat-hero">
+        <h1>Catalogue privé</h1>
+        <p>Un catalogue de plus de 400 références, accessible après validation de votre compte professionnel.</p>
+        <a href="b2b.html" class="btn btn-black">Demander un accès</a>
+    </section>
+
+    <section class="cat-gate">
+        <div class="cat-gate-inner">
+            <div class="cat-gate-image">
+                <img loading="lazy" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/HeroSection.webp" alt="Catalogue VOL.08">
+            </div>
+            <div class="cat-gate-text">
+                <h2>Un catalogue conçu pour les professionnels</h2>
+                <p>Accédez après validation à l'intégralité de notre sélection : fiches techniques, médias HD, variantes, délais et tarifs selon votre profil.</p>
+                <div class="cat-gate-benefits">
+                    <div class="cat-gate-benefit">
+                        <i data-lucide="file-text"></i>
+                        <span>Fiches techniques complètes</span>
+                    </div>
+                    <div class="cat-gate-benefit">
+                        <i data-lucide="image"></i>
+                        <span>Médias haute définition</span>
+                    </div>
+                    <div class="cat-gate-benefit">
+                        <i data-lucide="layers"></i>
+                        <span>Variantes et personnalisations</span>
+                    </div>
+                    <div class="cat-gate-benefit">
+                        <i data-lucide="calculator"></i>
+                        <span>Tarifs HT selon profil</span>
+                    </div>
+                    <div class="cat-gate-benefit">
+                        <i data-lucide="truck"></i>
+                        <span>Délais estimatifs précis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cat-features">
+        <h2>Ce que vous trouverez dans le catalogue</h2>
+        <div class="cat-features-grid">
+            <div class="cat-feature-card">
+                <i data-lucide="search"></i>
+                <h3>Recherche avancée</h3>
+                <p>Filtrez par catégorie, matériau, dimension, couleur ou fournisseur pour trouver rapidement la référence idéale.</p>
+            </div>
+            <div class="cat-feature-card">
+                <i data-lucide="download"></i>
+                <h3>Médias téléchargeables</h3>
+                <p>Photos HD, fiches techniques PDF, visuels 3D et moodboards prêts à l'emploi pour vos présentations clients.</p>
+            </div>
+            <div class="cat-feature-card">
+                <i data-lucide="file-bar-chart"></i>
+                <h3>Devis & commandes</h3>
+                <p>Sélectionnez vos références, générez un devis personnalisé et suivez vos commandes en temps réel.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cat-cta">
+        <h2>Accédez au catalogue complet</h2>
+        <p>Remplissez le formulaire de demande d'accès B2B pour obtenir vos identifiants.</p>
+        <div>
+            <a href="b2b.html" class="btn btn-black" style="background:#fff;color:var(--dark-color);border-color:#fff;margin-right:1rem;">Demander un accès</a>
+            <a href="comment-ca-marche.html" class="btn btn-outline">Comment ça marche</a>
+        </div>
+    </section>
+
+        </main>
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h5>VOL.08</h5>
+                <p style="font-size: 0.9rem; color: #ccc;">Plateforme B2B de distribution d'ameublement & décoration.</p>
+                <form class="newsletter-form" action="https://formspree.io/f/xbdvapjy" method="POST">
+                    <input type="email" name="email" placeholder="Votre email professionnel" required>
+                    <input type="hidden" name="_subject" value="Nouvelle inscription Newsletter VOL.08">
+                    <button type="submit">S'inscrire</button>
+                </form>
+            </div>
+            <div class="footer-col">
+                <h5>Catalogue</h5>
+                <ul>
+                    <li><a href="collections.html">Mobilier</a></li>
+                    <li><a href="collections.html">Décoration</a></li>
+                    <li><a href="collections.html">Luminaires</a></li>
+                    <li><a href="collections.html">Accessoires</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>B2B</h5>
+                <ul>
+                    <li><a href="b2b.html">Demander un accès</a></li>
+                    <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
+                    <li><a href="sourcing.html">Sourcing</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="livraison.html">Livraison</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Légal</h5>
+                <ul>
+                    <li><a href="mentions-legales.html">Mentions légales</a></li>
+                    <li><a href="cgv-b2b.html">CGV B2B</a></li>
+                    <li><a href="confidentialite.html">Confidentialité</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">&copy; 2026 VOL.08 by <a href="https://havetdigital.fr/" target="_blank" rel="noopener noreferrer">Havet Digital</a> — Plateforme B2B de distribution d'ameublement et décoration.</div>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Pinterest</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

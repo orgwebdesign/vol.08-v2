@@ -1,0 +1,140 @@
+[
+  {
+    "ref": "TZANE-001",
+    "name": "Table basse T.ZANE",
+    "collection": "T.ZANE",
+    "collectionSlug": "t-zane",
+    "category": "Mobilier",
+    "tagline": "Moderne et élégante",
+    "description": "Table basse au design contemporain, sculptée dans des matériaux nobles sourcés au Maroc. Lignes épurées et finition artisanale pour un centre de table qui incarne l'élégance VOL.08.",
+    "images": [
+      "https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection+1+-+T.ZANE/02b26f0a-c9db-4b63-8bb9-19c51b7d7e85.webp",
+      "https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection+1+-+T.ZANE/0348ea11-5e87-4f94-b41a-a2cd761f2571.webp",
+      "https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection+1+-+T.ZANE/0942cdf7-ac7b-47e1-9524-893a2b6c1534.webp"
+    ],
+    "dimensions": "120 × 70 × 35 cm",
+    "materials": "Bois massif, métal brossé",
+    "colors": ["Chêne naturel", "Noir mat", "Gris ardoise"],
+    "weight": "18 kg",
+    "maintenance": "Nettoyer avec un chiffon doux et sec. Éviter l'exposition prolongée à l'humidité."
+  },
+  {
+    "ref": "UNITE-001",
+    "name": "Canapé U.NITE 3 places",
+    "collection": "U.NITE",
+    "collectionSlug": "u-nite",
+    "category": "Mobilier",
+    "tagline": "Sophistication intemporelle",
+    "description": "Canapé 3 places au design intemporel, alliant confort et raffinement. Structure en bois massif, assises en mousse haute densité et revêtement en tissu premium sourcé au Maroc.",
+    "images": [
+      "https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_3.webp"
+    ],
+    "dimensions": "220 × 90 × 85 cm",
+    "materials": "Bois massif, mousse HR35, tissu premium",
+    "colors": ["Beige", "Gris perle", "Bleu nuit"],
+    "weight": "55 kg",
+    "maintenance": "Dépoussiérage régulier. Taches : nettoyage à sec conseillé."
+  },
+  {
+    "ref": "ZLIGE-001",
+    "name": "Bibliothèque Z.LIGE",
+    "collection": "Z.LIGE",
+    "collectionSlug": "z-lige",
+    "category": "Mobilier",
+    "tagline": "Pureté et minimalisme",
+    "description": "Bibliothèque minimaliste aux lignes pures, conçue pour les espaces professionnels exigeants. Structure en acier laqué et étagères en bois massif. Modulable selon vos besoins.",
+    "images": [
+      "https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_2.webp"
+    ],
+    "dimensions": "180 × 35 × 200 cm",
+    "materials": "Acier laqué, bois massif",
+    "colors": ["Blanc", "Noir", "Chêne clair"],
+    "weight": "42 kg",
+    "maintenance": "Nettoyer avec un chiffon humide. Ne pas utiliser de produits abrasifs."
+  },
+  {
+    "ref": "TCUITE-001",
+    "name": "Fauteuil T.CUITE",
+    "collection": "T.CUITE",
+    "collectionSlug": "t-cuite",
+    "category": "Mobilier",
+    "tagline": "Élégance naturelle",
+    "description": "Fauteuil club en cuir pleine fleur, tanné naturellement selon les savoir-faire marocains. Assise généreuse, piétement en laiton massif. Un classique revisité.",
+    "images": [
+      "https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_4.webp"
+    ],
+    "dimensions": "75 × 80 × 90 cm",
+    "materials": "Cuir pleine fleur, laiton massif",
+    "colors": ["Tabac", "Noir", " Cognac"],
+    "weight": "25 kg",
+    "maintenance": "Nourrir le cuir 2x/an avec un lait spécifique. Éviter le soleil direct."
+  },
+  {
+    "ref": "LUMIZE-001",
+    "name": "Suspension L.UMIZE",
+    "collection": "L.UMIZE",
+    "collectionSlug": "l-umize",
+    "category": "Luminaires",
+    "tagline": "Chaleur naturelle",
+    "description": "Suspension tissée à la main en fibres naturelles par des artisans marocains. Diffuse une lumière chaude et enveloppante. Pièce unique pour vos espaces contract.",
+    "images": [
+      "https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_5.webp"
+    ],
+    "dimensions": "Ø 50 × 60 cm (câble : 150 cm)",
+    "materials": "Fibres naturelles, structure métal",
+    "colors": ["Naturel", "Blanc cassé"],
+    "weight": "2.5 kg",
+    "maintenance": "Dépoussiérer délicatement. Ampoule E27 max 40W."
+  },
+  {
+    "ref": "ASSISE-001",
+    "name": "Assise A.SSISE",
+    "collection": "A.SSISE",
+    "collectionSlug": "a-ssise",
+    "category": "Mobilier",
+    "tagline": "Dynamisme créatif",
+    "description": "Tabouret design en bois tourné et corde tressée. Assise confortable et structure légère. Parfait pour les espaces de restauration et lounges contemporains.",
+    "images": [
+      "https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_6.webp"
+    ],
+    "dimensions": "40 × 40 × 65 cm",
+    "materials": "Bois tourné, corde tressée",
+    "colors": ["Naturel", "Noir", "Rouge"],
+    "weight": "6 kg",
+    "maintenance": "Nettoyage à l'eau savonneuse. Sécher immédiatement."
+  },
+  {
+    "ref": "DCORE-001",
+    "name": "Vase D.CORE",
+    "collection": "D.CORE",
+    "collectionSlug": "d-core",
+    "category": "Décoration",
+    "tagline": "Passion vibrante",
+    "description": "Vase en céramique émaillée, tourné et décoré à la main dans l'atelier D.CORE à Marrakech. Chaque pièce est unique. Une touche d'artisanat authentique pour vos projets.",
+    "images": [
+      "https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_7.webp"
+    ],
+    "dimensions": "Ø 25 × 40 cm",
+    "materials": "Céramique émaillée",
+    "colors": ["Bleu Majorelle", "Terre cuite", "Blanc"],
+    "weight": "3.2 kg",
+    "maintenance": "Dépoussiérer avec un plumeau. Lavable à l'eau claire."
+  },
+  {
+    "ref": "BOUGY-001",
+    "name": "Bougie B.OUGY",
+    "collection": "B.OUGY",
+    "collectionSlug": "b-ougy",
+    "category": "Décoration",
+    "tagline": "Énergie et lumière",
+    "description": "Bougie parfumée coulée à la main dans un verre soufflé artisanal. Parfums d'ambre, cèdre et orange amère. 60h de combustion. Un éclairage d'ambiance pour vos espaces.",
+    "images": [
+      "https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_8.webp"
+    ],
+    "dimensions": "Ø 8 × 12 cm",
+    "materials": "Cire végétale, verre soufflé",
+    "colors": ["Ambre"],
+    "weight": "0.4 kg",
+    "maintenance": "Couper la mèche à 5 mm avant chaque utilisation."
+  }
+]

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
+        <link rel="icon" type="image/svg+xml" href="assets/img/logo%20Vol.08.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — VOL.08</title>
+    <meta name="description" content="Contactez l'équipe VOL.08 pour toute question sur nos collections, le sourcing ou l'accès B2B.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <meta property="og:title" content="Contact — VOL.08">
+    <meta property="og:description" content="Contactez l'équipe VOL.08 pour toute question sur nos collections, le sourcing ou l'accès B2B.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" content="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/HeroSection.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact — VOL.08">
+    <meta name="twitter:description" content="Contactez l'équipe VOL.08 pour toute question sur nos collections, le sourcing ou l'accès B2B.">
+    <link rel="canonical" href="https://vol08.ma/contact.html">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "VOL.08",
+      "url": "https://vol08.ma",
+      "logo": "https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/HeroSection.webp",
+      "description": "Plateforme B2B de distribution d'ameublement et décoration sourcés au Maroc.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "contact@vol08.ma"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "VOL.08",
+      "url": "https://vol08.ma",
+      "description": "Plateforme B2B de distribution d'ameublement et décoration sourcés au Maroc."
+    }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img loading="lazy" src="assets/img/logo%20Vol.08.svg" alt="VOL.08 Logo">
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="univers.html">Univers</a></li>
+                <li><a href="sourcing.html">Sourcing</a></li>
+                <li><a href="collections.html">Collections</a></li>
+                <li><a href="catalogue.html">Catalogue</a></li>
+                <li><a href="b2b.html">Accès B2B</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="nav-item nav-item-cta"><a href="b2b.html" class="btn btn-black mobile-nav-access-btn">Demander un accès</a></li>
+            </ul>
+        </nav>
+        <div class="nav-actions">
+            <span class="nav-icon search-icon"><i data-lucide="search"></i></span>
+            <span class="nav-icon user-icon"><i data-lucide="user"></i></span>
+            <a href="b2b.html" class="btn btn-black">Demander un accès</a>
+            <div <span class="theme-toggle" id="themeToggle"><i data-lucide="sun" class="sun-icon"></i><i data-lucide="moon" class="moon-icon"></i></span>
+            <div class="burger-menu"><i data-lucide="menu"></i></div>
+        </div>
+    </header>
+    <main>
+
+    <section class="page-header">
+        <h1>Contact</h1>
+        <p>Une question, un projet ? Notre équipe vous répond sous 48h ouvrées.</p>
+    </section>
+
+    <section class="page-content">
+        <div class="contact-grid">
+            <div>
+                <form id="contactForm" action="https://formspree.io/f/mrewaogq" method="POST">
+                    <div class="b2b-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
+                        <div class="form-group">
+                            <label>Prénom <span style="color:#999;">*</span></label>
+                            <input type="text" name="prenom" required placeholder="Votre prénom">
+                        </div>
+                        <div class="form-group">
+                            <label>Nom <span style="color:#999;">*</span></label>
+                            <input type="text" name="nom" required placeholder="Votre nom">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email <span style="color:#999;">*</span></label>
+                        <input type="email" name="email" required placeholder="vous@exemple.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Sujet</label>
+                        <select name="sujet">
+                            <option>Demande d'information</option>
+                            <option>Demande d'accès B2B</option>
+                            <option>Projet d'aménagement</option>
+                            <option>Proposition fournisseur</option>
+                            <option>Autre</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message <span style="color:#999;">*</span></label>
+                        <textarea name="message" required placeholder="Décrivez votre demande..."></textarea>
+                    </div>
+                    <input type="hidden" name="_subject" value="Nouveau message contact VOL.08">
+                    <input type="hidden" name="_replyto" value="email">
+                    <button type="submit" class="btn btn-black">Envoyer</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <h3>Nos coordonnées</h3>
+                <div class="contact-detail">
+                    <i data-lucide="mail"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>contact@vol08.ma</p>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <i data-lucide="phone"></i>
+                    <div>
+                        <h4>Téléphone</h4>
+                        <p>+212 (0) X XX XX XX XX</p>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <i data-lucide="map-pin"></i>
+                    <div>
+                        <h4>Adresse</h4>
+                        <p>Maroc — France — Europe</p>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <i data-lucide="clock"></i>
+                    <div>
+                        <h4>Horaires</h4>
+                        <p>Lun-Ven : 9h00 – 18h00 (UTC+1)</p>
+                    </div>
+                </div>
+                <div class="contact-detail">
+                    <i data-lucide="globe"></i>
+                    <div>
+                        <h4>Suivez-nous</h4>
+                        <p style="display:flex;gap:1rem;margin-top:0.25rem;">
+                            <a href="#" style="color:var(--text-primary);">Instagram</a>
+                            <a href="#" style="color:var(--text-primary);">LinkedIn</a>
+                            <a href="#" style="color:var(--text-primary);">Pinterest</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="b2b-section" style="margin-top:0;">
+        <div class="b2b-content" style="grid-template-columns:1fr;">
+            <div style="text-align:center;max-width:600px;margin:0 auto;">
+                <span class="b2b-kicker">Besoin d'un accompagnement ?</span>
+                <h2 style="max-width:none;color:#fff;">Vous êtes fabricant au Maroc ?</h2>
+                <p style="color:rgba(255,255,255,0.6);">Nous sommes toujours à la recherche de nouveaux partenaires répondant à nos critères d'exigence.</p>
+                <a href="sourcing.html" class="btn btn-white" style="margin-top:1rem;">En savoir plus</a>
+            </div>
+        </div>
+    </section>
+
+        </main>
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h5>VOL.08</h5>
+                <p style="font-size: 0.9rem; color: #ccc;">Plateforme B2B de distribution d'ameublement & décoration.</p>
+                <form class="newsletter-form" action="https://formspree.io/f/xbdvapjy" method="POST">
+                    <input type="email" name="email" placeholder="Votre email professionnel" required>
+                    <input type="hidden" name="_subject" value="Nouvelle inscription Newsletter VOL.08">
+                    <button type="submit">S'inscrire</button>
+                </form>
+            </div>
+            <div class="footer-col">
+                <h5>Catalogue</h5>
+                <ul>
+                    <li><a href="collections.html">Mobilier</a></li>
+                    <li><a href="collections.html">Décoration</a></li>
+                    <li><a href="collections.html">Luminaires</a></li>
+                    <li><a href="collections.html">Accessoires</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>B2B</h5>
+                <ul>
+                    <li><a href="b2b.html">Demander un accès</a></li>
+                    <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
+                    <li><a href="sourcing.html">Sourcing</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Support</h5>
+                <ul>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="livraison.html">Livraison</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Légal</h5>
+                <ul>
+                    <li><a href="mentions-legales.html">Mentions légales</a></li>
+                    <li><a href="cgv-b2b.html">CGV B2B</a></li>
+                    <li><a href="confidentialite.html">Confidentialité</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">&copy; 2026 VOL.08 by <a href="https://havetdigital.fr/" target="_blank" rel="noopener noreferrer">Havet Digital</a> — Plateforme B2B de distribution d'ameublement et décoration.</div>
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Pinterest</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
