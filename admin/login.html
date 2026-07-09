@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration — VOL.08</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="admin-login-body">
+    <div class="admin-login-box">
+        <img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08">
+        <h1>Administration</h1>
+        <p>Connectez-vous pour gérer la plateforme</p>
+        <div class="admin-login-error" id="loginError">Mot de passe incorrect</div>
+        <form id="adminLoginForm">
+            <div class="form-group">
+                <label>Mot de passe administrateur</label>
+                <input type="password" id="adminPassword" required placeholder="Entrez le mot de passe">
+            </div>
+            <button type="submit" class="btn btn-black">Se connecter</button>
+        </form>
+    </div>
+    <script src="../assets/js/admin.js"></script>
+    <script>
+        document.getElementById('adminLoginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const pwd = document.getElementById('adminPassword').value;
+            if (pwd === ADMIN_PASSWORD) {
+                sessionStorage.setItem('vol08_admin_auth', 'true');
+                window.location.href = 'index.html';
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

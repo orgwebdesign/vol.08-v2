@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin — VOL.08</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="admin-body">
+    <aside class="admin-sidebar">
+        <div class="admin-sidebar-logo">
+            <img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08">
+            <span>Administration</span>
+        </div>
+        <nav>
+            <a href="index.html" class="active"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+            <a href="demandes.html"><i data-lucide="file-text"></i> Demandes B2B</a>
+            <a href="clients.html"><i data-lucide="users"></i> Clients</a>
+            <a href="#" onclick="ADMIN_UTILS.logout()"><i data-lucide="log-out"></i> Déconnexion</a>
+        </nav>
+        <div class="admin-sidebar-footer">VOL.08 v1.0</div>
+    </aside>
+    <main class="admin-main" id="adminDashboard">
+        <div class="admin-header">
+            <h1>Dashboard</h1>
+            <div class="admin-header-right">
+                <span id="adminDate"></span>
+            </div>
+        </div>
+        <div class="admin-cards" id="statsCards">
+            <div class="admin-card">
+                <h3>Demandes en attente</h3>
+                <div class="admin-card-number warn" id="statPending">—</div>
+            </div>
+            <div class="admin-card">
+                <h3>Demandes validées</h3>
+                <div class="admin-card-number ok" id="statApproved">—</div>
+            </div>
+            <div class="admin-card">
+                <h3>Demandes refusées</h3>
+                <div class="admin-card-number muted" id="statRejected">—</div>
+            </div>
+            <div class="admin-card">
+                <h3>Clients actifs</h3>
+                <div class="admin-card-number ok" id="statClients">—</div>
+            </div>
+        </div>
+
+        <h2 style="font-size:1.2rem;margin-bottom:1rem;">Dernières demandes</h2>
+        <div class="admin-table-wrap" id="recentRequestsTable">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Réf.</th>
+                        <th>Société</th>
+                        <th>Contact</th>
+                        <th>Statut</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="recentRequestsBody"></tbody>
+            </table>
+        </div>
+    </main>
+    <script src="../assets/js/admin.js"></script>
+    <script>
+        ADMIN_UTILS.requireAuth();
+        document.getElementById('adminDate').textContent = new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+
+        function renderDashboard() {
+            const counts = ADMIN_UTILS.getCounts();
+            document.getElementById('statPending').textContent = counts.pending;
+            document.getElementById('statApproved').textContent = counts.approved;
+            document.getElementById('statRejected').textContent = counts.rejected;
+            document.getElementById('statClients').textContent = counts.totalClients;
+
+            const requests = ADMIN_UTILS.getRequests().slice(-5).reverse();
+            const tbody = document.getElementById('recentRequestsBody');
+            if (requests.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#999;padding:2rem;">Aucune demande pour le moment</td></tr>';
+                return;
+            }
+            tbody.innerHTML = requests.map(r => `
+                <tr>
+                    <td style="font-weight:500;">${r.id}</td>
+                    <td>${r.entreprise}</td>
+                    <td>${r.prenom} ${r.nom}<br><span style="font-size:0.82rem;color:#999;">${r.email}</span></td>
+                    <td><span class="admin-badge ${r.status}">${ADMIN_UTILS.getStatusLabel(r.status)}</span></td>
+                    <td style="font-size:0.85rem;color:#999;">${ADMIN_UTILS.formatDate(r.date)}</td>
+                </tr>
+            `).join('');
+        }
+        renderDashboard();
+    </script>
+</body>
+</html>

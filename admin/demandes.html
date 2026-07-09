@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demandes B2B — VOL.08 Admin</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="admin-body">
+    <aside class="admin-sidebar">
+        <div class="admin-sidebar-logo">
+            <img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08">
+            <span>Administration</span>
+        </div>
+        <nav>
+            <a href="index.html"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+            <a href="demandes.html" class="active"><i data-lucide="file-text"></i> Demandes B2B</a>
+            <a href="clients.html"><i data-lucide="users"></i> Clients</a>
+            <a href="#" onclick="ADMIN_UTILS.logout()"><i data-lucide="log-out"></i> Déconnexion</a>
+        </nav>
+        <div class="admin-sidebar-footer">VOL.08 v1.0</div>
+    </aside>
+    <main class="admin-main">
+        <div class="admin-header">
+            <h1>Demandes d'accès B2B</h1>
+            <div class="admin-header-right" style="gap:0.75rem;">
+                <button class="admin-btn-sm" onclick="filterRequests('all')" id="filterAll">Toutes</button>
+                <button class="admin-btn-sm" onclick="filterRequests('pending')" id="filterPending">En attente</button>
+                <button class="admin-btn-sm" onclick="filterRequests('approved')" id="filterApproved">Validées</button>
+                <button class="admin-btn-sm" onclick="filterRequests('rejected')" id="filterRejected">Refusées</button>
+            </div>
+        </div>
+        <div class="admin-table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Réf.</th>
+                        <th>Société</th>
+                        <th>Contact</th>
+                        <th>Statut</th>
+                        <th>Pays</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="requestsBody"></tbody>
+            </table>
+        </div>
+    </main>
+    <script src="../assets/js/admin.js"></script>
+    <script>
+        ADMIN_UTILS.requireAuth();
+        let currentFilter = 'all';
+
+        function filterRequests(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.admin-header-right .admin-btn-sm').forEach(b => b.classList.remove('active'));
+            const btn = document.getElementById('filter' + filter.charAt(0).toUpperCase() + filter.slice(1));
+            if (btn) btn.style.background = '#111', btn.style.color = '#fff', btn.style.borderColor = '#111';
+            renderRequests();
+        }
+
+        function renderRequests() {
+            let requests = ADMIN_UTILS.getRequests();
+            if (currentFilter !== 'all') {
+                requests = requests.filter(r => r.status === currentFilter);
+            }
+
+            const tbody = document.getElementById('requestsBody');
+            if (requests.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#999;padding:3rem;">Aucune demande trouvée</td></tr>';
+                return;
+            }
+
+            requests.reverse().forEach(r => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="font-weight:500;">${r.id}</td>
+                    <td><strong>${r.entreprise}</strong>${r.site_web ? '<br><span style="font-size:0.82rem;color:#999;">' + r.site_web + '</span>' : ''}</td>
+                    <td>${r.prenom} ${r.nom}<br><span style="font-size:0.82rem;color:#999;">${r.email}</span></td>
+                    <td><span class="admin-badge ${r.status}">${ADMIN_UTILS.getStatusLabel(r.status)}</span></td>
+                    <td>${r.pays}</td>
+                    <td style="font-size:0.85rem;color:#999;">${ADMIN_UTILS.formatDate(r.date)}</td>
+                    <td class="admin-actions">
+                        ${r.status === 'pending' ? `
+                            <button class="admin-btn-sm green" onclick="approveRequest('${r.id}')">Valider</button>
+                            <button class="admin-btn-sm red" onclick="rejectRequest('${r.id}')">Refuser</button>
+                        ` : r.status === 'approved' ? `
+                            <button class="admin-btn-sm red" onclick="rejectRequest('${r.id}')">Révoquer</button>
+                        ` : `
+                            <button class="admin-btn-sm green" onclick="approveRequest('${r.id}')">Réactiver</button>
+                        `}
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function approveRequest(id) {
+            let requests = ADMIN_UTILS.getRequests();
+            const req = requests.find(r => r.id === id);
+            if (!req) return;
+            req.status = 'approved';
+
+            let clients = ADMIN_UTILS.getClients();
+            if (!clients.find(c => c.email === req.email)) {
+                clients.push({
+                    email: req.email,
+                    prenom: req.prenom,
+                    nom: req.nom,
+                    entreprise: req.entreprise,
+                    statut: req.statut,
+                    pays: req.pays,
+                    dateValidation: new Date().toISOString(),
+                    status: 'active'
+                });
+                ADMIN_UTILS.saveClients(clients);
+            }
+            ADMIN_UTILS.saveRequests(requests);
+            renderRequests();
+        }
+
+        function rejectRequest(id) {
+            if (!confirm('Confirmer le refus de cette demande ?')) return;
+            let requests = ADMIN_UTILS.getRequests();
+            const req = requests.find(r => r.id === id);
+            if (!req) return;
+            req.status = 'rejected';
+            ADMIN_UTILS.saveRequests(requests);
+
+            let clients = ADMIN_UTILS.getClients();
+            clients = clients.filter(c => c.email !== req.email);
+            ADMIN_UTILS.saveClients(clients);
+            renderRequests();
+        }
+
+        filterRequests('pending');
+    </script>
+</body>
+</html>

@@ -81,6 +81,52 @@
             .b2b-form-row { grid-template-columns: 1fr; }
         }
     </style>
+    <style>
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal {
+            background: #fff;
+            padding: 3rem;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+        }
+        .modal-icon .lucide {
+            width: 48px;
+            height: 48px;
+            color: #2e7d32;
+            margin-bottom: 1rem;
+        }
+        .modal h2 { margin-bottom: 0.75rem; }
+        .modal p { margin-bottom: 1.5rem; }
+        .modal-ref {
+            background: var(--light-bg);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .modal-ref span {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+        .modal-ref strong {
+            font-size: 1.3rem;
+            letter-spacing: 0.05em;
+        }
+        .modal .btn { width: 100%; }
+    </style>
     <meta property="og:title" content="Accès B2B — VOL.08">
     <meta property="og:description" content="Demandez votre accès B2B à la plateforme VOL.08. Réservé aux distributeurs, architectes, décorateurs et acheteurs professionnels.">
     <meta property="og:type" content="website">
@@ -148,35 +194,35 @@
 
     <section class="b2b-page-form-wrap">
         <div class="b2b-form-card">
-            <form id="b2bForm" action="https://formspree.io/f/xojonpqq" method="POST">
+            <form id="b2bForm">
                 <div class="b2b-form-row">
                     <div class="form-group">
                         <label>Prénom <span>*</span></label>
-                        <input type="text" name="prenom" required placeholder="Votre prénom">
+                        <input type="text" name="prenom" id="b2bPrenom" required placeholder="Votre prénom">
                     </div>
                     <div class="form-group">
                         <label>Nom <span>*</span></label>
-                        <input type="text" name="nom" required placeholder="Votre nom">
+                        <input type="text" name="nom" id="b2bNom" required placeholder="Votre nom">
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Email professionnel <span>*</span></label>
-                    <input type="email" name="email" required placeholder="vous@entreprise.com">
+                    <input type="email" name="email" id="b2bEmail" required placeholder="vous@entreprise.com">
                 </div>
                 <div class="b2b-form-row">
                     <div class="form-group">
                         <label>Entreprise <span>*</span></label>
-                        <input type="text" name="entreprise" required placeholder="Nom de votre entreprise">
+                        <input type="text" name="entreprise" id="b2bEntreprise" required placeholder="Nom de votre entreprise">
                     </div>
                     <div class="form-group">
                         <label>Site web</label>
-                        <input type="url" name="site_web" placeholder="https://">
+                        <input type="url" name="site_web" id="b2bSite" placeholder="https://">
                     </div>
                 </div>
                 <div class="b2b-form-row">
                     <div class="form-group">
                         <label>Statut <span>*</span></label>
-                        <select name="statut" required>
+                        <select name="statut" id="b2bStatut" required>
                             <option value="">Sélectionnez</option>
                             <option>Distributeur</option>
                             <option>Architecte</option>
@@ -189,7 +235,7 @@
                     </div>
                     <div class="form-group">
                         <label>Pays <span>*</span></label>
-                        <select name="pays" required>
+                        <select name="pays" id="b2bPays" required>
                             <option value="">Sélectionnez</option>
                             <option>France</option>
                             <option>Belgique</option>
@@ -206,10 +252,8 @@
                 </div>
                 <div class="form-group">
                     <label>Message (présentation de votre activité et de vos besoins)</label>
-                    <textarea name="message" placeholder="Parlez-nous de votre activité, de vos projets et du type de produits recherchés..."></textarea>
+                    <textarea name="message" id="b2bMessage" placeholder="Parlez-nous de votre activité, de vos projets et du type de produits recherchés..."></textarea>
                 </div>
-                <input type="hidden" name="_subject" value="Nouvelle demande d'accès B2B VOL.08">
-                <input type="hidden" name="_replyto" value="email">
                 <button type="submit" class="btn btn-black">Envoyer ma demande</button>
             </form>
         </div>
@@ -254,6 +298,20 @@
         </div>
     </section>
 
+    <!-- Confirmation Modal -->
+    <div class="modal-overlay" id="confirmModal">
+        <div class="modal">
+            <div class="modal-icon"><i data-lucide="check-circle"></i></div>
+            <h2>Demande envoyée !</h2>
+            <p>Nous avons bien reçu votre demande d'accès B2B.</p>
+            <div class="modal-ref">
+                <span>Référence</span>
+                <strong id="requestRef">VOL-XXXX</strong>
+            </div>
+            <p style="font-size:0.9rem;color:var(--text-secondary);">Notre équipe vérifie votre profil sous 48h ouvrées. Vous recevrez un email dès que votre compte sera activé.</p>
+            <a href="index.html" class="btn btn-black">Retour à l'accueil</a>
+        </div>
+    </div>
         </main>
     <footer class="footer">
         <div class="footer-grid">
@@ -312,5 +370,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
+    <script src="assets/js/b2b-request.js"></script>
 </body>
 </html>

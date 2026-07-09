@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — Plateforme B2B VOL.08</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/plateforme.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="plateforme-body">
+    <header class="plateforme-header">
+        <div class="plateforme-header-logo">
+            <img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08">
+            <span>Plateforme B2B</span>
+        </div>
+        <div class="plateforme-header-user">
+            <i data-lucide="user"></i>
+            <span id="clientName"></span>
+            <span style="color:#999;font-size:0.82rem;" id="clientCompany"></span>
+            <a href="#" onclick="PLATFORME_UTILS.logout()" style="font-size:0.82rem;color:#999;text-decoration:underline;margin-left:0.75rem;">Déconnexion</a>
+        </div>
+    </header>
+    <main class="plateforme-main">
+        <div class="plateforme-welcome">
+            <h1>Bonjour, <span id="welcomeName"></span> 👋</h1>
+            <p>Bienvenue sur votre espace B2B VOL.08. Accédez à votre catalogue privé, gérez vos devis et suivez vos commandes.</p>
+        </div>
+
+        <div class="plateforme-grid">
+            <a href="../catalogue.html" class="plateforme-card">
+                <i data-lucide="book-open"></i>
+                <h3>Catalogue privé</h3>
+                <p>400+ références avec fiches techniques et médias HD</p>
+            </a>
+            <a href="../collections.html" class="plateforme-card">
+                <i data-lucide="grid-3x3"></i>
+                <h3>Collections</h3>
+                <p>Explorez nos univers mobilier, décoration, luminaires</p>
+            </a>
+            <div class="plateforme-card" onclick="alert('Fonctionnalité à venir — Gestion des favoris')">
+                <i data-lucide="heart"></i>
+                <h3>Favoris & sélections</h3>
+                <p>Créez et gérez vos listes de produits favoris</p>
+            </div>
+            <div class="plateforme-card" onclick="alert('Fonctionnalité à venir — Création de devis')">
+                <i data-lucide="file-text"></i>
+                <h3>Devis & commandes</h3>
+                <p>Créez des devis et suivez vos commandes en ligne</p>
+            </div>
+            <div class="plateforme-card" onclick="alert('Fonctionnalité à venir — Suivi des commandes')">
+                <i data-lucide="package"></i>
+                <h3>Suivi commandes</h3>
+                <p>Suivez l'état de vos commandes en temps réel</p>
+            </div>
+            <div class="plateforme-card" onclick="alert('Fonctionnalité à venir — Support prioritaire')">
+                <i data-lucide="headphones"></i>
+                <h3>Support prioritaire</h3>
+                <p>Assistance dédiée pour les professionnels</p>
+            </div>
+        </div>
+
+        <div style="margin-top:1rem;padding:1.5rem;background:#fff;border:1px solid var(--border-color);">
+            <h3 style="font-size:1rem;margin-bottom:1rem;">Votre profil B2B</h3>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;font-size:0.9rem;">
+                <div><strong style="color:var(--text-secondary);display:block;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;">Société</strong> <span id="profileCompany"></span></div>
+                <div><strong style="color:var(--text-secondary);display:block;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;">Contact</strong> <span id="profileContact"></span></div>
+                <div><strong style="color:var(--text-secondary);display:block;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;">Email</strong> <span id="profileEmail"></span></div>
+                <div><strong style="color:var(--text-secondary);display:block;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;">Statut</strong> <span id="profileStatut"></span></div>
+            </div>
+        </div>
+    </main>
+    <script src="../assets/js/plateforme.js"></script>
+    <script>
+        const session = PLATFORME_UTILS.requireAuth();
+        const user = PLATFORME_UTILS.getUserInfo();
+        if (user) {
+            document.getElementById('welcomeName').textContent = user.prenom;
+            document.getElementById('clientName').textContent = user.prenom + ' ' + user.nom;
+            document.getElementById('clientCompany').textContent = user.entreprise;
+            document.getElementById('profileCompany').textContent = user.entreprise;
+            document.getElementById('profileContact').textContent = user.prenom + ' ' + user.nom;
+            document.getElementById('profileEmail').textContent = user.email;
+            document.getElementById('profileStatut').textContent = user.statut || '—';
+        }
+    </script>
+</body>
+</html>
