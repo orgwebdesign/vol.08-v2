@@ -2,88 +2,159 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clients — VOL.08 Admin</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/admin.css">
+    <meta name="theme-color" content="#1c1c16">
+    <title>Gestion clients — VOL.08</title>
+    <link rel="stylesheet" href="../assets/css/private.css">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/logo%20Vol.08.svg">
 </head>
-<body class="admin-body">
-    <aside class="admin-sidebar">
-        <div class="admin-sidebar-logo">
-            <img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08">
-            <span>Administration</span>
-        </div>
-        <nav>
-            <a href="index.html"><i data-lucide="layout-dashboard"></i> Dashboard</a>
-            <a href="demandes.html"><i data-lucide="file-text"></i> Demandes B2B</a>
-            <a href="clients.html" class="active"><i data-lucide="users"></i> Clients</a>
-            <a href="#" onclick="ADMIN_UTILS.logout()"><i data-lucide="log-out"></i> Déconnexion</a>
+<body>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Espace Pro</span></div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-label">Administration</div>
+            <a href="index.html" class="sidebar-item"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+            <a href="produits.html" class="sidebar-item"><i data-lucide="package"></i> Produits</a>
+            <a href="medias.html" class="sidebar-item"><i data-lucide="image"></i> Médias & documents</a>
+            <a href="clients.html" class="sidebar-item active"><i data-lucide="users"></i> Clients</a>
+            <a href="tarifs.html" class="sidebar-item"><i data-lucide="tag"></i> Tarifs & grilles</a>
+            <a href="devis.html" class="sidebar-item"><i data-lucide="file-signature"></i> Devis</a>
+            <a href="commandes.html" class="sidebar-item"><i data-lucide="truck"></i> Commandes</a>
+            <a href="reporting.html" class="sidebar-item"><i data-lucide="bar-chart"></i> Reporting</a>
+            <a href="integrations.html" class="sidebar-item"><i data-lucide="layers"></i> Intégrations</a>
+            <a href="securite.html" class="sidebar-item"><i data-lucide="shield"></i> Sécurité</a>
+            <a href="parametres.html" class="sidebar-item"><i data-lucide="settings"></i> Paramètres</a>
         </nav>
-        <div class="admin-sidebar-footer">VOL.08 v1.0</div>
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">AD</div>
+            <div class="sidebar-user-info"><div class="sidebar-user-name">Admin VOL.08</div><div class="sidebar-user-role">Super admin</div></div>
+        </div>
     </aside>
-    <main class="admin-main">
-        <div class="admin-header">
-            <h1>Clients B2B</h1>
-            <div class="admin-header-right"><span id="clientCount"></span></div>
+    <div class="main-area">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
+                <div class="topbar-search"><i data-lucide="search"></i><input type="text" placeholder="Rechercher un client…"></div>
+            </div>
+            <div class="topbar-right"><a href="../index.html" class="btn btn-ghost btn-sm"><i data-lucide="log-out"></i></a></div>
+        </header>
+        <div class="page-content">
+            <div class="page-header">
+                <h1>Clients</h1>
+                <p>Gérez les comptes clients, les validations d'accès et les blocages.</p>
+                <div class="page-actions">
+                    <button class="btn btn-sm"><i data-lucide="user-plus"></i> Créer un compte</button>
+                    <button class="btn btn-ghost btn-sm"><i data-lucide="download"></i> Exporter</button>
+                </div>
+                <div class="filters-bar">
+                    <div class="filter-group">
+                        <select><option>Tous les statuts</option><option>Actif</option><option>En attente</option><option>À qualifier</option><option>Bloqué</option></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom:1.5rem;">
+                <div class="card-header">
+                    <span class="card-title">Demandes d'accès en attente</span>
+                </div>
+                <div class="table-wrap" style="border:none;">
+                    <table id="pendingTable">
+                        <thead><tr><th>Société</th><th>Contact</th><th>Email</th><th>Date</th><th></th></tr></thead>
+                        <tbody id="pendingBody">
+                            <tr><td colspan="5" style="text-align:center;color:var(--text-muted);font-size:0.85rem;">Aucune demande en attente</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="table-wrap">
+                <table id="clientsTable">
+                    <thead>
+                        <tr><th>Client</th><th>Email</th><th>Statut</th><th></th></tr>
+                    </thead>
+                    <tbody id="clientsBody">
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="admin-table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Société</th>
-                        <th>Contact</th>
-                        <th>Statut</th>
-                        <th>Pays</th>
-                        <th>Validé le</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="clientsBody"></tbody>
-            </table>
-        </div>
-    </main>
-    <script src="../assets/js/admin.js"></script>
+    </div>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/app.js"></script>
     <script>
-        ADMIN_UTILS.requireAuth();
-
-        function renderClients() {
-            const clients = ADMIN_UTILS.getClients();
-            document.getElementById('clientCount').textContent = clients.length + ' client' + (clients.length > 1 ? 's' : '');
-
-            const tbody = document.getElementById('clientsBody');
-            if (clients.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#999;padding:3rem;">Aucun client validé</td></tr>';
-                return;
-            }
-            tbody.innerHTML = clients.map(c => `
-                <tr>
-                    <td><strong>${c.entreprise}</strong></td>
-                    <td>${c.prenom} ${c.nom}<br><span style="font-size:0.82rem;color:#999;">${c.email}</span></td>
-                    <td><span class="admin-badge ${c.status}">${c.status === 'active' ? 'Actif' : 'Inactif'}</span></td>
-                    <td>${c.pays || '—'}</td>
-                    <td style="font-size:0.85rem;color:#999;">${ADMIN_UTILS.formatDate(c.dateValidation)}</td>
-                    <td class="admin-actions">
-                        <button class="admin-btn-sm red" onclick="removeClient('${c.email}')">Retirer</button>
-                    </td>
-                </tr>
-            `).join('');
+    function loadPending() {
+        const requests = JSON.parse(localStorage.getItem('vol08_b2b_requests') || '[]');
+        const pending = requests.filter(r => r.status === 'pending');
+        const tbody = document.getElementById('pendingBody');
+        if (pending.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--text-muted);font-size:0.85rem;">Aucune demande en attente</td></tr>';
+            return;
         }
-
-        function removeClient(email) {
-            if (!confirm('Retirer ce client de la plateforme ?')) return;
-            let clients = ADMIN_UTILS.getClients();
-            clients = clients.filter(c => c.email !== email);
-            ADMIN_UTILS.saveClients(clients);
-
-            let requests = ADMIN_UTILS.getRequests();
-            const req = requests.find(r => r.email === email);
-            if (req) { req.status = 'rejected'; ADMIN_UTILS.saveRequests(requests); }
-            renderClients();
+        tbody.innerHTML = pending.map(r => {
+            const date = new Date(r.date).toLocaleDateString('fr-FR', {day:'2-digit',month:'2-digit'});
+            return `<tr><td>${r.entreprise}</td><td>${r.prenom} ${r.nom}</td><td>${r.email}</td><td>${date}</td><td><button class="btn btn-sm" onclick="approveReq('${r.id}')">Valider</button></td></tr>`;
+        }).join('');
+    }
+    function approveReq(id) {
+        const requests = JSON.parse(localStorage.getItem('vol08_b2b_requests') || '[]');
+        const idx = requests.findIndex(r => r.id === id);
+        if (idx === -1) return;
+        const req = requests[idx];
+        req.status = 'approved';
+        requests[idx] = req;
+        localStorage.setItem('vol08_b2b_requests', JSON.stringify(requests));
+        const clients = JSON.parse(localStorage.getItem('vol08_b2b_clients') || '[]');
+        clients.push({
+            id: 'CLI-' + Date.now().toString(36).toUpperCase(),
+            nom: req.nom,
+            prenom: req.prenom,
+            email: req.email,
+            entreprise: req.entreprise,
+            password: 'b2b2026',
+            date: new Date().toISOString(),
+            status: 'active'
+        });
+        localStorage.setItem('vol08_b2b_clients', JSON.stringify(clients));
+        loadPending();
+        loadClients();
+    }
+    function loadClients() {
+        const clients = JSON.parse(localStorage.getItem('vol08_b2b_clients') || '[]');
+        const tbody = document.getElementById('clientsBody');
+        if (clients.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--text-muted);font-size:0.85rem;">Aucun client B2B pour le moment</td></tr>';
+            return;
         }
-
-        renderClients();
+        tbody.innerHTML = clients.map(c => {
+            const statusClass = c.status === 'active' ? 'badge-success' : 'badge-neutral';
+            const statusLabel = c.status === 'active' ? 'Actif' : 'Inactif';
+            const name = c.entreprise || c.nom || c.email;
+            return `<tr><td>${name}</td><td>${c.email}</td><td><span class="badge ${statusClass}">${statusLabel}</span></td><td><a href="#" style="font-size:0.78rem;" onclick="removeClient('${c.email}')">Révoquer</a></td></tr>`;
+        }).join('');
+    }
+    function removeClient(email) {
+        if (!confirm('Révoquer l\'accès de ce client ?')) return;
+        let clients = JSON.parse(localStorage.getItem('vol08_b2b_clients') || '[]');
+        clients = clients.filter(c => c.email !== email);
+        localStorage.setItem('vol08_b2b_clients', JSON.stringify(clients));
+        loadClients();
+    }
+    document.addEventListener('DOMContentLoaded', () => { loadPending(); loadClients(); });
     </script>
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
+            <input class="search-overlay-input" id="searchOverlayInput" type="text" placeholder="Rechercher un produit, une référence…" autofocus>
+            <button class="search-overlay-close" id="searchOverlayClose"><i data-lucide="x"></i></button>
+        </div>
+    </div>
+    <nav class="mobile-bottom-nav">
+        <a href="../dashboard.html" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Accueil</span></a>
+        <a href="../catalogue.html" data-page="catalogue"><i data-lucide="package"></i><span>Catalogue</span></a>
+        <a href="../devis.html" data-page="devis"><i data-lucide="file-text"></i><span>Devis</span></a>
+        <a href="../compte.html" data-page="compte"><i data-lucide="user"></i><span>Compte</span></a>
+    </nav>
+    <button class="fab" id="fabBtn" onclick="window.location.href='../devis.html'" aria-label="Nouveau devis">
+        <i data-lucide="plus"></i>
+    </button>
 </body>
 </html>

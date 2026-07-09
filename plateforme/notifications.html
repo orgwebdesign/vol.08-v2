@@ -1,0 +1,40 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Notifications — VOL.08 B2B</title><link rel="stylesheet" href="../assets/css/style.css"><link rel="stylesheet" href="../assets/css/plateforme.css"><script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="plateforme-body">
+<header class="plateforme-header">
+<div class="plateforme-header-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Plateforme B2B</span></div>
+<nav style="display:flex;gap:1.25rem;font-size:0.85rem;">
+<a href="dashboard.html" style="color:var(--text-secondary);">Dashboard</a>
+<a href="catalogue.html" style="color:var(--text-secondary);">Catalogue</a>
+<a href="devis.html" style="color:var(--text-secondary);">Devis</a>
+<a href="commandes.html" style="color:var(--text-secondary);">Commandes</a>
+<a href="notifications.html" style="font-weight:500;">Notifications</a>
+</nav>
+<div class="plateforme-header-user"><span id="clientName" style="font-size:0.85rem;"></span><a href="#" onclick="PLATFORME_UTILS.logout()" style="font-size:0.8rem;color:#999;text-decoration:underline;margin-left:0.75rem;">Déconnexion</a></div>
+</header>
+<main class="plateforme-main">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;"><h1 style="font-size:1.6rem;margin:0;">Notifications</h1><span id="notifCount" style="background:#e65100;color:#fff;padding:0.15rem 0.5rem;font-size:0.78rem;"></span></div>
+<div id="notificationsList" style="display:grid;gap:0.75rem;"></div>
+</main>
+<script src="../assets/js/plateforme.js"></script>
+<script>
+const session=PLATFORME_UTILS.requireAuth();
+const user=PLATFORME_UTILS.getUserInfo();
+if(user) document.getElementById('clientName').textContent=user.prenom+' '+user.nom;
+const notifs=[
+{icon:'check-circle',title:'Compte B2B activé',desc:'Votre accès à la plateforme VOL.08 a été activé avec succès.',date:'2026-07-08',color:'#2e7d32'},
+{icon:'file-text',title:'Devis envoyé',desc:'Votre devis DEV-002 a été envoyé à l\'équipe commerciale.',date:'2026-07-05',color:'#1565c0'},
+{icon:'package',title:'Commande expédiée',desc:'Votre commande CMD-001 est en cours de livraison.',date:'2026-07-03',color:'#e65100'},
+{icon:'tag',title:'Nouveautés catalogue',desc:'12 nouveaux produits ajoutés dans la collection Luminaires.',date:'2026-07-01',color:'#6a1b9a'}
+];
+const list=document.getElementById('notificationsList');
+document.getElementById('notifCount').textContent=notifs.length+' non lues';
+list.innerHTML=notifs.map(n=>`
+<div style="display:flex;gap:1rem;align-items:start;padding:1.25rem;background:#fff;border:1px solid var(--border-color);border-left:3px solid ${n.color};">
+<div><i data-lucide="${n.icon}" style="width:20px;height:20px;color:${n.color};"></i></div>
+<div style="flex:1;"><strong style="font-size:0.95rem;">${n.title}</strong><p style="font-size:0.88rem;color:var(--text-secondary);margin:0.25rem 0 0;">${n.desc}</p></div>
+<small style="color:#999;font-size:0.78rem;white-space:nowrap;">${n.date}</small>
+</div>`).join('');
+if(typeof lucide!=='undefined') lucide.createIcons();
+</script>
+</body></html>

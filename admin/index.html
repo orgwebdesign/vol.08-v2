@@ -2,98 +2,205 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin — VOL.08</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/admin.css">
+    <meta name="theme-color" content="#1c1c16">
+    <title>Administration — VOL.08</title>
+    <link rel="stylesheet" href="../assets/css/private.css">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/logo%20Vol.08.svg">
 </head>
-<body class="admin-body">
-    <aside class="admin-sidebar">
-        <div class="admin-sidebar-logo">
-            <img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08">
-            <span>Administration</span>
-        </div>
-        <nav>
-            <a href="index.html" class="active"><i data-lucide="layout-dashboard"></i> Dashboard</a>
-            <a href="demandes.html"><i data-lucide="file-text"></i> Demandes B2B</a>
-            <a href="clients.html"><i data-lucide="users"></i> Clients</a>
-            <a href="#" onclick="ADMIN_UTILS.logout()"><i data-lucide="log-out"></i> Déconnexion</a>
+<body data-page="admin">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Espace Pro</span></div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-label">Administration</div>
+            <a href="index.html" class="sidebar-item active"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+            <a href="produits.html" class="sidebar-item"><i data-lucide="package"></i> Produits</a>
+            <a href="medias.html" class="sidebar-item"><i data-lucide="image"></i> Médias & documents</a>
+            <a href="clients.html" class="sidebar-item"><i data-lucide="users"></i> Clients</a>
+            <a href="tarifs.html" class="sidebar-item"><i data-lucide="tag"></i> Tarifs & grilles</a>
+            <a href="devis.html" class="sidebar-item"><i data-lucide="file-signature"></i> Devis</a>
+            <a href="commandes.html" class="sidebar-item"><i data-lucide="truck"></i> Commandes</a>
+            <a href="reporting.html" class="sidebar-item"><i data-lucide="bar-chart"></i> Reporting</a>
+            <a href="integrations.html" class="sidebar-item"><i data-lucide="layers"></i> Intégrations</a>
+            <a href="securite.html" class="sidebar-item"><i data-lucide="shield"></i> Sécurité</a>
+            <a href="parametres.html" class="sidebar-item"><i data-lucide="settings"></i> Paramètres</a>
         </nav>
-        <div class="admin-sidebar-footer">VOL.08 v1.0</div>
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">AD</div>
+            <div class="sidebar-user-info"><div class="sidebar-user-name">Admin VOL.08</div><div class="sidebar-user-role">Super admin</div></div>
+        </div>
     </aside>
-    <main class="admin-main" id="adminDashboard">
-        <div class="admin-header">
-            <h1>Dashboard</h1>
-            <div class="admin-header-right">
-                <span id="adminDate"></span>
+    <div class="main-area">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
+                <div class="topbar-search"><i data-lucide="search"></i><input type="text" placeholder="Rechercher…"></div>
             </div>
-        </div>
-        <div class="admin-cards" id="statsCards">
-            <div class="admin-card">
-                <h3>Demandes en attente</h3>
-                <div class="admin-card-number warn" id="statPending">—</div>
+            <div class="topbar-right">
+                <div class="topbar-icon" id="notifToggle">
+                    <i data-lucide="bell"></i>
+                    <span class="topbar-badge">3</span>
+                    <div class="notif-dropdown" id="notifDropdown">
+                        <div class="notif-header"><span>Notifications</span></div>
+                        <div class="notif-item"><div class="notif-item-title">Nouvelle demande d'accès B2B</div><div class="notif-item-time">Il y a 15 min</div></div>
+                        <div class="notif-item"><div class="notif-item-title">Commande CMD-2026-0042 livrée</div><div class="notif-item-time">Il y a 2h</div></div>
+                        <div class="notif-item"><div class="notif-item-title">Erreur synchronisation facture</div><div class="notif-item-time">Il y a 4h</div></div>
+                    </div>
+                </div>
+                <a href="../index.html" class="btn btn-ghost btn-sm"><i data-lucide="log-out"></i></a>
             </div>
-            <div class="admin-card">
-                <h3>Demandes validées</h3>
-                <div class="admin-card-number ok" id="statApproved">—</div>
+        </header>
+        <div class="page-content">
+            <div class="page-header">
+                <h1>Administration</h1>
+                <p>Pilotez votre activité : produits, clients, commandes, reporting.</p>
             </div>
-            <div class="admin-card">
-                <h3>Demandes refusées</h3>
-                <div class="admin-card-number muted" id="statRejected">—</div>
-            </div>
-            <div class="admin-card">
-                <h3>Clients actifs</h3>
-                <div class="admin-card-number ok" id="statClients">—</div>
-            </div>
-        </div>
 
-        <h2 style="font-size:1.2rem;margin-bottom:1rem;">Dernières demandes</h2>
-        <div class="admin-table-wrap" id="recentRequestsTable">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Réf.</th>
-                        <th>Société</th>
-                        <th>Contact</th>
-                        <th>Statut</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody id="recentRequestsBody"></tbody>
-            </table>
+            <div class="hub-nav">
+                <a href="../index.html" target="_self" class="hub-card">
+                    <i data-lucide="home" style="width:32px;height:32px;"></i>
+                    <span class="hub-label">Accueil</span>
+                    <span class="hub-desc">Portail public VOL.08</span>
+                </a>
+                <a href="../dashboard.html" class="hub-card">
+                    <i data-lucide="user" style="width:32px;height:32px;"></i>
+                    <span class="hub-label">Espace Privé B2B</span>
+                    <span class="hub-desc">Catalogue, devis, commandes, support</span>
+                </a>
+                <a href="../commercial/dashboard.html" class="hub-card">
+                    <i data-lucide="briefcase" style="width:32px;height:32px;"></i>
+                    <span class="hub-label">Espace Commercial</span>
+                    <span class="hub-desc">Portefeuille, devis, relances, reporting</span>
+                </a>
+                <a href="index.html" class="hub-card active">
+                    <i data-lucide="shield" style="width:32px;height:32px;"></i>
+                    <span class="hub-label">Administration</span>
+                    <span class="hub-desc">Produits, tarifs, clients, sécurité</span>
+                </a>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">Produits actifs</span><i data-lucide="package"></i></div>
+                    <div class="stat-card-value">412</div>
+                    <div class="stat-card-change up">+8 ce mois</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">Clients</span><i data-lucide="users"></i></div>
+                    <div class="stat-card-value">32</div>
+                    <div class="stat-card-change up">+4 nouveaux</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">Commandes mois</span><i data-lucide="shopping-cart"></i></div>
+                    <div class="stat-card-value">47</div>
+                    <div class="stat-card-change up">+18% vs juin</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">CA mensuel</span><i data-lucide="trending-up"></i></div>
+                    <div class="stat-card-value">186 400 €</div>
+                    <div class="stat-card-change up">+12% vs juin</div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Demandes d'accès en attente</span>
+                        <a href="clients.html" style="font-size:0.82rem;color:var(--text-secondary);">Voir tout</a>
+                    </div>
+                    <div class="table-wrap" style="border:none;">
+                        <table id="pendingRequestsTable">
+                            <thead><tr><th>Société</th><th>Email</th><th>Date</th><th></th></tr></thead>
+                            <tbody id="pendingRequestsBody">
+                                <tr><td colspan="4" style="text-align:center;color:var(--text-muted);font-size:0.85rem;">Aucune demande en attente</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Alertes & incidents</span>
+                        <a href="#" style="font-size:0.82rem;color:var(--text-secondary);">Voir tout</a>
+                    </div>
+                    <div class="table-wrap" style="border:none;">
+                        <table>
+                            <thead><tr><th>Type</th><th>Message</th><th>Date</th></tr></thead>
+                            <tbody>
+                                <tr><td><span class="badge badge-danger">Erreur</span></td><td style="font-size:0.82rem;">Sync facture échouée</td><td>04/07</td></tr>
+                                <tr><td><span class="badge badge-warning">Blocage</span></td><td style="font-size:0.82rem;">Compte dépassé seuil</td><td>03/07</td></tr>
+                                <tr><td><span class="badge badge-info">Info</span></td><td style="font-size:0.82rem;">Mise à jour catalogue</td><td>02/07</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-    </main>
-    <script src="../assets/js/admin.js"></script>
+    </div>
+    <style>
+        .hub-nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px;}
+        .hub-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:28px 16px;border:1px solid transparent;background:var(--card-bg);border-radius:12px;cursor:pointer;text-decoration:none;color:var(--text);transition:transform .2s,box-shadow .2s;box-shadow:0 1px 2px rgba(0,0,0,.03);}
+        .hub-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.05);}
+        .hub-card.active{background:var(--dark);color:#fff;border-color:transparent;}
+        .hub-card.active .hub-desc{color:rgba(255,255,255,.65);}
+        .hub-label{font-size:0.95rem;font-weight:600;}
+        .hub-desc{font-size:0.78rem;color:var(--text-muted);text-align:center;}
+    </style>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/app.js"></script>
     <script>
-        ADMIN_UTILS.requireAuth();
-        document.getElementById('adminDate').textContent = new Date().toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
-
-        function renderDashboard() {
-            const counts = ADMIN_UTILS.getCounts();
-            document.getElementById('statPending').textContent = counts.pending;
-            document.getElementById('statApproved').textContent = counts.approved;
-            document.getElementById('statRejected').textContent = counts.rejected;
-            document.getElementById('statClients').textContent = counts.totalClients;
-
-            const requests = ADMIN_UTILS.getRequests().slice(-5).reverse();
-            const tbody = document.getElementById('recentRequestsBody');
-            if (requests.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#999;padding:2rem;">Aucune demande pour le moment</td></tr>';
-                return;
-            }
-            tbody.innerHTML = requests.map(r => `
-                <tr>
-                    <td style="font-weight:500;">${r.id}</td>
-                    <td>${r.entreprise}</td>
-                    <td>${r.prenom} ${r.nom}<br><span style="font-size:0.82rem;color:#999;">${r.email}</span></td>
-                    <td><span class="admin-badge ${r.status}">${ADMIN_UTILS.getStatusLabel(r.status)}</span></td>
-                    <td style="font-size:0.85rem;color:#999;">${ADMIN_UTILS.formatDate(r.date)}</td>
-                </tr>
-            `).join('');
+    function loadPendingRequests() {
+        const requests = JSON.parse(localStorage.getItem('vol08_b2b_requests') || '[]');
+        const pending = requests.filter(r => r.status === 'pending');
+        const tbody = document.getElementById('pendingRequestsBody');
+        if (pending.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--text-muted);font-size:0.85rem;">Aucune demande en attente</td></tr>';
+            return;
         }
-        renderDashboard();
+        tbody.innerHTML = pending.map(r => {
+            const date = new Date(r.date).toLocaleDateString('fr-FR', {day:'2-digit',month:'2-digit'});
+            return `<tr><td>${r.entreprise}</td><td>${r.email}</td><td>${date}</td><td><button class="btn btn-sm" onclick="approveRequest('${r.id}')">Valider</button></td></tr>`;
+        }).join('');
+    }
+    function approveRequest(id) {
+        const requests = JSON.parse(localStorage.getItem('vol08_b2b_requests') || '[]');
+        const idx = requests.findIndex(r => r.id === id);
+        if (idx === -1) return;
+        const req = requests[idx];
+        req.status = 'approved';
+        requests[idx] = req;
+        localStorage.setItem('vol08_b2b_requests', JSON.stringify(requests));
+        const clients = JSON.parse(localStorage.getItem('vol08_b2b_clients') || '[]');
+        clients.push({
+            id: 'CLI-' + Date.now().toString(36).toUpperCase(),
+            nom: req.nom,
+            prenom: req.prenom,
+            email: req.email,
+            entreprise: req.entreprise,
+            password: 'b2b2026',
+            date: new Date().toISOString(),
+            status: 'active'
+        });
+        localStorage.setItem('vol08_b2b_clients', JSON.stringify(clients));
+        loadPendingRequests();
+    }
+    document.addEventListener('DOMContentLoaded', loadPendingRequests);
     </script>
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
+            <input class="search-overlay-input" id="searchOverlayInput" type="text" placeholder="Rechercher un produit, une référence…" autofocus>
+            <button class="search-overlay-close" id="searchOverlayClose"><i data-lucide="x"></i></button>
+        </div>
+    </div>
+    <nav class="mobile-bottom-nav">
+        <a href="../dashboard.html" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Accueil</span></a>
+        <a href="../catalogue.html" data-page="catalogue"><i data-lucide="package"></i><span>Catalogue</span></a>
+        <a href="../devis.html" data-page="devis"><i data-lucide="file-text"></i><span>Devis</span></a>
+        <a href="../compte.html" data-page="compte"><i data-lucide="user"></i><span>Compte</span></a>
+    </nav>
+    <button class="fab" id="fabBtn" onclick="window.location.href='../devis.html'" aria-label="Nouveau devis">
+        <i data-lucide="plus"></i>
+    </button>
 </body>
 </html>

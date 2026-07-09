@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1c1c16">
+    <title>Nouveau client — VOL.08</title>
+    <link rel="stylesheet" href="../assets/css/private.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/logo%20Vol.08.svg">
+</head>
+<body data-page="commercial">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Espace Pro</span></div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-label">Espace commercial</div>
+            <a href="dashboard.html" class="sidebar-item"><i data-lucide="bar-chart"></i> Tableau de bord</a>
+            <a href="index.html" class="sidebar-item"><i data-lucide="briefcase"></i> Portefeuille clients</a>
+            <a href="client.html" class="sidebar-item"><i data-lucide="user"></i> Client</a>
+            <a href="nouveau-client.html" class="sidebar-item active"><i data-lucide="user-plus"></i> Nouveau client</a>
+            <a href="devis.html" class="sidebar-item"><i data-lucide="file-signature"></i> Devis express</a>
+            <a href="selections-partagees.html" class="sidebar-item"><i data-lucide="share-2"></i> Sélections partagées</a>
+            <a href="grilles-tarifaires.html" class="sidebar-item"><i data-lucide="tag"></i> Grilles tarifaires</a>
+            <a href="commandes.html" class="sidebar-item"><i data-lucide="truck"></i> Commandes</a>
+            <a href="relances.html" class="sidebar-item"><i data-lucide="bell"></i> Relances</a>
+            <a href="reporting.html" class="sidebar-item"><i data-lucide="pie-chart"></i> Reporting</a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">KB</div>
+            <div class="sidebar-user-info"><div class="sidebar-user-name">Karim Benali</div><div class="sidebar-user-role">Commercial • Benali Design</div></div>
+        </div>
+    </aside>
+    <div class="main-area">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
+                <div class="topbar-search"><i data-lucide="search"></i><input type="text" placeholder="Rechercher…"></div>
+            </div>
+            <div class="topbar-right"><a href="../index.html" class="btn btn-ghost btn-sm"><i data-lucide="log-out"></i></a></div>
+        </header>
+        <div class="page-content">
+            <div class="page-header">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+                    <a href="index.html" style="font-size:0.82rem;color:var(--text-secondary);display:flex;align-items:center;gap:6px;">
+                        <i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Retour
+                    </a>
+                </div>
+                <h1>Nouveau client</h1>
+                <p>Créez un compte professionnel pour un nouveau client.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Informations légales</span></div>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Raison sociale <span style="color:var(--text-muted);">*</span></label>
+                                <input type="text" placeholder="Nom de l'entreprise" required>
+                            </div>
+                            <div class="form-group">
+                                <label>SIRET <span style="color:var(--text-muted);">*</span></label>
+                                <input type="text" placeholder="123 456 789 00012" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Adresse <span style="color:var(--text-muted);">*</span></label>
+                            <input type="text" placeholder="Adresse complète" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Ville <span style="color:var(--text-muted);">*</span></label>
+                                <input type="text" placeholder="Ville" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Pays <span style="color:var(--text-muted);">*</span></label>
+                                <select required>
+                                    <option value="">Sélectionnez</option>
+                                    <option>France</option>
+                                    <option>Belgique</option>
+                                    <option>Suisse</option>
+                                    <option>Maroc</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Site web</label>
+                            <input type="url" placeholder="https://">
+                        </div>
+                </div>
+
+                <div>
+                    <div class="card" style="margin-bottom:16px;">
+                        <div class="card-header"><span class="card-title">Contact principal</span></div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Prénom <span style="color:var(--text-muted);">*</span></label>
+                                <input type="text" placeholder="Prénom" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Nom <span style="color:var(--text-muted);">*</span></label>
+                                <input type="text" placeholder="Nom" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email <span style="color:var(--text-muted);">*</span></label>
+                            <input type="email" placeholder="contact@entreprise.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Téléphone <span style="color:var(--text-muted);">*</span></label>
+                            <input type="tel" placeholder="+33 6 12 34 56 78" required>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-bottom:16px;">
+                        <div class="card-header"><span class="card-title">Paramètres commerciaux</span></div>
+                        <div class="form-group">
+                            <label>Grille tarifaire</label>
+                            <select><option>Standard</option><option>Volume +5%</option><option>Projet</option></select>
+                        </div>
+                        <div class="form-group">
+                            <label>Plafond de crédit</label>
+                            <input type="text" placeholder="Ex: 50 000 €">
+                        </div>
+                        <div class="form-group">
+                            <label>Notes internes</label>
+                            <textarea placeholder="Informations complémentaires…"></textarea>
+                        </div>
+                    </div>
+                    <div style="display:flex;gap:12px;">
+                        <button type="submit" class="btn" style="flex:1;" onclick="event.preventDefault();alert('Compte client créé avec succès !');"><i data-lucide="check"></i> Créer le compte</button>
+                        <button type="reset" class="btn btn-outline" onclick="event.preventDefault();window.location.href='index.html';">Annuler</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
+            <input class="search-overlay-input" id="searchOverlayInput" type="text" placeholder="Rechercher un produit, une référence…" autofocus>
+            <button class="search-overlay-close" id="searchOverlayClose"><i data-lucide="x"></i></button>
+        </div>
+    </div>
+    <nav class="mobile-bottom-nav">
+        <a href="../dashboard.html" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Accueil</span></a>
+        <a href="../catalogue.html" data-page="catalogue"><i data-lucide="package"></i><span>Catalogue</span></a>
+        <a href="../devis.html" data-page="devis"><i data-lucide="file-text"></i><span>Devis</span></a>
+        <a href="../compte.html" data-page="compte"><i data-lucide="user"></i><span>Compte</span></a>
+    </nav>
+    <button class="fab" id="fabBtn" onclick="window.location.href='../devis.html'" aria-label="Nouveau devis">
+        <i data-lucide="plus"></i>
+    </button>
+</body>
+</html>

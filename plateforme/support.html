@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Support — VOL.08 B2B</title><link rel="stylesheet" href="../assets/css/style.css"><link rel="stylesheet" href="../assets/css/plateforme.css"><script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="plateforme-body">
+<header class="plateforme-header">
+<div class="plateforme-header-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Plateforme B2B</span></div>
+<nav style="display:flex;gap:1.25rem;font-size:0.85rem;">
+<a href="dashboard.html" style="color:var(--text-secondary);">Dashboard</a>
+<a href="catalogue.html" style="color:var(--text-secondary);">Catalogue</a>
+<a href="devis.html" style="color:var(--text-secondary);">Devis</a>
+<a href="commandes.html" style="color:var(--text-secondary);">Commandes</a>
+<a href="support.html" style="font-weight:500;">Support</a>
+</nav>
+<div class="plateforme-header-user"><span id="clientName" style="font-size:0.85rem;"></span><a href="#" onclick="PLATFORME_UTILS.logout()" style="font-size:0.8rem;color:#999;text-decoration:underline;margin-left:0.75rem;">Déconnexion</a></div>
+</header>
+<main class="plateforme-main">
+<h1 style="font-size:1.6rem;margin-bottom:0.5rem;">Support prioritaire</h1>
+<p style="color:var(--text-secondary);margin-bottom:2.5rem;">Notre équipe commerciale vous répond sous 24h ouvrées.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem;">
+<div style="background:#fff;border:1px solid var(--border-color);padding:1.5rem;text-align:center;">
+<i data-lucide="mail" style="width:28px;height:28px;margin-bottom:0.75rem;"></i>
+<h3 style="font-size:1rem;margin-bottom:0.5rem;">Email</h3>
+<p style="font-size:0.88rem;color:var(--text-secondary);margin:0;">contact@vol08.ma</p>
+<a href="mailto:contact@vol08.ma" style="font-size:0.85rem;text-decoration:underline;margin-top:0.75rem;display:inline-block;">Nous écrire</a>
+</div>
+<div style="background:#fff;border:1px solid var(--border-color);padding:1.5rem;text-align:center;">
+<i data-lucide="phone" style="width:28px;height:28px;margin-bottom:0.75rem;"></i>
+<h3 style="font-size:1rem;margin-bottom:0.5rem;">Téléphone</h3>
+<p style="font-size:0.88rem;color:var(--text-secondary);margin:0;">+212 5XX XX XX XX</p>
+<span style="font-size:0.78rem;color:#999;">Lun-Ven 9h-18h</span>
+</div>
+</div>
+<div style="background:#fff;border:1px solid var(--border-color);padding:2rem;">
+<h3 style="font-size:1rem;margin-bottom:1.5rem;">Envoyer une demande</h3>
+<form id="supportForm">
+<div class="form-group"><label>Sujet <span>*</span></label>
+<select style="width:100%;padding:12px;border:1px solid var(--border-color);font-family:var(--font-primary);" required>
+<option>Question produit</option><option>Devis / Commande</option><option>Livraison</option><option>Compte / Accès</option><option>Autre</option>
+</select></div>
+<div class="form-group"><label>Message <span>*</span></label><textarea style="width:100%;padding:12px;border:1px solid var(--border-color);font-family:var(--font-primary);min-height:140px;" required placeholder="Décrivez votre demande..."></textarea></div>
+<button type="submit" class="btn btn-black">Envoyer</button>
+</form>
+</div>
+</main>
+<script src="../assets/js/plateforme.js"></script>
+<script>
+const session=PLATFORME_UTILS.requireAuth();
+const user=PLATFORME_UTILS.getUserInfo();
+if(user) document.getElementById('clientName').textContent=user.prenom+' '+user.nom;
+document.getElementById('supportForm').addEventListener('submit',e=>{e.preventDefault();alert('Votre demande a été envoyée. Nous vous répondrons sous 24h.');});
+</script>
+</body></html>

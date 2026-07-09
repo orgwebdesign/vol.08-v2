@@ -1,0 +1,90 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Catalogue privé — VOL.08 B2B</title><link rel="stylesheet" href="../assets/css/style.css"><link rel="stylesheet" href="../assets/css/plateforme.css"><script src="https://unpkg.com/lucide@latest"></script>
+<style>.cat-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;}
+.cat-filters{display:flex;gap:0.75rem;flex-wrap:wrap;margin-bottom:2rem;}
+.cat-filters select,.cat-filters input{padding:10px 14px;border:1px solid var(--border-color);font-family:var(--font-primary);font-size:0.88rem;background:#fff;}
+.cat-filters input{flex:1;min-width:200px;}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem;margin-bottom:2rem;}
+.cat-item{background:#fff;border:1px solid var(--border-color);padding:1rem;cursor:pointer;transition:box-shadow 0.25s ease,transform 0.25s ease;}
+.cat-item:hover{box-shadow:0 8px 24px rgba(0,0,0,0.06);transform:translateY(-2px);}
+.cat-item img{width:100%;aspect-ratio:1/1;object-fit:cover;margin-bottom:1rem;background:#f5f5f5;}
+.cat-item h3{font-size:0.95rem;margin-bottom:0.25rem;}
+.cat-item .ref{font-size:0.78rem;color:var(--text-secondary);margin-bottom:0.5rem;}
+.cat-item .price{font-size:1.1rem;font-weight:500;color:#2e7d32;}
+.cat-item .stock{font-size:0.78rem;color:var(--text-secondary);}</style>
+</head>
+<body class="plateforme-body">
+<header class="plateforme-header">
+<div class="plateforme-header-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Plateforme B2B</span></div>
+<nav style="display:flex;gap:1.25rem;font-size:0.85rem;">
+<a href="dashboard.html" style="color:var(--text-secondary);">Dashboard</a>
+<a href="catalogue.html" style="font-weight:500;">Catalogue</a>
+<a href="devis.html" style="color:var(--text-secondary);">Devis</a>
+<a href="commandes.html" style="color:var(--text-secondary);">Commandes</a>
+<a href="support.html" style="color:var(--text-secondary);">Support</a>
+</nav>
+<div class="plateforme-header-user">
+<span id="clientName" style="font-size:0.85rem;"></span>
+<a href="#" onclick="PLATFORME_UTILS.logout()" style="font-size:0.8rem;color:#999;text-decoration:underline;margin-left:0.75rem;">Déconnexion</a>
+</div>
+</header>
+<main class="plateforme-main">
+<div class="cat-header"><h1 style="font-size:1.6rem;margin:0;">Catalogue privé</h1><span id="prodCount" style="color:var(--text-secondary);font-size:0.9rem;"></span></div>
+<div class="cat-filters">
+<input type="text" id="searchInput" placeholder="Rechercher par nom ou référence..." oninput="renderCatalogue()">
+<select id="filterCollection" onchange="renderCatalogue()"><option value="">Toutes les collections</option></select>
+<select id="filterCategorie" onchange="renderCatalogue()"><option value="">Toutes les catégories</option></select>
+</div>
+<div class="cat-grid" id="catalogueGrid"></div>
+</main>
+<script src="../assets/js/plateforme.js"></script>
+<script>
+const session=PLATFORME_UTILS.requireAuth();
+const user=PLATFORME_UTILS.getUserInfo();
+if(user) document.getElementById('clientName').textContent=user.prenom+' '+user.nom;
+let produits=JSON.parse(localStorage.getItem('vol08_produits')||'[]');
+if(!produits.length){
+  produits=[
+    {ref:'T.ZANE',name:'Table basse T.ZANE',collection:'Mobilier',categorie:'Tables',stock:12,prixHT:890,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/TableBasse.webp'},
+    {ref:'U.NITE',name:'Canapé U.NITE',collection:'Mobilier',categorie:'Assises',stock:5,prixHT:2490,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Canape.webp'},
+    {ref:'Z.LIGE',name:'Bibliothèque Z.LIGE',collection:'Mobilier',categorie:'Rangements',stock:8,prixHT:1750,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Bibliotheque.webp'},
+    {ref:'T.CUITE',name:'Fauteuil T.CUITE',collection:'Mobilier',categorie:'Assises',stock:3,prixHT:1340,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Fauteuil.webp'},
+    {ref:'L.UMIZE',name:'Suspension L.UMIZE',collection:'Luminaires',categorie:'Suspensions',stock:20,prixHT:620,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Suspension.webp'},
+    {ref:'A.SSISE',name:'Tabouret A.SSISE',collection:'Mobilier',categorie:'Assises',stock:15,prixHT:450,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Tabouret.webp'},
+    {ref:'D.CORE',name:'Vase D.CORE',collection:'Décoration',categorie:'Accessoires',stock:25,prixHT:180,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Vase.webp'},
+    {ref:'B.OUGY',name:'Bougie B.OUGY',collection:'Décoration',categorie:'Accessoires',stock:40,prixHT:65,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Bougie.webp'}
+  ];
+  localStorage.setItem('vol08_produits',JSON.stringify(produits));
+}
+
+function initFilters(){
+const cols=[...new Set(produits.map(p=>p.collection))],cats=[...new Set(produits.map(p=>p.categorie))];
+const fc=document.getElementById('filterCollection'),fcat=document.getElementById('filterCategorie');
+cols.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;fc.appendChild(o);});
+cats.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;fcat.appendChild(o);});
+const urlParams=new URLSearchParams(window.location.search);
+if(urlParams.has('search')) document.getElementById('searchInput').value=urlParams.get('search');
+}
+function renderCatalogue(){
+const q=document.getElementById('searchInput').value.toLowerCase();
+const col=document.getElementById('filterCollection').value,cat=document.getElementById('filterCategorie').value;
+let filtered=produits.filter(p=>{
+if(q&&!p.name.toLowerCase().includes(q)&&!p.ref.toLowerCase().includes(q))return false;
+if(col&&p.collection!==col)return false;
+if(cat&&p.categorie!==cat)return false;
+return true;
+});
+document.getElementById('prodCount').textContent=filtered.length+' produit'+(filtered.length>1?'s':'');
+const grid=document.getElementById('catalogueGrid');
+if(!filtered.length){grid.innerHTML='<p style="text-align:center;color:#999;padding:3rem;">Aucun produit trouvé</p>';return;}
+grid.innerHTML=filtered.map(p=>`
+<div class="cat-item" onclick="window.location.href='produit.html?ref=${p.ref}'">
+<img src="${p.image}" alt="${p.name}" loading="lazy">
+<div class="ref">${p.ref}</div>
+<h3>${p.name}</h3>
+<div class="price">${(p.prixHT).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})} HT</div>
+<div class="stock">${p.collection} · ${p.stock>0?p.stock+' en stock':'Rupture'}</div>
+</div>`).join('');
+}
+initFilters();renderCatalogue();
+</script>
+</body></html>

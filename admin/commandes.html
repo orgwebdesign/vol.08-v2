@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1c1c16">
+    <title>Gestion commandes — VOL.08</title>
+    <link rel="stylesheet" href="../assets/css/private.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/logo%20Vol.08.svg">
+</head>
+<body>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Espace Pro</span></div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-label">Administration</div>
+            <a href="index.html" class="sidebar-item"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+            <a href="produits.html" class="sidebar-item"><i data-lucide="package"></i> Produits</a>
+            <a href="medias.html" class="sidebar-item"><i data-lucide="image"></i> Médias & documents</a>
+            <a href="clients.html" class="sidebar-item"><i data-lucide="users"></i> Clients</a>
+            <a href="tarifs.html" class="sidebar-item"><i data-lucide="tag"></i> Tarifs & grilles</a>
+            <a href="devis.html" class="sidebar-item"><i data-lucide="file-signature"></i> Devis</a>
+            <a href="commandes.html" class="sidebar-item active"><i data-lucide="truck"></i> Commandes</a>
+            <a href="reporting.html" class="sidebar-item"><i data-lucide="bar-chart"></i> Reporting</a>
+            <a href="integrations.html" class="sidebar-item"><i data-lucide="layers"></i> Intégrations</a>
+            <a href="securite.html" class="sidebar-item"><i data-lucide="shield"></i> Sécurité</a>
+            <a href="parametres.html" class="sidebar-item"><i data-lucide="settings"></i> Paramètres</a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">AD</div>
+            <div class="sidebar-user-info"><div class="sidebar-user-name">Admin VOL.08</div><div class="sidebar-user-role">Super admin</div></div>
+        </div>
+    </aside>
+    <div class="main-area">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
+                <div class="topbar-search"><i data-lucide="search"></i><input type="text" placeholder="Rechercher une commande…"></div>
+            </div>
+            <div class="topbar-right"><a href="../index.html" class="btn btn-ghost btn-sm"><i data-lucide="log-out"></i></a></div>
+        </header>
+        <div class="page-content">
+            <div class="page-header">
+                <h1>Commandes</h1>
+                <p>Validez, fractionnez, suivez et exportez les commandes.</p>
+                <div class="page-actions">
+                    <button class="btn btn-ghost btn-sm"><i data-lucide="download"></i> Export Excel</button>
+                    <button class="btn btn-ghost btn-sm"><i data-lucide="download"></i> Export PDF</button>
+                </div>
+                <div class="filters-bar">
+                    <div class="filter-group">
+                        <select><option>Tous les statuts</option><option>À valider</option><option>Validée</option><option>En préparation</option><option>Expédiée</option><option>Livrée</option></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Réf.</th><th>Date</th><th>Client</th><th>Commercial</th><th>Articles</th><th>Total</th><th>Statut</th><th>Actions</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>CMD-2026-0042</strong></td><td>04/07</td><td>Maison Dubois</td><td>Karim Benali</td><td>8</td><td>3 240 €</td><td><span class="badge badge-success">Livrée</span></td><td><a href="#" style="font-size:0.78rem;">Voir</a></td></tr>
+                        <tr><td><strong>CMD-2026-0041</strong></td><td>30/06</td><td>Hôtel Royal Palm</td><td>Karim Benali</td><td>14</td><td>8 750 €</td><td><span class="badge badge-info">Expédiée</span></td><td><a href="#" style="font-size:0.78rem;">Voir</a></td></tr>
+                        <tr><td><strong>CMD-2026-0040</strong></td><td>28/06</td><td>Espace Carré</td><td>Karim Benali</td><td>3</td><td>1 890 €</td><td><span class="badge badge-warning">En préparation</span></td><td><a href="#" style="font-size:0.78rem;">Voir</a></td></tr>
+                        <tr><td><strong>CMD-2026-0039</strong></td><td>25/06</td><td>Atelier Moderne</td><td>Karim Benali</td><td>6</td><td>5 400 €</td><td><span class="badge badge-info">Validée</span></td><td><a href="#" style="font-size:0.78rem;">Voir</a></td></tr>
+                        <tr><td><strong>CMD-2026-0038</strong></td><td>22/06</td><td>Galerie Noor</td><td>Karim Benali</td><td>4</td><td>2 100 €</td><td><span class="badge badge-neutral">En attente</span></td><td><button class="btn btn-sm" style="font-size:0.72rem;">Valider</button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
+            <input class="search-overlay-input" id="searchOverlayInput" type="text" placeholder="Rechercher un produit, une référence…" autofocus>
+            <button class="search-overlay-close" id="searchOverlayClose"><i data-lucide="x"></i></button>
+        </div>
+    </div>
+    <nav class="mobile-bottom-nav">
+        <a href="../dashboard.html" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Accueil</span></a>
+        <a href="../catalogue.html" data-page="catalogue"><i data-lucide="package"></i><span>Catalogue</span></a>
+        <a href="../devis.html" data-page="devis"><i data-lucide="file-text"></i><span>Devis</span></a>
+        <a href="../compte.html" data-page="compte"><i data-lucide="user"></i><span>Compte</span></a>
+    </nav>
+    <button class="fab" id="fabBtn" onclick="window.location.href='../devis.html'" aria-label="Nouveau devis">
+        <i data-lucide="plus"></i>
+    </button>
+</body>
+</html>

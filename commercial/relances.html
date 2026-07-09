@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1c1c16">
+    <title>Relances — VOL.08</title>
+    <link rel="stylesheet" href="../assets/css/private.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/logo%20Vol.08.svg">
+</head>
+<body data-page="commercial">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Espace Pro</span></div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-label">Espace commercial</div>
+            <a href="dashboard.html" class="sidebar-item"><i data-lucide="bar-chart"></i> Tableau de bord</a>
+            <a href="index.html" class="sidebar-item"><i data-lucide="briefcase"></i> Portefeuille clients</a>
+            <a href="client.html" class="sidebar-item"><i data-lucide="user"></i> Client</a>
+            <a href="nouveau-client.html" class="sidebar-item"><i data-lucide="user-plus"></i> Nouveau client</a>
+            <a href="devis.html" class="sidebar-item"><i data-lucide="file-signature"></i> Devis express</a>
+            <a href="selections-partagees.html" class="sidebar-item"><i data-lucide="share-2"></i> Sélections partagées</a>
+            <a href="grilles-tarifaires.html" class="sidebar-item"><i data-lucide="tag"></i> Grilles tarifaires</a>
+            <a href="commandes.html" class="sidebar-item"><i data-lucide="truck"></i> Commandes</a>
+            <a href="relances.html" class="sidebar-item active"><i data-lucide="bell"></i> Relances</a>
+            <a href="reporting.html" class="sidebar-item"><i data-lucide="pie-chart"></i> Reporting</a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">KB</div>
+            <div class="sidebar-user-info"><div class="sidebar-user-name">Karim Benali</div><div class="sidebar-user-role">Commercial • Benali Design</div></div>
+        </div>
+    </aside>
+    <div class="main-area">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
+                <div class="topbar-search"><i data-lucide="search"></i><input type="text" placeholder="Rechercher une relance…"></div>
+            </div>
+            <div class="topbar-right"><a href="../index.html" class="btn btn-ghost btn-sm"><i data-lucide="log-out"></i></a></div>
+        </header>
+        <div class="page-content">
+            <div class="page-header">
+                <h1>Relances</h1>
+                <p>Suivez les devis en attente, les relances clients et les actions à planifier.</p>
+                <div class="page-actions">
+                    <button class="btn btn-sm"><i data-lucide="plus"></i> Nouvelle relance</button>
+                    <button class="btn btn-ghost btn-sm"><i data-lucide="calendar"></i> Planifier</button>
+                </div>
+            </div>
+
+            <div class="stats-grid" style="margin-bottom:24px;">
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">Devis en attente</span></div>
+                    <div class="stat-card-value">8</div>
+                    <div class="stat-card-change up">+2 cette semaine</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">Relances à faire</span></div>
+                    <div class="stat-card-value">5</div>
+                    <div class="stat-card-change down">3 en retard</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">Taux de conversion</span></div>
+                    <div class="stat-card-value">62%</div>
+                    <div class="stat-card-change up">+5% vs juin</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">Montant total</span></div>
+                    <div class="stat-card-value">35 400 €</div>
+                    <div class="stat-card-change up">Devis en cours</div>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button class="tab active" data-tab="pending">À relancer (5)</button>
+                <button class="tab" data-tab="scheduled">Planifiées (3)</button>
+                <button class="tab" data-tab="history">Historique</button>
+            </div>
+
+            <div id="pending" class="tab-content" style="display:block;">
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Client</th><th>Objet</th><th>Montant</th><th>Dernier contact</th><th>Priorité</th><th></th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Architecture Z</strong></td><td>Devis T.ZANE projet showroom</td><td>12 400 €</td>
+                                <td style="font-size:0.82rem;color:var(--text-muted);">05/07/2026</td>
+                                <td><span class="badge badge-danger">Haute</span></td>
+                                <td><button class="btn btn-sm btn-outline" onclick="alert('Email de relance envoyé à Architecture Z');">Relancer</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Résidence Alia</strong></td><td>Devis équipement complet</td><td>18 200 €</td>
+                                <td style="font-size:0.82rem;color:var(--text-muted);">01/07/2026</td>
+                                <td><span class="badge badge-warning">Moyenne</span></td>
+                                <td><button class="btn btn-sm btn-outline">Relancer</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bureau d'étude LM</strong></td><td>Devis mobilier bureau</td><td>4 800 €</td>
+                                <td style="font-size:0.82rem;color:var(--text-muted);">28/06/2026</td>
+                                <td><span class="badge badge-warning">Moyenne</span></td>
+                                <td><button class="btn btn-sm btn-outline">Relancer</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Galerie Noor</strong></td><td>Relance activation compte</td><td>—</td>
+                                <td style="font-size:0.82rem;color:var(--text-muted);">25/06/2026</td>
+                                <td><span class="badge badge-info">Basse</span></td>
+                                <td><button class="btn btn-sm btn-outline">Relancer</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Espace Carré</strong></td><td>Proposition commerciale collection U.NITE</td><td>6 800 €</td>
+                                <td style="font-size:0.82rem;color:var(--text-muted);">22/06/2026</td>
+                                <td><span class="badge badge-danger">Haute</span></td>
+                                <td><button class="btn btn-sm btn-outline">Relancer</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="scheduled" class="tab-content" style="display:none;">
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Date</th><th>Client</th><th>Type</th><th>Commercial</th><th>Statut</th></tr></thead>
+                        <tbody>
+                            <tr><td>08/07/2026</td><td>Hôtel Royal Palm</td><td>Appel suivi commande</td><td>Karim Benali</td><td><span class="badge badge-info">Programmé</span></td></tr>
+                            <tr><td>10/07/2026</td><td>Architecture Z</td><td>Visite showroom</td><td>Karim Benali</td><td><span class="badge badge-info">Programmé</span></td></tr>
+                            <tr><td>12/07/2026</td><td>Atelier Moderne</td><td>Qualification lead</td><td>Karim Benali</td><td><span class="badge badge-neutral">À confirmer</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="history" class="tab-content" style="display:none;">
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Date</th><th>Client</th><th>Action</th><th>Résultat</th></tr></thead>
+                        <tbody>
+                            <tr><td>04/07/2026</td><td>Maison Dubois</td><td>Relance devis envoyé</td><td><span class="badge badge-success">Commande reçue</span></td></tr>
+                            <tr><td>30/06/2026</td><td>Hôtel Royal Palm</td><td>Proposition tarifaire</td><td><span class="badge badge-success">Devis signé</span></td></tr>
+                            <tr><td>25/06/2026</td><td>Espace Carré</td><td>Appel découverte</td><td><span class="badge badge-neutral">À recontacter</span></td></tr>
+                            <tr><td>18/06/2026</td><td>Bureau d'étude LM</td><td>Envoi catalogue</td><td><span class="badge badge-warning">Sans réponse</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
+            <input class="search-overlay-input" id="searchOverlayInput" type="text" placeholder="Rechercher un produit, une référence…" autofocus>
+            <button class="search-overlay-close" id="searchOverlayClose"><i data-lucide="x"></i></button>
+        </div>
+    </div>
+    <nav class="mobile-bottom-nav">
+        <a href="../dashboard.html" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Accueil</span></a>
+        <a href="../catalogue.html" data-page="catalogue"><i data-lucide="package"></i><span>Catalogue</span></a>
+        <a href="../devis.html" data-page="devis"><i data-lucide="file-text"></i><span>Devis</span></a>
+        <a href="../compte.html" data-page="compte"><i data-lucide="user"></i><span>Compte</span></a>
+    </nav>
+    <button class="fab" id="fabBtn" onclick="window.location.href='../devis.html'" aria-label="Nouveau devis">
+        <i data-lucide="plus"></i>
+    </button>
+</body>
+</html>

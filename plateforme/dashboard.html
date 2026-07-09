@@ -15,6 +15,13 @@
             <img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08">
             <span>Plateforme B2B</span>
         </div>
+        <nav style="display:flex;gap:1.25rem;font-size:0.85rem;">
+            <a href="dashboard.html" style="font-weight:500;">Dashboard</a>
+            <a href="catalogue.html" style="color:var(--text-secondary);">Catalogue</a>
+            <a href="devis.html" style="color:var(--text-secondary);">Devis</a>
+            <a href="commandes.html" style="color:var(--text-secondary);">Commandes</a>
+            <a href="compte.html" style="color:var(--text-secondary);">Compte</a>
+        </nav>
         <div class="plateforme-header-user">
             <i data-lucide="user"></i>
             <span id="clientName"></span>
@@ -24,41 +31,51 @@
     </header>
     <main class="plateforme-main">
         <div class="plateforme-welcome">
-            <h1>Bonjour, <span id="welcomeName"></span> 👋</h1>
+            <h1>Bonjour, <span id="welcomeName"></span></h1>
             <p>Bienvenue sur votre espace B2B VOL.08. Accédez à votre catalogue privé, gérez vos devis et suivez vos commandes.</p>
         </div>
 
         <div class="plateforme-grid">
-            <a href="../catalogue.html" class="plateforme-card">
+            <a href="catalogue.html" class="plateforme-card">
                 <i data-lucide="book-open"></i>
                 <h3>Catalogue privé</h3>
                 <p>400+ références avec fiches techniques et médias HD</p>
             </a>
-            <a href="../collections.html" class="plateforme-card">
-                <i data-lucide="grid-3x3"></i>
-                <h3>Collections</h3>
-                <p>Explorez nos univers mobilier, décoration, luminaires</p>
-            </a>
-            <div class="plateforme-card" onclick="alert('Fonctionnalité à venir — Gestion des favoris')">
+            <a href="favoris.html" class="plateforme-card">
                 <i data-lucide="heart"></i>
                 <h3>Favoris & sélections</h3>
                 <p>Créez et gérez vos listes de produits favoris</p>
-            </div>
-            <div class="plateforme-card" onclick="alert('Fonctionnalité à venir — Création de devis')">
+            </a>
+            <a href="devis.html" class="plateforme-card">
                 <i data-lucide="file-text"></i>
-                <h3>Devis & commandes</h3>
-                <p>Créez des devis et suivez vos commandes en ligne</p>
-            </div>
-            <div class="plateforme-card" onclick="alert('Fonctionnalité à venir — Suivi des commandes')">
+                <h3>Devis</h3>
+                <p>Créez et suivez vos demandes de devis en ligne</p>
+            </a>
+            <a href="commandes.html" class="plateforme-card">
                 <i data-lucide="package"></i>
-                <h3>Suivi commandes</h3>
+                <h3>Commandes</h3>
                 <p>Suivez l'état de vos commandes en temps réel</p>
-            </div>
-            <div class="plateforme-card" onclick="alert('Fonctionnalité à venir — Support prioritaire')">
+            </a>
+            <a href="notifications.html" class="plateforme-card">
+                <i data-lucide="bell"></i>
+                <h3>Notifications</h3>
+                <p>Centre de notifications et alertes</p>
+            </a>
+            <a href="support.html" class="plateforme-card">
                 <i data-lucide="headphones"></i>
                 <h3>Support prioritaire</h3>
                 <p>Assistance dédiée pour les professionnels</p>
-            </div>
+            </a>
+            <a href="inspirations.html" class="plateforme-card">
+                <i data-lucide="image"></i>
+                <h3>Inspirations</h3>
+                <p>Moodboard et inspirations aménagement</p>
+            </a>
+            <a href="compte.html" class="plateforme-card">
+                <i data-lucide="settings"></i>
+                <h3>Mon compte</h3>
+                <p>Profil, utilisateurs, préférences</p>
+            </a>
         </div>
 
         <div style="margin-top:1rem;padding:1.5rem;background:#fff;border:1px solid var(--border-color);">

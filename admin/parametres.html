@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1c1c16">
+    <title>Paramètres — VOL.08</title>
+    <link rel="stylesheet" href="../assets/css/private.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/logo%20Vol.08.svg">
+</head>
+<body>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Espace Pro</span></div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-label">Administration</div>
+            <a href="index.html" class="sidebar-item"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+            <a href="produits.html" class="sidebar-item"><i data-lucide="package"></i> Produits</a>
+            <a href="medias.html" class="sidebar-item"><i data-lucide="image"></i> Médias & documents</a>
+            <a href="clients.html" class="sidebar-item"><i data-lucide="users"></i> Clients</a>
+            <a href="tarifs.html" class="sidebar-item"><i data-lucide="tag"></i> Tarifs & grilles</a>
+            <a href="devis.html" class="sidebar-item"><i data-lucide="file-signature"></i> Devis</a>
+            <a href="commandes.html" class="sidebar-item"><i data-lucide="truck"></i> Commandes</a>
+            <a href="reporting.html" class="sidebar-item"><i data-lucide="bar-chart"></i> Reporting</a>
+            <a href="integrations.html" class="sidebar-item"><i data-lucide="layers"></i> Intégrations</a>
+            <a href="securite.html" class="sidebar-item"><i data-lucide="shield"></i> Sécurité</a>
+            <a href="parametres.html" class="sidebar-item active"><i data-lucide="settings"></i> Paramètres</a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">AD</div>
+            <div class="sidebar-user-info"><div class="sidebar-user-name">Admin VOL.08</div><div class="sidebar-user-role">Super admin</div></div>
+        </div>
+    </aside>
+    <div class="main-area">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
+                <div class="topbar-search"><i data-lucide="search"></i><input type="text" placeholder="Rechercher…"></div>
+            </div>
+            <div class="topbar-right"><a href="../index.html" class="btn btn-ghost btn-sm"><i data-lucide="log-out"></i></a></div>
+        </header>
+        <div class="page-content">
+            <div class="page-header">
+                <h1>Paramètres</h1>
+                <p>Configurez les rôles, permissions, grilles tarifaires et notifications.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Rôles & permissions</span></div>
+                    <div class="table-wrap" style="border:none;">
+                        <table>
+                            <thead><tr><th>Rôle</th><th>Utilisateurs</th><th>Permissions</th><th></th></tr></thead>
+                            <tbody>
+                                <tr><td>Super admin</td><td>1</td><td style="font-size:0.8rem;color:var(--text-muted);">Tous les droits</td><td><a href="#" style="font-size:0.78rem;">Configurer</a></td></tr>
+                                <tr><td>Direction</td><td>2</td><td style="font-size:0.8rem;color:var(--text-muted);">Validation, reporting, clients</td><td><a href="#" style="font-size:0.78rem;">Configurer</a></td></tr>
+                                <tr><td>Commercial</td><td>5</td><td style="font-size:0.8rem;color:var(--text-muted);">Catalogue, devis, commandes</td><td><a href="#" style="font-size:0.78rem;">Configurer</a></td></tr>
+                                <tr><td>Admin enseigne client</td><td>8</td><td style="font-size:0.8rem;color:var(--text-muted);">Catalogue, commandes</td><td><a href="#" style="font-size:0.78rem;">Configurer</a></td></tr>
+                                <tr><td>Utilisateur enseigne</td><td>15</td><td style="font-size:0.8rem;color:var(--text-muted);;">Consultation catalogue</td><td><a href="#" style="font-size:0.78rem;">Configurer</a></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div>
+                    <div class="card" style="margin-bottom:16px;">
+                        <div class="card-header"><span class="card-title">Grilles tarifaires</span></div>
+                        <div class="table-wrap" style="border:none;">
+                            <table>
+                                <thead><tr><th>Profil</th><th>Remise</th><th>MOQ</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Standard</td><td>0%</td><td>2</td></tr>
+                                    <tr><td>Volume</td><td>+5%</td><td>10</td></tr>
+                                    <tr><td>Projet</td><td>Sur devis</td><td>1</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div style="margin-top:12px;"><button class="btn btn-outline btn-sm">+ Nouvelle grille</button></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><span class="card-title">Sécurité & logs</span></div>
+                        <div style="font-size:0.88rem;color:var(--text-secondary);display:grid;gap:12px;">
+                            <label style="display:flex;align-items:center;gap:10px;"><input type="checkbox" checked> Journalisation des connexions</label>
+                            <label style="display:flex;align-items:center;gap:10px;"><input type="checkbox" checked> Authentification renforcée (MFA)</label>
+                            <label style="display:flex;align-items:center;gap:10px;"><input type="checkbox"> Alertes de sécurité email</label>
+                            <div style="margin-top:8px;"><a href="#" style="font-size:0.82rem;">Consulter les logs</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
+            <input class="search-overlay-input" id="searchOverlayInput" type="text" placeholder="Rechercher un produit, une référence…" autofocus>
+            <button class="search-overlay-close" id="searchOverlayClose"><i data-lucide="x"></i></button>
+        </div>
+    </div>
+    <nav class="mobile-bottom-nav">
+        <a href="../dashboard.html" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Accueil</span></a>
+        <a href="../catalogue.html" data-page="catalogue"><i data-lucide="package"></i><span>Catalogue</span></a>
+        <a href="../devis.html" data-page="devis"><i data-lucide="file-text"></i><span>Devis</span></a>
+        <a href="../compte.html" data-page="compte"><i data-lucide="user"></i><span>Compte</span></a>
+    </nav>
+    <button class="fab" id="fabBtn" onclick="window.location.href='../devis.html'" aria-label="Nouveau devis">
+        <i data-lucide="plus"></i>
+    </button>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Inspirations — VOL.08 B2B</title><link rel="stylesheet" href="../assets/css/style.css"><link rel="stylesheet" href="../assets/css/plateforme.css"><script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="plateforme-body">
+<header class="plateforme-header">
+<div class="plateforme-header-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Plateforme B2B</span></div>
+<nav style="display:flex;gap:1.25rem;font-size:0.85rem;">
+<a href="dashboard.html" style="color:var(--text-secondary);">Dashboard</a>
+<a href="catalogue.html" style="color:var(--text-secondary);">Catalogue</a>
+<a href="devis.html" style="color:var(--text-secondary);">Devis</a>
+<a href="favoris.html" style="color:var(--text-secondary);">Favoris</a>
+<a href="inspirations.html" style="font-weight:500;">Inspirations</a>
+</nav>
+<div class="plateforme-header-user"><span id="clientName" style="font-size:0.85rem;"></span><a href="#" onclick="PLATFORME_UTILS.logout()" style="font-size:0.8rem;color:#999;text-decoration:underline;margin-left:0.75rem;">Déconnexion</a></div>
+</header>
+<main class="plateforme-main">
+<h1 style="font-size:1.6rem;margin-bottom:0.5rem;">Inspirations & moodboard</h1>
+<p style="color:var(--text-secondary);margin-bottom:2rem;">Explorez nos ambiances et créez vos propres moodboards.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;" id="inspGrid">
+<div style="background:#f5f5f5;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.9rem;border:1px dashed var(--border-color);">Ambiance Salon</div>
+<div style="background:#f5f5f5;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.9rem;border:1px dashed var(--border-color);">Ambiance Salle à manger</div>
+<div style="background:#f5f5f5;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.9rem;border:1px dashed var(--border-color);">Ambiance Bureau</div>
+<div style="background:#f5f5f5;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:#999;font-size:0.9rem;border:1px dashed var(--border-color);">Ambiance Hôtel</div>
+</div>
+</main>
+<script src="../assets/js/plateforme.js"></script>
+<script>
+const session=PLATFORME_UTILS.requireAuth();
+const user=PLATFORME_UTILS.getUserInfo();
+if(user) document.getElementById('clientName').textContent=user.prenom+' '+user.nom;
+</script>
+</body></html>

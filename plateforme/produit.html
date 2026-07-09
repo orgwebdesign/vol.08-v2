@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Fiche produit — VOL.08 B2B</title><link rel="stylesheet" href="../assets/css/style.css"><link rel="stylesheet" href="../assets/css/plateforme.css"><script src="https://unpkg.com/lucide@latest"></script>
+<style>.prod-detail{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:2rem;}
+.prod-detail img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#f5f5f5;}
+.prod-detail .ref{font-size:0.82rem;color:var(--text-secondary);margin-bottom:0.5rem;}
+.prod-detail h1{font-size:2rem;margin-bottom:1rem;}
+.prod-detail .price{font-size:1.8rem;font-weight:500;color:#2e7d32;margin-bottom:1.5rem;}
+.prod-detail .price small{font-size:0.9rem;font-weight:400;color:var(--text-secondary);}
+.prod-meta{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;padding:1.5rem 0;border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color);}
+.prod-meta div strong{display:block;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-secondary);margin-bottom:0.25rem;}
+.prod-meta div span{font-size:0.95rem;}
+.prod-actions{display:flex;gap:1rem;margin-top:1.5rem;}
+.prod-actions .btn{flex:1;}
+.prod-back{margin-bottom:1.5rem;display:inline-flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--text-secondary);}
+@media(max-width:768px){.prod-detail{grid-template-columns:1fr;}}</style>
+</head>
+<body class="plateforme-body">
+<header class="plateforme-header">
+<div class="plateforme-header-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Plateforme B2B</span></div>
+<nav style="display:flex;gap:1.25rem;font-size:0.85rem;">
+<a href="dashboard.html" style="color:var(--text-secondary);">Dashboard</a>
+<a href="catalogue.html" style="color:var(--text-secondary);">Catalogue</a>
+<a href="devis.html" style="color:var(--text-secondary);">Devis</a>
+<a href="commandes.html" style="color:var(--text-secondary);">Commandes</a>
+<a href="support.html" style="color:var(--text-secondary);">Support</a>
+</nav>
+<div class="plateforme-header-user"><span id="clientName" style="font-size:0.85rem;"></span><a href="#" onclick="PLATFORME_UTILS.logout()" style="font-size:0.8rem;color:#999;text-decoration:underline;margin-left:0.75rem;">Déconnexion</a></div>
+</header>
+<main class="plateforme-main" id="productContainer">
+<a href="catalogue.html" class="prod-back"><i data-lucide="arrow-left" style="width:16px;height:16px;"></i> Retour au catalogue</a>
+</main>
+<script src="../assets/js/plateforme.js"></script>
+<script>
+const session=PLATFORME_UTILS.requireAuth();
+const user=PLATFORME_UTILS.getUserInfo();
+if(user) document.getElementById('clientName').textContent=user.prenom+' '+user.nom;
+const params=new URLSearchParams(window.location.search),ref=params.get('ref');
+const produits=JSON.parse(localStorage.getItem('vol08_produits')||'[]');
+const p=produits.find(x=>x.ref===ref);
+const container=document.getElementById('productContainer');
+if(!p){container.innerHTML+=`<p style="text-align:center;color:#999;padding:3rem;">Produit non trouvé</p>`;}else{
+const pvp=Math.round(p.prixHT*1.2/0.75);
+container.innerHTML+=`
+<div class="prod-detail">
+<div><img src="${p.image}" alt="${p.name}"></div>
+<div>
+<div class="ref">${p.ref}</div>
+<h1>${p.name}</h1>
+<div class="price">${(p.prixHT).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})} HT <small>(${(pvp).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})} TTC)</small></div>
+<div class="prod-meta">
+<div><strong>Collection</strong><span>${p.collection}</span></div>
+<div><strong>Catégorie</strong><span>${p.categorie}</span></div>
+<div><strong>Stock</strong><span style="${p.stock<=3?'color:#e65100;':''}">${p.stock>0?p.stock+' unités':'Rupture'}</span></div>
+<div><strong>Statut</strong><span>${p.status==='active'?'Disponible':'Indisponible'}</span></div>
+</div>
+<div class="prod-actions">
+<button class="btn btn-black" onclick="ajouterDevis('${p.ref}')">Ajouter au devis</button>
+<button class="btn btn-outline" onclick="alert('Ajouté aux favoris')"><i data-lucide="heart" style="width:16px;height:16px;"></i></button>
+</div>
+</div></div>`;lucide.createIcons();}
+function ajouterDevis(ref){const devis=JSON.parse(localStorage.getItem('vol08_devis')||'[]');const p=produits.find(x=>x.ref===ref);if(p){const existant=devis.find(d=>d.status==='brouillon');if(existant){existant.articles+=1;existant.montant+=p.prixHT;localStorage.setItem('vol08_devis',JSON.stringify(devis));alert('Produit ajouté au devis en cours');}else{const id='DEV-'+String(Date.now()).slice(-5);devis.push({id,client:user?user.entreprise:'Client',email:user?user.email:'',montant:p.prixHT,articles:1,date:new Date().toISOString(),status:'brouillon'});localStorage.setItem('vol08_devis',JSON.stringify(devis));alert('Nouveau devis créé avec '+p.ref);}}}
+</script>
+</body></html>

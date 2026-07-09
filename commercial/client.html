@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1c1c16">
+    <title>Maison Dubois — VOL.08</title>
+    <link rel="stylesheet" href="../assets/css/private.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/logo%20Vol.08.svg">
+</head>
+<body data-page="commercial">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Espace Pro</span></div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-label">Espace commercial</div>
+            <a href="dashboard.html" class="sidebar-item"><i data-lucide="bar-chart"></i> Tableau de bord</a>
+            <a href="index.html" class="sidebar-item"><i data-lucide="briefcase"></i> Portefeuille clients</a>
+            <a href="client.html" class="sidebar-item active"><i data-lucide="user"></i> Client</a>
+            <a href="nouveau-client.html" class="sidebar-item"><i data-lucide="user-plus"></i> Nouveau client</a>
+            <a href="devis.html" class="sidebar-item"><i data-lucide="file-signature"></i> Devis express</a>
+            <a href="selections-partagees.html" class="sidebar-item"><i data-lucide="share-2"></i> Sélections partagées</a>
+            <a href="grilles-tarifaires.html" class="sidebar-item"><i data-lucide="tag"></i> Grilles tarifaires</a>
+            <a href="commandes.html" class="sidebar-item"><i data-lucide="truck"></i> Commandes</a>
+            <a href="relances.html" class="sidebar-item"><i data-lucide="bell"></i> Relances</a>
+            <a href="reporting.html" class="sidebar-item"><i data-lucide="pie-chart"></i> Reporting</a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">KB</div>
+            <div class="sidebar-user-info"><div class="sidebar-user-name">Karim Benali</div><div class="sidebar-user-role">Commercial • Benali Design</div></div>
+        </div>
+    </aside>
+    <div class="main-area">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
+                <div class="topbar-search"><i data-lucide="search"></i><input type="text" placeholder="Rechercher…"></div>
+            </div>
+            <div class="topbar-right"><a href="../index.html" class="btn btn-ghost btn-sm"><i data-lucide="log-out"></i></a></div>
+        </header>
+        <div class="page-content">
+            <div style="margin-bottom:20px;">
+                <a href="index.html" style="font-size:0.82rem;color:var(--text-secondary);display:flex;align-items:center;gap:6px;">
+                    <i data-lucide="arrow-left" style="width:14px;height:14px;"></i> Retour au portefeuille
+                </a>
+            </div>
+
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:32px;">
+                <div>
+                    <h1 style="font-size:1.6rem;font-weight:500;margin-bottom:4px;">Maison Dubois</h1>
+                    <p style="font-size:0.9rem;color:var(--text-secondary);">Client depuis février 2026 • Lyon</p>
+                </div>
+                <div style="display:flex;gap:12px;">
+                    <button class="btn btn-sm" onclick="window.location.href='devis.html'"><i data-lucide="file-text"></i> Nouveau devis</button>
+                    <button class="btn btn-ghost btn-sm"><i data-lucide="edit"></i> Modifier</button>
+                </div>
+            </div>
+
+            <div class="stats-grid" style="margin-bottom:32px;">
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">Commandes</span></div>
+                    <div class="stat-card-value">12</div>
+                    <div class="stat-card-change up">+3 ce mois</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">CA total</span></div>
+                    <div class="stat-card-value">42 300 €</div>
+                    <div class="stat-card-change up">+18% vs N-1</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">Dernière commande</span></div>
+                    <div class="stat-card-value" style="font-size:1.2rem;">04/07/2026</div>
+                    <div class="stat-card-change">3 240 €</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">Statut</span></div>
+                    <div class="stat-card-value" style="font-size:1.2rem;"><span class="badge badge-success">Actif</span></div>
+                    <div class="stat-card-change">Grille standard</div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Informations</span></div>
+                    <div style="display:grid;gap:12px;font-size:0.88rem;">
+                        <div><span style="color:var(--text-secondary);">SIRET</span><br>823 456 789 00012</div>
+                        <div><span style="color:var(--text-secondary);">Email</span><br><a href="#" style="text-decoration:underline;">contact@maisondubois.fr</a></div>
+                        <div><span style="color:var(--text-secondary);">Téléphone</span><br>+33 4 72 00 11 22</div>
+                        <div><span style="color:var(--text-secondary);">Adresse</span><br>42 Rue de la République, 69002 Lyon</div>
+                        <div><span style="color:var(--text-secondary);">Contact</span><br>Sophie Dubois — Directrice achats</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Dernières commandes</span><a href="#" style="font-size:0.82rem;color:var(--text-secondary);">Voir tout</a></div>
+                    <div class="table-wrap" style="border:none;">
+                        <table>
+                            <thead><tr><th>Réf.</th><th>Date</th><th>Total</th><th>Statut</th></tr></thead>
+                            <tbody>
+                                <tr><td>CMD-2026-0042</td><td>04/07</td><td>3 240 €</td><td><span class="badge badge-success">Livrée</span></td></tr>
+                                <tr><td>CMD-2026-0037</td><td>18/06</td><td>4 200 €</td><td><span class="badge badge-success">Livrée</span></td></tr>
+                                <tr><td>CMD-2026-0030</td><td>02/06</td><td>2 850 €</td><td><span class="badge badge-success">Livrée</span></td></tr>
+                                <tr><td>CMD-2026-0021</td><td>12/05</td><td>5 600 €</td><td><span class="badge badge-success">Livrée</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top:24px;">
+                <div class="card-header"><span class="card-title">Notes & historique</span><button class="btn btn-ghost btn-sm" onclick="alert('Nouvelle note ajoutée');">+ Ajouter une note</button></div>
+                <div style="display:grid;gap:12px;">
+                    <div style="padding:12px 16px;border:1px solid var(--border);font-size:0.85rem;">
+                        <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+                            <span style="font-weight:500;">Sophie Dubois</span>
+                            <span style="font-size:0.75rem;color:var(--text-muted);">02/07/2026</span>
+                        </div>
+                        <span style="color:var(--text-secondary);">Client intéressé par la nouvelle collection U.NITE pour leur showroom. Envoi d'un devis personnalisé prévu la semaine prochaine.</span>
+                    </div>
+                    <div style="padding:12px 16px;border:1px solid var(--border);font-size:0.85rem;">
+                        <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+                            <span style="font-weight:500;">Karim Benali</span>
+                            <span style="font-size:0.75rem;color:var(--text-muted);">15/06/2026</span>
+                        </div>
+                        <span style="color:var(--text-secondary);">Commande CMD-2026-0037 livrée avec succès. Client satisfait de la qualité et des délais.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
+            <input class="search-overlay-input" id="searchOverlayInput" type="text" placeholder="Rechercher un produit, une référence…" autofocus>
+            <button class="search-overlay-close" id="searchOverlayClose"><i data-lucide="x"></i></button>
+        </div>
+    </div>
+    <nav class="mobile-bottom-nav">
+        <a href="../dashboard.html" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Accueil</span></a>
+        <a href="../catalogue.html" data-page="catalogue"><i data-lucide="package"></i><span>Catalogue</span></a>
+        <a href="../devis.html" data-page="devis"><i data-lucide="file-text"></i><span>Devis</span></a>
+        <a href="../compte.html" data-page="compte"><i data-lucide="user"></i><span>Compte</span></a>
+    </nav>
+    <button class="fab" id="fabBtn" onclick="window.location.href='../devis.html'" aria-label="Nouveau devis">
+        <i data-lucide="plus"></i>
+    </button>
+</body>
+</html>

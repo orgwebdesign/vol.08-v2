@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1c1c16">
+    <title>Inspirations — VOL.08</title>
+    <link rel="stylesheet" href="assets/css/private.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/svg+xml" href="assets/img/logo%20Vol.08.svg">
+    <style>
+        .inspo-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .inspo-card { cursor:pointer; position:relative; overflow:hidden; }
+        .inspo-card img { width:100%; aspect-ratio:4/3; object-fit:cover; transition:transform 0.4s; }
+        .inspo-card:hover img { transform:scale(1.03); }
+        .inspo-overlay { position:absolute; bottom:0;left:0;right:0; padding:20px; background:linear-gradient(transparent,rgba(0,0,0,0.7));color:#fff; }
+        .inspo-overlay h3 { font-size:1.1rem;font-weight:500;margin-bottom:4px; }
+        .inspo-overlay p { font-size:0.82rem;opacity:0.8; }
+        .inspo-hero { width:100%; aspect-ratio:21/9; object-fit:cover;margin-bottom:32px; }
+        @media(max-width:1024px){ .inspo-grid { grid-template-columns:repeat(2,1fr); } }
+        @media(max-width:768px){ .inspo-grid { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body data-page="catalogue">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo"><img src="assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Espace Pro</span></div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-label">Navigation</div>
+            <a href="dashboard.html" class="sidebar-item"><i data-lucide="layout-dashboard"></i> Tableau de bord</a>
+            <a href="catalogue.html" class="sidebar-item"><i data-lucide="package"></i> Catalogue</a>
+            <a href="inspirations.html" class="sidebar-item active"><i data-lucide="image"></i> Inspirations</a>
+            <a href="selections.html" class="sidebar-item"><i data-lucide="heart"></i> Favoris & sélections</a>
+            <a href="devis.html" class="sidebar-item"><i data-lucide="file-text"></i> Panier & devis</a>
+            <a href="commandes.html" class="sidebar-item"><i data-lucide="truck"></i> Commandes</a>
+            <a href="compte.html" class="sidebar-item"><i data-lucide="user"></i> Mon compte</a>
+            <div class="sidebar-label">Support</div>
+            <a href="support.html" class="sidebar-item"><i data-lucide="headphones"></i> Assistance</a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">KB</div>
+            <div class="sidebar-user-info"><div class="sidebar-user-name">Karim Benali</div><div class="sidebar-user-role">Commercial • Benali Design</div></div>
+        </div>
+    </aside>
+    <div class="main-area">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
+                <div class="topbar-search"><i data-lucide="search"></i><input type="text" placeholder="Rechercher une inspiration…"></div>
+            </div>
+            <div class="topbar-right">
+                <a href="selections.html" class="topbar-icon"><i data-lucide="heart"></i></a>
+                <div class="topbar-icon" id="notifToggle">
+                    <i data-lucide="bell"></i><span class="topbar-badge">2</span>
+                    <div class="notif-dropdown" id="notifDropdown">
+                        <div class="notif-header"><span>Notifications</span></div>
+                        <div class="notif-item"><div class="notif-item-title">Nouvelle commande CMD-2026-0043</div><div class="notif-item-time">Il y a 10 min</div></div>
+                        <div class="notif-item"><div class="notif-item-title">Devis DEV-2026-015 validé</div><div class="notif-item-time">Il y a 1h</div></div>
+                    </div>
+                </div>
+                <a href="index.html" class="btn btn-ghost btn-sm"><i data-lucide="log-out"></i></a>
+            </div>
+        </header>
+        <div class="page-content">
+            <div class="page-header">
+                <h1>Inspirations</h1>
+                <p>Ambiances, univers déco et mises en situation pour imaginer vos projets.</p>
+                <div class="filters-bar">
+                    <div class="filter-group">
+                        <select><option>Tous les univers</option><option>Salon</option><option>Salle à manger</option><option>Chambre</option><option>Bureau</option><option>Hôtel</option><option>Showroom</option></select>
+                    </div>
+                    <div class="filter-group">
+                        <select><option>Nouveautés</option><option>Les plus populaires</option><option>Nom A-Z</option></select>
+                    </div>
+                </div>
+            </div>
+
+            <img class="inspo-hero" src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_3.webp" alt="Hero inspiration" style="width:100%;">
+
+            <div class="inspo-grid">
+                <div class="inspo-card" onclick="window.location.href='catalogue.html'">
+                    <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_2.webp" alt="Salon T.ZANE" loading="lazy">
+                    <div class="inspo-overlay"><h3>Salon contemporain T.ZANE</h3><p>Collection T.ZANE • 8 produits</p></div>
+                </div>
+                <div class="inspo-card" onclick="window.location.href='catalogue.html'">
+                    <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_4.webp" alt="Salle à manger U.NITE" loading="lazy">
+                    <div class="inspo-overlay"><h3>Salle à manger U.NITE</h3><p>Collection U.NITE • 6 produits</p></div>
+                </div>
+                <div class="inspo-card" onclick="window.location.href='catalogue.html'">
+                    <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_5.webp" alt="Bureau Z.LIGE" loading="lazy">
+                    <div class="inspo-overlay"><h3>Bureau d'exception Z.LIGE</h3><p>Collection Z.LIGE • 5 produits</p></div>
+                </div>
+                <div class="inspo-card" onclick="window.location.href='catalogue.html'">
+                    <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_6.webp" alt="Ambiance L.UMIZE" loading="lazy">
+                    <div class="inspo-overlay"><h3>Ambiance lumineuse L.UMIZE</h3><p>Collection L.UMIZE • 4 produits</p></div>
+                </div>
+                <div class="inspo-card" onclick="window.location.href='catalogue.html'">
+                    <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_7.webp" alt="Décoration D.CORE" loading="lazy">
+                    <div class="inspo-overlay"><h3>Art de la table D.CORE</h3><p>Collection D.CORE • 7 produits</p></div>
+                </div>
+                <div class="inspo-card" onclick="window.location.href='catalogue.html'">
+                    <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_8.webp" alt="B.OUGY" loading="lazy">
+                    <div class="inspo-overlay"><h3>Parfums d'intérieur B.OUGY</h3><p>Collection B.OUGY • 3 produits</p></div>
+                </div>
+                <div class="inspo-card" onclick="window.location.href='catalogue.html'">
+                    <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_1+-+T.ZANE/0348ea11-5e87-4f94-b41a-a2cd761f2571.webp" alt="Showroom" loading="lazy">
+                    <div class="inspo-overlay"><h3>Showroom Marrakech</h3><p>Ambiance complète • 12 produits</p></div>
+                </div>
+                <div class="inspo-card" onclick="window.location.href='catalogue.html'">
+                    <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection+1+-+T.ZANE/0942cdf7-ac7b-47e1-9524-893a2b6c1534.webp" alt="Hôtel" loading="lazy">
+                    <div class="inspo-overlay"><h3>Hôtel Royal Palm</h3><p>Projet clé en main • 15 produits</p></div>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/app.js"></script>
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
+            <input class="search-overlay-input" id="searchOverlayInput" type="text" placeholder="Rechercher un produit, une référence…" autofocus>
+            <button class="search-overlay-close" id="searchOverlayClose"><i data-lucide="x"></i></button>
+        </div>
+    </div>
+    <nav class="mobile-bottom-nav">
+        <a href="../dashboard.html" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Accueil</span></a>
+        <a href="../catalogue.html" data-page="catalogue"><i data-lucide="package"></i><span>Catalogue</span></a>
+        <a href="../devis.html" data-page="devis"><i data-lucide="file-text"></i><span>Devis</span></a>
+        <a href="../compte.html" data-page="compte"><i data-lucide="user"></i><span>Compte</span></a>
+    </nav>
+    <button class="fab" id="fabBtn" onclick="window.location.href='./devis.html'" aria-label="Nouveau devis">
+        <i data-lucide="plus"></i>
+    </button>
+</body>
+</html>

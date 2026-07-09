@@ -267,6 +267,11 @@ p { color: var(--text-secondary); margin-bottom: 1rem; }
     align-items: center;
 }
 
+a.nav-icon {
+    text-decoration: none;
+    color: inherit;
+}
+
 .nav-icon .lucide {
     width: 20px;
     height: 20px;

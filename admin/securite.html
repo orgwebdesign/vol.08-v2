@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1c1c16">
+    <title>Sécurité — VOL.08</title>
+    <link rel="stylesheet" href="../assets/css/private.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/logo%20Vol.08.svg">
+</head>
+<body data-page="admin">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Espace Pro</span></div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-label">Administration</div>
+            <a href="index.html" class="sidebar-item"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+            <a href="produits.html" class="sidebar-item"><i data-lucide="package"></i> Produits</a>
+            <a href="medias.html" class="sidebar-item"><i data-lucide="image"></i> Médias & documents</a>
+            <a href="clients.html" class="sidebar-item"><i data-lucide="users"></i> Clients</a>
+            <a href="tarifs.html" class="sidebar-item"><i data-lucide="tag"></i> Tarifs & grilles</a>
+            <a href="devis.html" class="sidebar-item"><i data-lucide="file-signature"></i> Devis</a>
+            <a href="commandes.html" class="sidebar-item"><i data-lucide="truck"></i> Commandes</a>
+            <a href="reporting.html" class="sidebar-item"><i data-lucide="bar-chart"></i> Reporting</a>
+            <a href="integrations.html" class="sidebar-item"><i data-lucide="layers"></i> Intégrations</a>
+            <a href="securite.html" class="sidebar-item active"><i data-lucide="shield"></i> Sécurité</a>
+            <a href="parametres.html" class="sidebar-item"><i data-lucide="settings"></i> Paramètres</a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">AD</div>
+            <div class="sidebar-user-info"><div class="sidebar-user-name">Admin VOL.08</div><div class="sidebar-user-role">Super admin</div></div>
+        </div>
+    </aside>
+    <div class="main-area">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
+                <div class="topbar-search"><i data-lucide="search"></i><input type="text" placeholder="Rechercher…"></div>
+            </div>
+            <div class="topbar-right"><a href="../index.html" class="btn btn-ghost btn-sm"><i data-lucide="log-out"></i></a></div>
+        </header>
+        <div class="page-content">
+            <div class="page-header">
+                <h1>Sécurité & RGPD</h1>
+                <p>Gestion des utilisateurs, rôles, logs d'activité, sauvegardes et conformité RGPD.</p>
+            </div>
+
+            <div class="grid-2" style="margin-bottom:24px;">
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Utilisateurs & rôles</span></div>
+                    <div class="table-wrap" style="border:none;">
+                        <table>
+                            <thead><tr><th>Utilisateur</th><th>Rôle</th><th>Dernière connexion</th><th></th></tr></thead>
+                            <tbody>
+                                <tr><td>Admin VOL.08</td><td><span class="badge badge-neutral">Super admin</span></td><td>07/07/2025 14:32</td><td><button class="btn btn-sm btn-outline">Modifier</button></td></tr>
+                                <tr><td>Karim Benali</td><td><span class="badge badge-info">Commercial</span></td><td>07/07/2025 11:15</td><td><button class="btn btn-sm btn-outline">Modifier</button></td></tr>
+                                <tr><td>Sarah Lefèvre</td><td><span class="badge badge-info">Commercial</span></td><td>06/07/2025 16:40</td><td><button class="btn btn-sm btn-outline">Modifier</button></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Logs d'activité récents</span></div>
+                    <div style="display:grid;gap:8px;font-size:0.82rem;">
+                        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);"><span>Connexion — K. Benali</span><span style="color:var(--text-muted);">14:32</span></div>
+                        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);"><span>Validation devis #021 — Admin</span><span style="color:var(--text-muted);">13:10</span></div>
+                        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border);"><span>Création client — S. Lefèvre</span><span style="color:var(--text-muted);">11:45</span></div>
+                        <div style="display:flex;justify-content:space-between;padding:6px 0;"><span>Modification tarif — Admin</span><span style="color:var(--text-muted);">10:20</span></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Sauvegardes</span></div>
+                    <div style="display:grid;gap:8px;font-size:0.85rem;">
+                        <div style="display:flex;justify-content:space-between;"><span>Dernière sauvegarde</span><strong>07/07/2025 03:00</strong></div>
+                        <div style="display:flex;justify-content:space-between;"><span>Fréquence</span><strong>Quotidienne</strong></div>
+                        <div style="display:flex;justify-content:space-between;"><span>Rétention</span><strong>30 jours</strong></div>
+                        <div style="display:flex;justify-content:space-between;margin-top:8px;">
+                            <button class="btn btn-sm"><i data-lucide="rotate-ccw"></i> Sauvegarder</button>
+                            <button class="btn btn-sm btn-outline">Restaurer</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Conformité RGPD</span></div>
+                    <div style="display:grid;gap:12px;font-size:0.85rem;">
+                        <div style="display:flex;align-items:center;gap:8px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--success);"></span> Consentement collecte OK</div>
+                        <div style="display:flex;align-items:center;gap:8px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--success);"></span> Droit d'accès configuré</div>
+                        <div style="display:flex;align-items:center;gap:8px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--success);"></span> Droit d'opposition OK</div>
+                        <div style="display:flex;align-items:center;gap:8px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--warning);"></span> Registre de traitement à jour</div>
+                        <button class="btn btn-sm btn-outline" style="margin-top:8px;">Audit complet</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
+            <input class="search-overlay-input" id="searchOverlayInput" type="text" placeholder="Rechercher un produit, une référence…" autofocus>
+            <button class="search-overlay-close" id="searchOverlayClose"><i data-lucide="x"></i></button>
+        </div>
+    </div>
+    <nav class="mobile-bottom-nav">
+        <a href="../dashboard.html" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Accueil</span></a>
+        <a href="../catalogue.html" data-page="catalogue"><i data-lucide="package"></i><span>Catalogue</span></a>
+        <a href="../devis.html" data-page="devis"><i data-lucide="file-text"></i><span>Devis</span></a>
+        <a href="../compte.html" data-page="compte"><i data-lucide="user"></i><span>Compte</span></a>
+    </nav>
+    <button class="fab" id="fabBtn" onclick="window.location.href='../devis.html'" aria-label="Nouveau devis">
+        <i data-lucide="plus"></i>
+    </button>
+</body>
+</html>

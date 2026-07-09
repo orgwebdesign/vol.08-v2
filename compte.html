@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1c1c16">
+    <title>Mon compte — VOL.08</title>
+    <link rel="stylesheet" href="assets/css/private.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/svg+xml" href="assets/img/logo%20Vol.08.svg">
+</head>
+<body data-page="compte">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo"><img src="assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Espace Pro</span></div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-label">Navigation</div>
+            <a href="dashboard.html" class="sidebar-item"><i data-lucide="layout-dashboard"></i> Tableau de bord</a>
+            <a href="catalogue.html" class="sidebar-item"><i data-lucide="package"></i> Catalogue</a>
+            <a href="selections.html" class="sidebar-item"><i data-lucide="heart"></i> Favoris & sélections</a>
+            <a href="devis.html" class="sidebar-item"><i data-lucide="file-text"></i> Panier & devis</a>
+            <a href="commandes.html" class="sidebar-item"><i data-lucide="truck"></i> Commandes</a>
+            <a href="compte.html" class="sidebar-item active"><i data-lucide="user"></i> Mon compte</a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">KB</div>
+            <div class="sidebar-user-info"><div class="sidebar-user-name">Karim Benali</div><div class="sidebar-user-role">Commercial • Benali Design</div></div>
+        </div>
+    </aside>
+    <div class="main-area">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
+                <div class="topbar-search"><i data-lucide="search"></i><input type="text" placeholder="Rechercher…"></div>
+            </div>
+            <div class="topbar-right"><a href="index.html" class="btn btn-ghost btn-sm"><i data-lucide="log-out"></i></a></div>
+        </header>
+        <div class="page-content">
+            <div class="page-header">
+                <h1>Mon compte</h1>
+                <p>Gérez vos informations personnelles, vos préférences et les utilisateurs de votre enseigne.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Informations personnelles</span></div>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Prénom</label>
+                                <input type="text" value="Karim">
+                            </div>
+                            <div class="form-group">
+                                <label>Nom</label>
+                                <input type="text" value="Benali">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email professionnel</label>
+                            <input type="email" value="karim@benali-design.fr">
+                        </div>
+                        <div class="form-group">
+                            <label>Entreprise</label>
+                            <input type="text" value="Benali Design Studio">
+                        </div>
+                        <div class="form-group">
+                            <label>Téléphone</label>
+                            <input type="tel" placeholder="+33 6 12 34 56 78">
+                        </div>
+                        <button type="submit" class="btn">Enregistrer</button>
+                    </form>
+                </div>
+
+                <div>
+                    <div class="card" style="margin-bottom:16px;">
+                        <div class="card-header"><span class="card-title">Utilisateurs de l'enseigne</span></div>
+                        <table>
+                            <thead><tr><th>Nom</th><th>Email</th><th>Rôle</th></tr></thead>
+                            <tbody>
+                                <tr><td>Karim Benali</td><td>karim@benali-design.fr</td><td style="font-size:0.82rem;">Commercial</td></tr>
+                                <tr><td>Sophie Martin</td><td>sophie@benali-design.fr</td><td style="font-size:0.82rem;">Acheteuse</td></tr>
+                            </tbody>
+                        </table>
+                        <div style="margin-top:12px;"><button class="btn btn-outline btn-sm">+ Ajouter un utilisateur</button></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header"><span class="card-title">Préférences</span></div>
+                        <div style="display:flex;flex-direction:column;gap:12px;">
+                            <label style="display:flex;align-items:center;gap:10px;font-size:0.88rem;cursor:pointer;">
+                                <input type="checkbox" checked> Notifications par email
+                            </label>
+                            <label style="display:flex;align-items:center;gap:10px;font-size:0.88rem;cursor:pointer;">
+                                <input type="checkbox"> Notifications WhatsApp
+                            </label>
+                            <label style="display:flex;align-items:center;gap:10px;font-size:0.88rem;cursor:pointer;">
+                                <input type="checkbox" checked> Alertes de réassort
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/app.js"></script>
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
+            <input class="search-overlay-input" id="searchOverlayInput" type="text" placeholder="Rechercher un produit, une référence…" autofocus>
+            <button class="search-overlay-close" id="searchOverlayClose"><i data-lucide="x"></i></button>
+        </div>
+    </div>
+    <nav class="mobile-bottom-nav">
+        <a href="../dashboard.html" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Accueil</span></a>
+        <a href="../catalogue.html" data-page="catalogue"><i data-lucide="package"></i><span>Catalogue</span></a>
+        <a href="../devis.html" data-page="devis"><i data-lucide="file-text"></i><span>Devis</span></a>
+        <a href="../compte.html" data-page="compte"><i data-lucide="user"></i><span>Compte</span></a>
+    </nav>
+    <button class="fab" id="fabBtn" onclick="window.location.href='./devis.html'" aria-label="Nouveau devis">
+        <i data-lucide="plus"></i>
+    </button>
+</body>
+</html>

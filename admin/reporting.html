@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1c1c16">
+    <title>Reporting — VOL.08</title>
+    <link rel="stylesheet" href="../assets/css/private.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/logo%20Vol.08.svg">
+</head>
+<body>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Espace Pro</span></div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-label">Administration</div>
+            <a href="index.html" class="sidebar-item"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+            <a href="produits.html" class="sidebar-item"><i data-lucide="package"></i> Produits</a>
+            <a href="medias.html" class="sidebar-item"><i data-lucide="image"></i> Médias & documents</a>
+            <a href="clients.html" class="sidebar-item"><i data-lucide="users"></i> Clients</a>
+            <a href="tarifs.html" class="sidebar-item"><i data-lucide="tag"></i> Tarifs & grilles</a>
+            <a href="devis.html" class="sidebar-item"><i data-lucide="file-signature"></i> Devis</a>
+            <a href="commandes.html" class="sidebar-item"><i data-lucide="truck"></i> Commandes</a>
+            <a href="reporting.html" class="sidebar-item active"><i data-lucide="bar-chart"></i> Reporting</a>
+            <a href="integrations.html" class="sidebar-item"><i data-lucide="layers"></i> Intégrations</a>
+            <a href="securite.html" class="sidebar-item"><i data-lucide="shield"></i> Sécurité</a>
+            <a href="parametres.html" class="sidebar-item"><i data-lucide="settings"></i> Paramètres</a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">AD</div>
+            <div class="sidebar-user-info"><div class="sidebar-user-name">Admin VOL.08</div><div class="sidebar-user-role">Super admin</div></div>
+        </div>
+    </aside>
+    <div class="main-area">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
+                <div class="topbar-search"><i data-lucide="search"></i><input type="text" placeholder="Rechercher…"></div>
+            </div>
+            <div class="topbar-right"><a href="../index.html" class="btn btn-ghost btn-sm"><i data-lucide="log-out"></i></a></div>
+        </header>
+        <div class="page-content">
+            <div class="page-header">
+                <h1>Reporting</h1>
+                <p>Tableaux de bord chiffrés, export des données et indicateurs clés.</p>
+                <div class="page-actions">
+                    <button class="btn btn-sm" onclick="alert('Export Excel en cours…');"><i data-lucide="file-spreadsheet"></i> Export Excel</button>
+                    <button class="btn btn-ghost btn-sm" onclick="alert('Export PDF en cours…');"><i data-lucide="file-text"></i> Export PDF</button>
+                    <button class="btn btn-ghost btn-sm"><i data-lucide="calendar"></i> Juillet 2026</button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">CA mensuel</span><i data-lucide="trending-up"></i></div>
+                    <div class="stat-card-value">186 400 €</div>
+                    <div class="stat-card-change up">+12% vs juin</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">Commandes</span><i data-lucide="shopping-cart"></i></div>
+                    <div class="stat-card-value">47</div>
+                    <div class="stat-card-change up">+18% vs juin</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">Panier moyen</span><i data-lucide="shopping-bag"></i></div>
+                    <div class="stat-card-value">3 966 €</div>
+                    <div class="stat-card-change up">+5% vs juin</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">Nouveaux clients</span><i data-lucide="user-plus"></i></div>
+                    <div class="stat-card-value">4</div>
+                    <div class="stat-card-change up">+2 ce mois</div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Répartition du CA par catégorie</span></div>
+                    <div style="display:grid;gap:12px;">
+                        <div><div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:4px;"><span>Mobilier</span><span style="font-weight:500;">62%</span></div><div style="height:8px;background:var(--bg-alt);"><div style="width:62%;height:100%;background:var(--dark);"></div></div></div>
+                        <div><div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:4px;"><span>Luminaires</span><span style="font-weight:500;">18%</span></div><div style="height:8px;background:var(--bg-alt);"><div style="width:18%;height:100%;background:var(--dark);"></div></div></div>
+                        <div><div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:4px;"><span>Décoration</span><span style="font-weight:500;">14%</span></div><div style="height:8px;background:var(--bg-alt);"><div style="width:14%;height:100%;background:var(--dark);"></div></div></div>
+                        <div><div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:4px;"><span>Accessoires</span><span style="font-weight:500;">6%</span></div><div style="height:8px;background:var(--bg-alt);"><div style="width:6%;height:100%;background:var(--dark);"></div></div></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Performance par collection</span></div>
+                    <div class="table-wrap" style="border:none;">
+                        <table>
+                            <thead><tr><th>Collection</th><th>CA</th><th>Commandes</th><th>Tendance</th></tr></thead>
+                            <tbody>
+                                <tr><td>T.ZANE</td><td>52 300 €</td><td>14</td><td><span class="badge badge-success">+22%</span></td></tr>
+                                <tr><td>U.NITE</td><td>41 800 €</td><td>10</td><td><span class="badge badge-success">+15%</span></td></tr>
+                                <tr><td>Z.LIGE</td><td>33 600 €</td><td>8</td><td><span class="badge badge-success">+8%</span></td></tr>
+                                <tr><td>L.UMIZE</td><td>28 400 €</td><td>9</td><td><span class="badge badge-warning">-3%</span></td></tr>
+                                <tr><td>D.CORE</td><td>18 200 €</td><td>6</td><td><span class="badge badge-success">+11%</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top:24px;">
+                <div class="card-header"><span class="card-title">Évolution mensuelle du CA</span><button class="btn btn-ghost btn-sm">Voir l'historique complet</button></div>
+                <div class="table-wrap" style="border:none;">
+                    <table>
+                        <thead><tr><th>Mois</th><th>Commandes</th><th>CA HT</th><th>Clients actifs</th><th>Panier moyen</th></tr></thead>
+                        <tbody>
+                            <tr><td>Juillet 2026</td><td>47</td><td>186 400 €</td><td>32</td><td>3 966 €</td></tr>
+                            <tr><td>Juin 2026</td><td>40</td><td>166 200 €</td><td>28</td><td>3 780 €</td></tr>
+                            <tr><td>Mai 2026</td><td>38</td><td>152 800 €</td><td>26</td><td>3 520 €</td></tr>
+                            <tr><td>Avril 2026</td><td>35</td><td>140 500 €</td><td>24</td><td>3 410 €</td></tr>
+                            <tr><td>Mars 2026</td><td>32</td><td>128 300 €</td><td>22</td><td>3 280 €</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
+            <input class="search-overlay-input" id="searchOverlayInput" type="text" placeholder="Rechercher un produit, une référence…" autofocus>
+            <button class="search-overlay-close" id="searchOverlayClose"><i data-lucide="x"></i></button>
+        </div>
+    </div>
+    <nav class="mobile-bottom-nav">
+        <a href="../dashboard.html" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Accueil</span></a>
+        <a href="../catalogue.html" data-page="catalogue"><i data-lucide="package"></i><span>Catalogue</span></a>
+        <a href="../devis.html" data-page="devis"><i data-lucide="file-text"></i><span>Devis</span></a>
+        <a href="../compte.html" data-page="compte"><i data-lucide="user"></i><span>Compte</span></a>
+    </nav>
+    <button class="fab" id="fabBtn" onclick="window.location.href='../devis.html'" aria-label="Nouveau devis">
+        <i data-lucide="plus"></i>
+    </button>
+</body>
+</html>

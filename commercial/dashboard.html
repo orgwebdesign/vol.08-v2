@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1c1c16">
+    <title>Tableau de bord commercial — VOL.08</title>
+    <link rel="stylesheet" href="../assets/css/private.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/logo%20Vol.08.svg">
+</head>
+<body data-page="commercial">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Espace Pro</span></div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-label">Navigation</div>
+            <a href="../dashboard.html" class="sidebar-item"><i data-lucide="layout-dashboard"></i> Tableau de bord</a>
+            <a href="../catalogue.html" class="sidebar-item"><i data-lucide="package"></i> Catalogue</a>
+            <div class="sidebar-label">Espace commercial</div>
+            <a href="dashboard.html" class="sidebar-item active"><i data-lucide="bar-chart"></i> Tableau de bord</a>
+            <a href="index.html" class="sidebar-item"><i data-lucide="briefcase"></i> Portefeuille clients</a>
+            <a href="nouveau-client.html" class="sidebar-item"><i data-lucide="user-plus"></i> Nouveau client</a>
+            <a href="devis.html" class="sidebar-item"><i data-lucide="file-signature"></i> Devis express</a>
+            <a href="selections-partagees.html" class="sidebar-item"><i data-lucide="share-2"></i> Sélections partagées</a>
+            <a href="grilles-tarifaires.html" class="sidebar-item"><i data-lucide="tag"></i> Grilles tarifaires</a>
+            <a href="commandes.html" class="sidebar-item"><i data-lucide="truck"></i> Commandes</a>
+            <a href="relances.html" class="sidebar-item"><i data-lucide="bell"></i> Relances</a>
+            <a href="reporting.html" class="sidebar-item"><i data-lucide="pie-chart"></i> Reporting</a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">KB</div>
+            <div class="sidebar-user-info"><div class="sidebar-user-name">Karim Benali</div><div class="sidebar-user-role">Commercial • Benali Design</div></div>
+        </div>
+    </aside>
+    <div class="main-area">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
+                <div class="topbar-search"><i data-lucide="search"></i><input type="text" placeholder="Rechercher…"></div>
+            </div>
+            <div class="topbar-right"><a href="../index.html" class="btn btn-ghost btn-sm"><i data-lucide="log-out"></i></a></div>
+        </header>
+        <div class="page-content">
+            <div class="page-header">
+                <h1>Tableau de bord commercial</h1>
+                <p>Activité portefeuille, opportunités et suivi des performances.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">Clients actifs</span></div>
+                    <div class="stat-card-value">3</div>
+                    <div class="stat-card-change up">+1 ce mois</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">Opportunités</span></div>
+                    <div class="stat-card-value">8</div>
+                    <div class="stat-card-change up">+3 nouveau</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">CA mensuel</span></div>
+                    <div class="stat-card-value">42 800 €</div>
+                    <div class="stat-card-change up">+15% vs juin</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">Taux conversion</span></div>
+                    <div class="stat-card-value">68%</div>
+                    <div class="stat-card-change up">+4%</div>
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-bottom:24px;">
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Opportunités récentes</span><a href="relances.html" style="font-size:0.82rem;color:var(--text-secondary);">Voir tout</a></div>
+                    <div class="table-wrap" style="border:none;">
+                        <table>
+                            <thead><tr><th>Client</th><th>Projet</th><th>Montant</th><th>Prob.</th><th></th></tr></thead>
+                            <tbody>
+                                <tr><td>Architecture Z</td><td>Showroom T.ZANE</td><td>12 400 €</td><td>80%</td><td><span class="badge badge-success">Chaude</span></td></tr>
+                                <tr><td>Résidence Alia</td><td>Équipement complet</td><td>18 200 €</td><td>50%</td><td><span class="badge badge-warning">Moyenne</span></td></tr>
+                                <tr><td>Bureau d'étude LM</td><td>Mobilier bureau</td><td>4 800 €</td><td>60%</td><td><span class="badge badge-info">En cours</span></td></tr>
+                                <tr><td>Atelier Moderne</td><td>Qualification</td><td>—</td><td>20%</td><td><span class="badge badge-neutral">À qualifier</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Performance collections</span></div>
+                    <div style="display:grid;gap:12px;">
+                        <div><div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:4px;"><span>T.ZANE</span><span style="font-weight:500;">28%</span></div><div style="height:6px;background:var(--bg-alt);"><div style="width:28%;height:100%;background:var(--dark);"></div></div></div>
+                        <div><div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:4px;"><span>U.NITE</span><span style="font-weight:500;">24%</span></div><div style="height:6px;background:var(--bg-alt);"><div style="width:24%;height:100%;background:var(--dark);"></div></div></div>
+                        <div><div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:4px;"><span>Z.LIGE</span><span style="font-weight:500;">18%</span></div><div style="height:6px;background:var(--bg-alt);"><div style="width:18%;height:100%;background:var(--dark);"></div></div></div>
+                        <div><div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:4px;"><span>L.UMIZE</span><span style="font-weight:500;">15%</span></div><div style="height:6px;background:var(--bg-alt);"><div style="width:15%;height:100%;background:var(--dark);"></div></div></div>
+                        <div><div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:4px;"><span>D.CORE</span><span style="font-weight:500;">10%</span></div><div style="height:6px;background:var(--bg-alt);"><div style="width:10%;height:100%;background:var(--dark);"></div></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Activité récente</span></div>
+                    <div style="display:grid;gap:10px;">
+                        <div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:0.85rem;">
+                            <span style="width:8px;height:8px;border-radius:50%;background:var(--success);"></span>
+                            <span>Devis signé — Hôtel Royal Palm</span>
+                            <span style="margin-left:auto;font-size:0.75rem;color:var(--text-muted);">2h</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:0.85rem;">
+                            <span style="width:8px;height:8px;border-radius:50%;background:var(--info);"></span>
+                            <span>Devis envoyé — Architecture Z</span>
+                            <span style="margin-left:auto;font-size:0.75rem;color:var(--text-muted);">1j</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:10px;padding:10px 0;font-size:0.85rem;">
+                            <span style="width:8px;height:8px;border-radius:50%;background:var(--warning);"></span>
+                            <span>Compte créé — Galerie Noor</span>
+                            <span style="margin-left:auto;font-size:0.75rem;color:var(--text-muted);">3j</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Objectifs mensuels</span></div>
+                    <div style="display:grid;gap:16px;">
+                        <div>
+                            <div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:6px;"><span>CA — 42 800 € / 60 000 €</span><span style="font-weight:500;">71%</span></div>
+                            <div style="height:8px;background:var(--bg-alt);"><div style="width:71%;height:100%;background:var(--dark);"></div></div>
+                        </div>
+                        <div>
+                            <div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:6px;"><span>Nouveaux clients — 2 / 4</span><span style="font-weight:500;">50%</span></div>
+                            <div style="height:8px;background:var(--bg-alt);"><div style="width:50%;height:100%;background:var(--dark);"></div></div>
+                        </div>
+                        <div>
+                            <div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:6px;"><span>Devis transformés — 4 / 8</span><span style="font-weight:500;">50%</span></div>
+                            <div style="height:8px;background:var(--bg-alt);"><div style="width:50%;height:100%;background:var(--dark);"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
+            <input class="search-overlay-input" id="searchOverlayInput" type="text" placeholder="Rechercher un produit, une référence…" autofocus>
+            <button class="search-overlay-close" id="searchOverlayClose"><i data-lucide="x"></i></button>
+        </div>
+    </div>
+    <nav class="mobile-bottom-nav">
+        <a href="../dashboard.html" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Accueil</span></a>
+        <a href="../catalogue.html" data-page="catalogue"><i data-lucide="package"></i><span>Catalogue</span></a>
+        <a href="../devis.html" data-page="devis"><i data-lucide="file-text"></i><span>Devis</span></a>
+        <a href="../compte.html" data-page="compte"><i data-lucide="user"></i><span>Compte</span></a>
+    </nav>
+    <button class="fab" id="fabBtn" onclick="window.location.href='../devis.html'" aria-label="Nouveau devis">
+        <i data-lucide="plus"></i>
+    </button>
+</body>
+</html>

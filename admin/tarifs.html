@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1c1c16">
+    <title>Tarifs & grilles — VOL.08</title>
+    <link rel="stylesheet" href="../assets/css/private.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/logo%20Vol.08.svg">
+</head>
+<body data-page="admin">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Espace Pro</span></div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-label">Administration</div>
+            <a href="index.html" class="sidebar-item"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+            <a href="produits.html" class="sidebar-item"><i data-lucide="package"></i> Produits</a>
+            <a href="medias.html" class="sidebar-item"><i data-lucide="image"></i> Médias & documents</a>
+            <a href="clients.html" class="sidebar-item"><i data-lucide="users"></i> Clients</a>
+            <a href="tarifs.html" class="sidebar-item active"><i data-lucide="tag"></i> Tarifs & grilles</a>
+            <a href="devis.html" class="sidebar-item"><i data-lucide="file-signature"></i> Devis</a>
+            <a href="commandes.html" class="sidebar-item"><i data-lucide="truck"></i> Commandes</a>
+            <a href="reporting.html" class="sidebar-item"><i data-lucide="bar-chart"></i> Reporting</a>
+            <a href="integrations.html" class="sidebar-item"><i data-lucide="layers"></i> Intégrations</a>
+            <a href="securite.html" class="sidebar-item"><i data-lucide="shield"></i> Sécurité</a>
+            <a href="parametres.html" class="sidebar-item"><i data-lucide="settings"></i> Paramètres</a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">AD</div>
+            <div class="sidebar-user-info"><div class="sidebar-user-name">Admin VOL.08</div><div class="sidebar-user-role">Super admin</div></div>
+        </div>
+    </aside>
+    <div class="main-area">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
+                <div class="topbar-search"><i data-lucide="search"></i><input type="text" placeholder="Rechercher…"></div>
+            </div>
+            <div class="topbar-right"><a href="../index.html" class="btn btn-ghost btn-sm"><i data-lucide="log-out"></i></a></div>
+        </header>
+        <div class="page-content">
+            <div class="page-header">
+                <h1>Gestion tarifaire</h1>
+                <p>Grilles de prix, MOQ, règles commerciales et validation des prix.</p>
+                <div class="page-actions">
+                    <button class="btn btn-sm"><i data-lucide="plus"></i> Nouvelle grille</button>
+                </div>
+            </div>
+
+            <div class="grid-2" style="margin-bottom:24px;">
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Standard</span><span class="badge badge-success">Actif</span></div>
+                    <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:12px;">Grille par défaut appliquée à tous les clients.</p>
+                    <div style="display:grid;gap:6px;font-size:0.85rem;">
+                        <div style="display:flex;justify-content:space-between;"><span>Marge appliquée</span><strong>Coût +35%</strong></div>
+                        <div style="display:flex;justify-content:space-between;"><span>MOQ standard</span><strong>2 pièces</strong></div>
+                        <div style="display:flex;justify-content:space-between;"><span>Délai livraison</span><strong>4-6 semaines</strong></div>
+                        <div style="display:flex;justify-content:space-between;"><span>Validité prix</span><strong>30 jours</strong></div>
+                    </div>
+                    <button class="btn btn-sm btn-outline" style="margin-top:12px;">Modifier</button>
+                </div>
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Volume</span><span class="badge badge-info">Actif</span></div>
+                    <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:12px;">Pour clients avec volume annuel > 50 000 €.</p>
+                    <div style="display:grid;gap:6px;font-size:0.85rem;">
+                        <div style="display:flex;justify-content:space-between;"><span>Marge appliquée</span><strong>Coût +30%</strong></div>
+                        <div style="display:flex;justify-content:space-between;"><span>MOQ standard</span><strong>10 pièces</strong></div>
+                        <div style="display:flex;justify-content:space-between;"><span>Délai livraison</span><strong>3-5 semaines</strong></div>
+                        <div style="display:flex;justify-content:space-between;"><span>Validité prix</span><strong>45 jours</strong></div>
+                    </div>
+                    <button class="btn btn-sm btn-outline" style="margin-top:12px;">Modifier</button>
+                </div>
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Prescription</span><span class="badge badge-neutral">Actif</span></div>
+                    <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:12px;">Réservé aux architectes et prescripteurs.</p>
+                    <div style="display:grid;gap:6px;font-size:0.85rem;">
+                        <div style="display:flex;justify-content:space-between;"><span>Marge appliquée</span><strong>Coût +25%</strong></div>
+                        <div style="display:flex;justify-content:space-between;"><span>MOQ standard</span><strong>1 pièce</strong></div>
+                        <div style="display:flex;justify-content:space-between;"><span>Délai livraison</span><strong>2-4 semaines</strong></div>
+                        <div style="display:flex;justify-content:space-between;"><span>Validité prix</span><strong>60 jours</strong></div>
+                    </div>
+                    <button class="btn btn-sm btn-outline" style="margin-top:12px;">Modifier</button>
+                </div>
+                <div class="card">
+                    <div class="card-header"><span class="card-title">Projet</span><span class="badge badge-warning">Sur devis</span></div>
+                    <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:12px;">Projets d'aménagement sur-mesure.</p>
+                    <div style="display:grid;gap:6px;font-size:0.85rem;">
+                        <div style="display:flex;justify-content:space-between;"><span>Marge appliquée</span><strong>Sur devis</strong></div>
+                        <div style="display:flex;justify-content:space-between;"><span>MOQ standard</span><strong>1 pièce</strong></div>
+                        <div style="display:flex;justify-content:space-between;"><span>Délai livraison</span><strong>À définir</strong></div>
+                        <div style="display:flex;justify-content:space-between;"><span>Validité prix</span><strong>15 jours</strong></div>
+                    </div>
+                    <button class="btn btn-sm btn-outline" style="margin-top:12px;">Modifier</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header"><span class="card-title">Règles de validation des prix</span></div>
+                <div class="table-wrap" style="border:none;">
+                    <table>
+                        <thead><tr><th>Règle</th><th>Condition</th><th>Action</th><th>Statut</th></tr></thead>
+                        <tbody>
+                            <tr><td>Seuil remise max</td><td>Remise > 15%</td><td>Validation direction requise</td><td><span class="badge badge-success">Actif</span></td></tr>
+                            <tr><td>Marge minimum</td><td>Marge < 20%</td><td>Blocage automatique</td><td><span class="badge badge-success">Actif</span></td></tr>
+                            <tr><td>Promo saisonnière</td><td>Collections de saison</td><td>Remise auto -10%</td><td><span class="badge badge-info">Planifié</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
+            <input class="search-overlay-input" id="searchOverlayInput" type="text" placeholder="Rechercher un produit, une référence…" autofocus>
+            <button class="search-overlay-close" id="searchOverlayClose"><i data-lucide="x"></i></button>
+        </div>
+    </div>
+    <nav class="mobile-bottom-nav">
+        <a href="../dashboard.html" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Accueil</span></a>
+        <a href="../catalogue.html" data-page="catalogue"><i data-lucide="package"></i><span>Catalogue</span></a>
+        <a href="../devis.html" data-page="devis"><i data-lucide="file-text"></i><span>Devis</span></a>
+        <a href="../compte.html" data-page="compte"><i data-lucide="user"></i><span>Compte</span></a>
+    </nav>
+    <button class="fab" id="fabBtn" onclick="window.location.href='../devis.html'" aria-label="Nouveau devis">
+        <i data-lucide="plus"></i>
+    </button>
+</body>
+</html>

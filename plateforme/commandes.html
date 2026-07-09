@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Commandes — VOL.08 B2B</title><link rel="stylesheet" href="../assets/css/style.css"><link rel="stylesheet" href="../assets/css/plateforme.css"><script src="https://unpkg.com/lucide@latest"></script></head>
+<body class="plateforme-body">
+<header class="plateforme-header">
+<div class="plateforme-header-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Plateforme B2B</span></div>
+<nav style="display:flex;gap:1.25rem;font-size:0.85rem;">
+<a href="dashboard.html" style="color:var(--text-secondary);">Dashboard</a>
+<a href="catalogue.html" style="color:var(--text-secondary);">Catalogue</a>
+<a href="devis.html" style="color:var(--text-secondary);">Devis</a>
+<a href="commandes.html" style="font-weight:500;">Commandes</a>
+<a href="support.html" style="color:var(--text-secondary);">Support</a>
+</nav>
+<div class="plateforme-header-user"><span id="clientName" style="font-size:0.85rem;"></span><a href="#" onclick="PLATFORME_UTILS.logout()" style="font-size:0.8rem;color:#999;text-decoration:underline;margin-left:0.75rem;">Déconnexion</a></div>
+</header>
+<main class="plateforme-main">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;"><h1 style="font-size:1.6rem;margin:0;">Mes commandes</h1><span id="cmdCount" style="color:var(--text-secondary);font-size:0.9rem;"></span></div>
+<div class="admin-table-wrap" style="background:#fff;">
+<table><thead><tr><th>Réf.</th><th>Date</th><th>Montant</th><th>Articles</th><th>Statut</th><th>Actions</th></tr></thead><tbody id="commandesBody"></tbody></table>
+</div>
+</main>
+<script src="../assets/js/plateforme.js"></script>
+<script>
+const session=PLATFORME_UTILS.requireAuth();
+const user=PLATFORME_UTILS.getUserInfo();
+if(user) document.getElementById('clientName').textContent=user.prenom+' '+user.nom;
+function render(){
+const cmds=JSON.parse(localStorage.getItem('vol08_commandes')||'[]');
+const mesCommandes=user?cmds.filter(c=>c.email===user.email):cmds;
+document.getElementById('cmdCount').textContent=mesCommandes.length+' commande'+(mesCommandes.length>1?'s':'');
+const tbody=document.getElementById('commandesBody');
+if(!mesCommandes.length){tbody.innerHTML='<tr><td colspan="6" style="text-align:center;color:#999;padding:3rem;">Aucune commande</td></tr>';return;}
+tbody.innerHTML=mesCommandes.map(c=>`<tr>
+<td style="font-weight:500;">${c.id}</td>
+<td style="font-size:0.85rem;color:#999;">${new Date(c.date).toLocaleDateString('fr-FR')}</td>
+<td style="font-weight:500;">${(c.montant).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})}</td>
+<td>${c.articles}</td>
+<td><span class="admin-badge ${c.status}">${c.status==='livree'?'Livrée':c.status==='en_cours'?'En cours':c.status==='annulee'?'Annulée':c.status}</span></td>
+<td><button class="admin-btn-sm outline">Détails</button></td>
+</tr>`).join('');
+}
+render();
+</script>
+</body></html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1c1c16">
+    <title>Favoris & sélections — VOL.08</title>
+    <link rel="stylesheet" href="assets/css/private.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/svg+xml" href="assets/img/logo%20Vol.08.svg">
+</head>
+<body data-page="selections">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo"><img src="assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Espace Pro</span></div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-label">Navigation</div>
+            <a href="dashboard.html" class="sidebar-item"><i data-lucide="layout-dashboard"></i> Tableau de bord</a>
+            <a href="catalogue.html" class="sidebar-item"><i data-lucide="package"></i> Catalogue</a>
+            <a href="selections.html" class="sidebar-item active"><i data-lucide="heart"></i> Favoris & sélections</a>
+            <a href="devis.html" class="sidebar-item"><i data-lucide="file-text"></i> Panier & devis</a>
+            <a href="commandes.html" class="sidebar-item"><i data-lucide="truck"></i> Commandes</a>
+            <a href="compte.html" class="sidebar-item"><i data-lucide="user"></i> Mon compte</a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">KB</div>
+            <div class="sidebar-user-info"><div class="sidebar-user-name">Karim Benali</div><div class="sidebar-user-role">Commercial • Benali Design</div></div>
+        </div>
+    </aside>
+    <div class="main-area">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
+                <div class="topbar-search"><i data-lucide="search"></i><input type="text" placeholder="Rechercher…"></div>
+            </div>
+            <div class="topbar-right">
+                <a href="index.html" class="btn btn-ghost btn-sm"><i data-lucide="log-out"></i></a>
+            </div>
+        </header>
+        <div class="page-content">
+            <div class="page-header">
+                <h1>Favoris & sélections</h1>
+                <p>Retrouvez vos produits sauvegardés et vos sélections par projet ou client.</p>
+            </div>
+
+            <div class="tabs">
+                <button class="tab active" data-tab="favorites">Favoris (16)</button>
+                <button class="tab" data-tab="selections">Sélections (4)</button>
+            </div>
+
+            <div id="favorites" class="tab-content" style="display:block;">
+                <div class="grid-4">
+                    <div class="catalog-card" onclick="window.location.href='produit.html'">
+                        <div class="catalog-card-img"><img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection+1+-+T.ZANE/02b26f0a-c9db-4b63-8bb9-19c51b7d7e85.webp" alt="" loading="lazy"></div>
+                        <div class="catalog-card-body">
+                            <div class="catalog-card-ref">TZANE-001</div>
+                            <div class="catalog-card-name">Table basse T.ZANE</div>
+                            <div class="catalog-card-price">890 € HT</div>
+                        </div>
+                    </div>
+                    <div class="catalog-card" onclick="window.location.href='produit.html'">
+                        <div class="catalog-card-img"><img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_3.webp" alt="" loading="lazy"></div>
+                        <div class="catalog-card-body">
+                            <div class="catalog-card-ref">UNITE-001</div>
+                            <div class="catalog-card-name">Canapé U.NITE 3 places</div>
+                            <div class="catalog-card-price">2 450 € HT</div>
+                        </div>
+                    </div>
+                    <div class="catalog-card" onclick="window.location.href='produit.html'">
+                        <div class="catalog-card-img"><img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_5.webp" alt="" loading="lazy"></div>
+                        <div class="catalog-card-body">
+                            <div class="catalog-card-ref">LUMIZE-001</div>
+                            <div class="catalog-card-name">Suspension L.UMIZE</div>
+                            <div class="catalog-card-price">320 € HT</div>
+                        </div>
+                    </div>
+                    <div class="catalog-card" onclick="window.location.href='produit.html'">
+                        <div class="catalog-card-img"><img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_7.webp" alt="" loading="lazy"></div>
+                        <div class="catalog-card-body">
+                            <div class="catalog-card-ref">DCORE-001</div>
+                            <div class="catalog-card-name">Vase D.CORE</div>
+                            <div class="catalog-card-price">180 € HT</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="selections" class="tab-content" style="display:none;">
+                <div class="selection-grid">
+                    <div class="selection-card">
+                        <div class="selection-card-title">Projet Hôtel Palm</div>
+                        <div class="selection-card-count">8 produits</div>
+                        <div class="selection-card-thumbs">
+                            <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection+1+-+T.ZANE/02b26f0a-c9db-4b63-8bb9-19c51b7d7e85.webp" alt="">
+                            <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_3.webp" alt="">
+                            <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_5.webp" alt="">
+                        </div>
+                        <div style="margin-top:12px;display:flex;gap:8px;">
+                            <button class="btn btn-sm">Demander devis</button>
+                            <button class="btn btn-sm btn-outline">Partager</button>
+                        </div>
+                    </div>
+                    <div class="selection-card">
+                        <div class="selection-card-title">Showroom Lyon</div>
+                        <div class="selection-card-count">5 produits</div>
+                        <div class="selection-card-thumbs">
+                            <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_2.webp" alt="">
+                            <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_4.webp" alt="">
+                            <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_6.webp" alt="">
+                        </div>
+                        <div style="margin-top:12px;display:flex;gap:8px;">
+                            <button class="btn btn-sm">Demander devis</button>
+                            <button class="btn btn-sm btn-outline">Partager</button>
+                        </div>
+                    </div>
+                    <div class="selection-card">
+                        <div class="selection-card-title">Bureau Modern</div>
+                        <div class="selection-card-count">12 produits</div>
+                        <div class="selection-card-thumbs">
+                            <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection+1+-+T.ZANE/02b26f0a-c9db-4b63-8bb9-19c51b7d7e85.webp" alt="">
+                            <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_5.webp" alt="">
+                            <img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_8.webp" alt="">
+                        </div>
+                        <div style="margin-top:12px;display:flex;gap:8px;">
+                            <button class="btn btn-sm">Demander devis</button>
+                            <button class="btn btn-sm btn-outline">Partager</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/app.js"></script>
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
+            <input class="search-overlay-input" id="searchOverlayInput" type="text" placeholder="Rechercher un produit, une référence…" autofocus>
+            <button class="search-overlay-close" id="searchOverlayClose"><i data-lucide="x"></i></button>
+        </div>
+    </div>
+    <nav class="mobile-bottom-nav">
+        <a href="../dashboard.html" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Accueil</span></a>
+        <a href="../catalogue.html" data-page="catalogue"><i data-lucide="package"></i><span>Catalogue</span></a>
+        <a href="../devis.html" data-page="devis"><i data-lucide="file-text"></i><span>Devis</span></a>
+        <a href="../compte.html" data-page="compte"><i data-lucide="user"></i><span>Compte</span></a>
+    </nav>
+    <button class="fab" id="fabBtn" onclick="window.location.href='./devis.html'" aria-label="Nouveau devis">
+        <i data-lucide="plus"></i>
+    </button>
+</body>
+</html>

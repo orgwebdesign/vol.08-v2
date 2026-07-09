@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Mon compte — VOL.08 B2B</title><link rel="stylesheet" href="../assets/css/style.css"><link rel="stylesheet" href="../assets/css/plateforme.css"><script src="https://unpkg.com/lucide@latest"></script>
+<style>.compte-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:800px;}
+.compte-section{background:#fff;border:1px solid var(--border-color);padding:2rem;}
+.compte-section h3{font-size:1rem;margin-bottom:1.25rem;}
+.compte-info{display:grid;gap:1rem;}
+.compte-info div strong{display:block;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-secondary);margin-bottom:0.2rem;}
+@media(max-width:768px){.compte-grid{grid-template-columns:1fr;}}</style>
+</head>
+<body class="plateforme-body">
+<header class="plateforme-header">
+<div class="plateforme-header-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Plateforme B2B</span></div>
+<nav style="display:flex;gap:1.25rem;font-size:0.85rem;">
+<a href="dashboard.html" style="color:var(--text-secondary);">Dashboard</a>
+<a href="catalogue.html" style="color:var(--text-secondary);">Catalogue</a>
+<a href="devis.html" style="color:var(--text-secondary);">Devis</a>
+<a href="commandes.html" style="color:var(--text-secondary);">Commandes</a>
+<a href="compte.html" style="font-weight:500;">Compte</a>
+</nav>
+<div class="plateforme-header-user"><span id="clientName" style="font-size:0.85rem;"></span><a href="#" onclick="PLATFORME_UTILS.logout()" style="font-size:0.8rem;color:#999;text-decoration:underline;margin-left:0.75rem;">Déconnexion</a></div>
+</header>
+<main class="plateforme-main">
+<h1 style="font-size:1.6rem;margin-bottom:2rem;">Mon compte</h1>
+<div class="compte-grid">
+<div class="compte-section"><h3>Profil</h3><div class="compte-info"><div><strong>Société</strong><span id="cSociete"></span></div><div><strong>Contact</strong><span id="cContact"></span></div><div><strong>Email</strong><span id="cEmail"></span></div><div><strong>Statut</strong><span id="cStatut"></span></div><div><strong>Pays</strong><span id="cPays"></span></div></div></div>
+<div class="compte-section"><h3>Préférences</h3><div class="compte-info"><div class="form-group"><label>Notifications email</label><select style="width:100%;padding:10px;border:1px solid var(--border-color);font-family:var(--font-primary);"><option>Activé</option><option>Désactivé</option></select></div><div class="form-group"><label>Langue</label><select style="width:100%;padding:10px;border:1px solid var(--border-color);font-family:var(--font-primary);"><option>Français</option><option>English</option><option>العربية</option></select></div><button class="btn btn-black" style="margin-top:0.5rem;" onclick="alert('Préférences mises à jour')">Enregistrer</button></div></div>
+<div class="compte-section" style="grid-column:1/-1;"><h3>Utilisateurs associés</h3><p style="color:var(--text-secondary);font-size:0.9rem;">Gérez les utilisateurs de votre entreprise ayant accès à la plateforme.</p><button class="btn btn-outline" style="margin-top:1rem;" onclick="alert('Fonctionnalité à venir')">+ Ajouter un utilisateur</button></div>
+</div>
+</main>
+<script src="../assets/js/plateforme.js"></script>
+<script>
+const session=PLATFORME_UTILS.requireAuth();
+const user=PLATFORME_UTILS.getUserInfo();
+if(user){
+document.getElementById('clientName').textContent=user.prenom+' '+user.nom;
+document.getElementById('cSociete').textContent=user.entreprise;
+document.getElementById('cContact').textContent=user.prenom+' '+user.nom;
+document.getElementById('cEmail').textContent=user.email;
+document.getElementById('cStatut').textContent=user.statut||'—';
+document.getElementById('cPays').textContent=user.pays||'—';
+}
+</script>
+</body></html>

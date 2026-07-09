@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1c1c16">
+    <title>Espace commercial — VOL.08</title>
+    <link rel="stylesheet" href="../assets/css/private.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/logo%20Vol.08.svg">
+</head>
+<body data-page="commercial">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Espace Pro</span></div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-label">Espace commercial</div>
+            <a href="dashboard.html" class="sidebar-item"><i data-lucide="bar-chart"></i> Tableau de bord</a>
+            <a href="index.html" class="sidebar-item active"><i data-lucide="briefcase"></i> Portefeuille clients</a>
+            <a href="client.html" class="sidebar-item"><i data-lucide="user"></i> Client</a>
+            <a href="nouveau-client.html" class="sidebar-item"><i data-lucide="user-plus"></i> Nouveau client</a>
+            <a href="devis.html" class="sidebar-item"><i data-lucide="file-signature"></i> Devis express</a>
+            <a href="selections-partagees.html" class="sidebar-item"><i data-lucide="share-2"></i> Sélections partagées</a>
+            <a href="grilles-tarifaires.html" class="sidebar-item"><i data-lucide="tag"></i> Grilles tarifaires</a>
+            <a href="commandes.html" class="sidebar-item"><i data-lucide="truck"></i> Commandes</a>
+            <a href="relances.html" class="sidebar-item"><i data-lucide="bell"></i> Relances</a>
+            <a href="reporting.html" class="sidebar-item"><i data-lucide="pie-chart"></i> Reporting</a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">KB</div>
+            <div class="sidebar-user-info"><div class="sidebar-user-name">Karim Benali</div><div class="sidebar-user-role">Commercial • Benali Design</div></div>
+        </div>
+    </aside>
+    <div class="main-area">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
+                <div class="topbar-search"><i data-lucide="search"></i><input type="text" placeholder="Rechercher un client…"></div>
+            </div>
+            <div class="topbar-right"><a href="../index.html" class="btn btn-ghost btn-sm"><i data-lucide="log-out"></i></a></div>
+        </header>
+        <div class="page-content">
+            <div class="page-header">
+                <h1>Portefeuille clients</h1>
+                <p>Gérez vos clients, créez des comptes et suivez leur activité.</p>
+                <div class="page-actions">
+                    <button class="btn btn-sm" onclick="window.location.href='nouveau-client.html'"><i data-lucide="user-plus"></i> Nouveau client</button>
+                    <button class="btn btn-ghost btn-sm"><i data-lucide="download"></i> Exporter</button>
+                </div>
+            </div>
+
+            <div class="hub-nav">
+                <a href="https://vol-08-v2.vercel.app/" target="_blank" rel="noopener noreferrer" class="hub-card">
+                    <i data-lucide="home" style="width:32px;height:32px;"></i>
+                    <span class="hub-label">Accueil</span>
+                    <span class="hub-desc">Portail public VOL.08</span>
+                </a>
+                <a href="../dashboard.html" class="hub-card">
+                    <i data-lucide="user" style="width:32px;height:32px;"></i>
+                    <span class="hub-label">Espace Privé B2B</span>
+                    <span class="hub-desc">Catalogue, devis, commandes, support</span>
+                </a>
+                <a href="dashboard.html" class="hub-card active">
+                    <i data-lucide="briefcase" style="width:32px;height:32px;"></i>
+                    <span class="hub-label">Espace Commercial</span>
+                    <span class="hub-desc">Portefeuille, devis, relances, reporting</span>
+                </a>
+                <a href="../admin/index.html" class="hub-card">
+                    <i data-lucide="shield" style="width:32px;height:32px;"></i>
+                    <span class="hub-label">Administration</span>
+                    <span class="hub-desc">Produits, tarifs, clients, sécurité</span>
+                </a>
+            </div>
+
+            <div class="stats-grid" style="margin-bottom:24px;">
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">Clients actifs</span></div>
+                    <div class="stat-card-value">3</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">En attente</span></div>
+                    <div class="stat-card-value">1</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">À qualifier</span></div>
+                    <div class="stat-card-value">1</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-header"><span class="stat-card-label">CA total</span></div>
+                    <div class="stat-card-value">128 800 €</div>
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr><th>Client</th><th>SIRET</th><th>Ville</th><th>Commandes</th><th>CA total</th><th>Statut</th><th></th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Maison Dubois</strong></td><td>823 456 789 00012</td><td>Lyon</td><td>12</td><td>42 300 €</td>
+                            <td><span class="badge badge-success">Actif</span></td>
+                            <td><a href="client.html" style="font-size:0.78rem;color:var(--text-secondary);">Voir</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hôtel Royal Palm</strong></td><td>912 345 678 00023</td><td>Marrakech</td><td>8</td><td>67 500 €</td>
+                            <td><span class="badge badge-success">Actif</span></td>
+                            <td><a href="client.html" style="font-size:0.78rem;color:var(--text-secondary);">Voir</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Espace Carré</strong></td><td>734 567 890 00034</td><td>Paris</td><td>5</td><td>12 800 €</td>
+                            <td><span class="badge badge-success">Actif</span></td>
+                            <td><a href="client.html" style="font-size:0.78rem;color:var(--text-secondary);">Voir</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Galerie Noor</strong></td><td>645 678 901 00045</td><td>Casablanca</td><td>3</td><td>6 200 €</td>
+                            <td><span class="badge badge-warning">En attente</span></td>
+                            <td><a href="client.html" style="font-size:0.78rem;color:var(--text-secondary);">Voir</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Atelier Moderne</strong></td><td>556 789 012 00056</td><td>Bordeaux</td><td>0</td><td>0 €</td>
+                            <td><span class="badge badge-neutral">À qualifier</span></td>
+                            <td><a href="#" style="font-size:0.78rem;color:var(--text-secondary);">Qualifier</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <style>
+        .hub-nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px;}
+        .hub-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:28px 16px;border:1px solid transparent;background:var(--card-bg);border-radius:12px;cursor:pointer;text-decoration:none;color:var(--text);transition:transform .2s,box-shadow .2s;box-shadow:0 1px 2px rgba(0,0,0,.03);}
+        .hub-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.05);}
+        .hub-card.active{background:var(--dark);color:#fff;border-color:transparent;}
+        .hub-card.active .hub-desc{color:rgba(255,255,255,.65);}
+        .hub-label{font-size:0.95rem;font-weight:600;}
+        .hub-desc{font-size:0.78rem;color:var(--text-muted);text-align:center;}
+    </style>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
+            <input class="search-overlay-input" id="searchOverlayInput" type="text" placeholder="Rechercher un produit, une référence…" autofocus>
+            <button class="search-overlay-close" id="searchOverlayClose"><i data-lucide="x"></i></button>
+        </div>
+    </div>
+    <nav class="mobile-bottom-nav">
+        <a href="../dashboard.html" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Accueil</span></a>
+        <a href="../catalogue.html" data-page="catalogue"><i data-lucide="package"></i><span>Catalogue</span></a>
+        <a href="../devis.html" data-page="devis"><i data-lucide="file-text"></i><span>Devis</span></a>
+        <a href="../compte.html" data-page="compte"><i data-lucide="user"></i><span>Compte</span></a>
+    </nav>
+    <button class="fab" id="fabBtn" onclick="window.location.href='../devis.html'" aria-label="Nouveau devis">
+        <i data-lucide="plus"></i>
+    </button>
+</body>
+</html>

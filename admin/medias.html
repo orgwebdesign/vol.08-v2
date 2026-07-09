@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1c1c16">
+    <title>Médias & documents — VOL.08</title>
+    <link rel="stylesheet" href="../assets/css/private.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/svg+xml" href="../assets/img/logo%20Vol.08.svg">
+</head>
+<body data-page="admin">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Espace Pro</span></div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-label">Administration</div>
+            <a href="index.html" class="sidebar-item"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+            <a href="produits.html" class="sidebar-item"><i data-lucide="package"></i> Produits</a>
+            <a href="medias.html" class="sidebar-item active"><i data-lucide="image"></i> Médias & documents</a>
+            <a href="clients.html" class="sidebar-item"><i data-lucide="users"></i> Clients</a>
+            <a href="tarifs.html" class="sidebar-item"><i data-lucide="tag"></i> Tarifs & grilles</a>
+            <a href="devis.html" class="sidebar-item"><i data-lucide="file-signature"></i> Devis</a>
+            <a href="commandes.html" class="sidebar-item"><i data-lucide="truck"></i> Commandes</a>
+            <a href="reporting.html" class="sidebar-item"><i data-lucide="bar-chart"></i> Reporting</a>
+            <a href="integrations.html" class="sidebar-item"><i data-lucide="layers"></i> Intégrations</a>
+            <a href="securite.html" class="sidebar-item"><i data-lucide="shield"></i> Sécurité</a>
+            <a href="parametres.html" class="sidebar-item"><i data-lucide="settings"></i> Paramètres</a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">AD</div>
+            <div class="sidebar-user-info"><div class="sidebar-user-name">Admin VOL.08</div><div class="sidebar-user-role">Super admin</div></div>
+        </div>
+    </aside>
+    <div class="main-area">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button type="button" class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
+                <div class="topbar-search"><i data-lucide="search"></i><input type="text" placeholder="Rechercher un média…"></div>
+            </div>
+            <div class="topbar-right"><a href="../index.html" class="btn btn-ghost btn-sm"><i data-lucide="log-out"></i></a></div>
+        </header>
+        <div class="page-content">
+            <div class="page-header">
+                <h1>Médias & documents</h1>
+                <p>Galerie d'images, fiches techniques PDF, catalogues et ressources documentaires.</p>
+                <div class="page-actions">
+                    <button class="btn btn-sm"><i data-lucide="upload"></i> Importer</button>
+                    <button class="btn btn-sm btn-outline"><i data-lucide="folder-plus"></i> Nouveau dossier</button>
+                </div>
+            </div>
+
+            <div class="tabs" style="margin-bottom:24px;">
+                <button class="tab active">Images produits</button>
+                <button class="tab">Fiches techniques</button>
+                <button class="tab">Catalogues</button>
+                <button class="tab">Vidéos</button>
+            </div>
+
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-bottom:24px;">
+                <div class="media-thumb"><img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection+1+-+T.ZANE/02b26f0a-c9db-4b63-8bb9-19c51b7d7e85.webp" alt=""><div class="media-thumb-name">T.ZANE — Fauteuil</div></div>
+                <div class="media-thumb"><img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_2.webp" alt=""><div class="media-thumb-name">T.ZANE — Canapé</div></div>
+                <div class="media-thumb"><img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_3.webp" alt=""><div class="media-thumb-name">U.NITE — Table basse</div></div>
+                <div class="media-thumb"><img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_4.webp" alt=""><div class="media-thumb-name">U.NITE — Luminaire</div></div>
+                <div class="media-thumb"><img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_5.webp" alt=""><div class="media-thumb-name">Z.LIGE — Bibliothèque</div></div>
+                <div class="media-thumb"><img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_6.webp" alt=""><div class="media-thumb-name">Z.LIGE — Bureau</div></div>
+                <div class="media-thumb"><img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_8.webp" alt=""><div class="media-thumb-name">L.UMIZE — Lampadaire</div></div>
+                <div class="media-thumb"><img src="https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection+1+-+T.ZANE/02b26f0a-c9db-4b63-8bb9-19c51b7d7e85.webp" alt=""><div class="media-thumb-name">D.CORE — Chaise</div></div>
+            </div>
+
+            <div class="card">
+                <div class="card-header"><span class="card-title">Fiches techniques récentes</span></div>
+                <div class="table-wrap" style="border:none;">
+                    <table>
+                        <thead><tr><th>Fichier</th><th>Produit</th><th>Date</th><th>Taille</th><th></th></tr></thead>
+                        <tbody>
+                            <tr><td><i data-lucide="file-text" style="width:16px;height:16px;margin-right:6px;"></i>FT_TZANE_FAUTEUIL.pdf</td><td>Fauteuil T.ZANE</td><td>01/07/2025</td><td>1.4 Mo</td><td><button class="btn btn-sm btn-outline">Télécharger</button></td></tr>
+                            <tr><td><i data-lucide="file-text" style="width:16px;height:16px;margin-right:6px;"></i>FT_UNITE_TABLEBASSE.pdf</td><td>Table basse U.NITE</td><td>28/06/2025</td><td>0.9 Mo</td><td><button class="btn btn-sm btn-outline">Télécharger</button></td></tr>
+                            <tr><td><i data-lucide="file-text" style="width:16px;height:16px;margin-right:6px;"></i>CATALOGUE_VOL08_2025.pdf</td><td>Catalogue général</td><td>15/06/2025</td><td>24 Mo</td><td><button class="btn btn-sm btn-outline">Télécharger</button></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .media-thumb{cursor:pointer;border-radius:8px;overflow:hidden;background:var(--bg-alt);transition:transform .15s;}
+        .media-thumb:hover{transform:translateY(-2px);}
+        .media-thumb img{width:100%;aspect-ratio:1;object-fit:cover;display:block;}
+        .media-thumb-name{padding:8px 10px;font-size:0.8rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    </style>
+    <script src="../assets/js/data.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-overlay-header">
+            <input class="search-overlay-input" id="searchOverlayInput" type="text" placeholder="Rechercher un produit, une référence…" autofocus>
+            <button class="search-overlay-close" id="searchOverlayClose"><i data-lucide="x"></i></button>
+        </div>
+    </div>
+    <nav class="mobile-bottom-nav">
+        <a href="../dashboard.html" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Accueil</span></a>
+        <a href="../catalogue.html" data-page="catalogue"><i data-lucide="package"></i><span>Catalogue</span></a>
+        <a href="../devis.html" data-page="devis"><i data-lucide="file-text"></i><span>Devis</span></a>
+        <a href="../compte.html" data-page="compte"><i data-lucide="user"></i><span>Compte</span></a>
+    </nav>
+    <button class="fab" id="fabBtn" onclick="window.location.href='../devis.html'" aria-label="Nouveau devis">
+        <i data-lucide="plus"></i>
+    </button>
+</body>
+</html>
