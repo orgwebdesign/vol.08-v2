@@ -146,6 +146,15 @@
         .hub-card.active .hub-desc{color:rgba(255,255,255,.65);}
         .hub-label{font-size:0.95rem;font-weight:600;}
         .hub-desc{font-size:0.78rem;color:var(--text-muted);text-align:center;}
+        @media(max-width:480px){
+            .hub-nav{grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+            .hub-card{padding:16px 10px;gap:4px}
+            .hub-card i{width:24px!important;height:24px!important}
+            .hub-label{font-size:0.8rem}
+            .hub-desc{display:none}
+        }
+        .hub-label{font-size:0.95rem;font-weight:600;}
+        .hub-desc{font-size:0.78rem;color:var(--text-muted);text-align:center;}
     </style>
     <script src="../assets/js/data.js"></script>
     <script src="../assets/js/app.js"></script>

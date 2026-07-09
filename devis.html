@@ -6,6 +6,23 @@
     <meta name="theme-color" content="#1c1c16">
     <title>Panier & devis — VOL.08</title>
     <link rel="stylesheet" href="assets/css/private.css">
+    <style>
+        @media(max-width:480px){
+            .page-content{padding:16px 12px 80px}
+            .page-header h1{font-size:1.2rem}
+            .page-header p{font-size:0.82rem}
+            .card{padding:10px;overflow-x:auto}
+            .grid-2{grid-template-columns:1fr!important;gap:12px}
+            .form-row{grid-template-columns:1fr}
+            table,thead,tbody,th,td,tr{display:block}
+            thead{display:none}
+            table tr{border:1px solid var(--border-soft);border-radius:8px;padding:10px;margin-bottom:8px;background:var(--card-bg)}
+            table td{display:flex;justify-content:space-between;align-items:center;padding:4px 0;border:none;font-size:0.82rem;white-space:normal}
+            table td:before{content:attr(data-label);font-weight:600;color:var(--text-secondary);font-size:0.75rem}
+            table td:last-child{justify-content:flex-end;padding-top:6px;border-top:1px solid var(--border-soft);margin-top:4px}
+            table select{width:auto}
+        }
+    </style>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="icon" type="image/svg+xml" href="assets/img/logo%20Vol.08.svg">
 </head>
@@ -38,8 +55,9 @@
             </div>
         </header>
         <div class="page-content">
-            <div class="page-header">
-                <h1>Panier & demande de devis</h1>
+                <div class="page-header">
+                    <a href="javascript:history.back()" class="btn btn-ghost btn-sm" style="display:inline-flex;align-items:center;gap:6px;margin-bottom:8px;"><i data-lucide="arrow-left" style="width:16px;height:16px;"></i> Retour</a>
+                    <h1>Panier & demande de devis</h1>
                 <p>Consultez votre panier, ajustez les quantités et soumettez une demande de devis.</p>
             </div>
 
