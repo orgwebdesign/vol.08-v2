@@ -64,7 +64,7 @@
                 <button type="button" class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
                 <div class="topbar-search">
                     <i data-lucide="search"></i>
-                    <input type="text" placeholder="Rechercher un produit, une référence…">
+                    <input type="text" id="topbarSearchInput" placeholder="Rechercher un produit, une référence…">
                 </div>
             </div>
             <div class="topbar-right">
@@ -96,34 +96,48 @@
         </header>
 
         <div class="page-content">
-            <div class="page-header">
-                <h1>Tableau de bord</h1>
-                <p>Bienvenue, Karim. Voici un résumé de votre activité.</p>
-            </div>
 
-            <div class="hub-nav">
-                <a href="index.html" target="_self" class="hub-card">
-                    <i data-lucide="home" style="width:32px;height:32px;"></i>
-                    <span class="hub-label">Accueil</span>
-                    <span class="hub-desc">Portail public VOL.08</span>
+            <!-- ===== ACTIONS RAPIDES ===== -->
+            <div class="quick-actions">
+                <a href="devis.html" class="quick-action-btn">
+                    <i data-lucide="file-plus"></i>
+                    <span>Nouveau devis</span>
                 </a>
-                <a href="dashboard.html" class="hub-card active">
-                    <i data-lucide="user" style="width:32px;height:32px;"></i>
-                    <span class="hub-label">Espace Privé B2B</span>
-                    <span class="hub-desc">Catalogue, devis, commandes, support</span>
+                <a href="catalogue.html" class="quick-action-btn">
+                    <i data-lucide="package"></i>
+                    <span>Catalogue</span>
                 </a>
-                <a href="commercial/dashboard.html" class="hub-card">
-                    <i data-lucide="briefcase" style="width:32px;height:32px;"></i>
-                    <span class="hub-label">Espace Commercial</span>
-                    <span class="hub-desc">Portefeuille, devis, relances, reporting</span>
+                <a href="commandes.html" class="quick-action-btn">
+                    <i data-lucide="truck"></i>
+                    <span>Commandes</span>
                 </a>
-                <a href="admin/index.html" class="hub-card">
-                    <i data-lucide="shield" style="width:32px;height:32px;"></i>
-                    <span class="hub-label">Administration</span>
-                    <span class="hub-desc">Produits, tarifs, clients, sécurité</span>
+                <a href="commercial/" class="quick-action-btn">
+                    <i data-lucide="users"></i>
+                    <span>Clients</span>
                 </a>
             </div>
 
+            <!-- ===== CA TRACKER ===== -->
+            <div class="ca-tracker">
+                <div class="ca-tracker-header">
+                    <div>
+                        <div class="ca-tracker-label">Chiffre d'affaires — Juillet 2026</div>
+                        <div class="ca-tracker-amount">142 500 € <span class="ca-tracker-target">/ 200 000 € objectif</span></div>
+                    </div>
+                    <div class="ca-tracker-pct">71%</div>
+                </div>
+                <div class="ca-progress-bar">
+                    <div class="ca-progress-fill" style="width:71%"></div>
+                </div>
+                <div class="ca-tracker-details">
+                    <div class="ca-detail"><span class="ca-detail-value">18</span><span class="ca-detail-label">Commandes</span></div>
+                    <div class="ca-detail"><span class="ca-detail-value">24 300 €</span><span class="ca-detail-label">Panier moyen</span></div>
+                    <div class="ca-detail"><span class="ca-detail-value">+12%</span><span class="ca-detail-label">vs. mois dernier</span></div>
+                    <div class="ca-detail"><span class="ca-detail-value">57 500 €</span><span class="ca-detail-label">Reste à atteindre</span></div>
+                </div>
+            </div>
+
+            <!-- ===== STATS GRID ===== -->
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-card-header">
@@ -159,6 +173,7 @@
                 </div>
             </div>
 
+            <!-- ===== GRID 2 COL: COMMANDES + DEVIS ===== -->
             <div class="grid-2">
                 <div class="card">
                     <div class="card-header">
@@ -198,25 +213,123 @@
                     </div>
                 </div>
             </div>
+
+            <!-- ===== GRID 2 COL: ACTIVITÉ + TOP PRODUITS ===== -->
+            <div class="grid-2">
+                <!-- Activité récente -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Activité récente</span>
+                    </div>
+                    <div class="activity-timeline" id="activityTimeline"></div>
+                </div>
+                <!-- Top produits -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Top produits du mois</span>
+                        <a href="catalogue.html" style="font-size:0.82rem;color:var(--text-secondary);">Voir catalogue</a>
+                    </div>
+                    <div class="top-products" id="topProducts"></div>
+                </div>
+            </div>
+
+            <!-- ===== PRODUITS CONSULTÉS ===== -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Produits récemment consultés</span>
+                </div>
+                <div class="recent-products" id="recentProducts"></div>
+            </div>
+
+            <!-- ===== ALERTES STOCK ===== -->
+            <div class="card" id="stockAlertsCard">
+                <div class="card-header">
+                    <span class="card-title"><i data-lucide="alert-triangle" style="width:16px;height:16px;color:var(--warning);vertical-align:middle;margin-right:6px;"></i> Alertes stock</span>
+                </div>
+                <div class="stock-alerts" id="stockAlerts"></div>
+            </div>
+
         </div>
     </div>
 
     <style>
-        .hub-nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:32px;}
-        .hub-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:28px 16px;border:1px solid transparent;background:var(--card-bg);border-radius:12px;cursor:pointer;text-decoration:none;color:var(--text);transition:transform .2s,box-shadow .2s;box-shadow:0 1px 2px rgba(0,0,0,.03);}
-        .hub-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.05);}
-        .hub-card.active{background:var(--dark);color:#fff;border-color:transparent;}
-        .hub-card.active .hub-desc{color:rgba(255,255,255,.65);}
-        .hub-label{font-size:0.95rem;font-weight:600;}
-        .hub-desc{font-size:0.78rem;color:var(--text-muted);text-align:center;}
+        /* Quick actions */
+        .quick-actions{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;}
+        .quick-action-btn{display:flex;align-items:center;gap:8px;padding:12px 20px;background:var(--dark);color:#fff;font-size:0.88rem;font-weight:500;text-decoration:none;transition:opacity .2s;font-family:var(--font);}
+        .quick-action-btn:hover{opacity:.85;}
+        .quick-action-btn i{width:18px;height:18px;}
+
+        /* CA Tracker */
+        .ca-tracker{background:var(--dark);color:#fff;padding:28px 32px;margin-bottom:24px;}
+        .ca-tracker-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
+        .ca-tracker-label{font-size:0.82rem;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;}
+        .ca-tracker-amount{font-size:1.8rem;font-weight:600;}
+        .ca-tracker-target{font-size:0.9rem;font-weight:400;color:rgba(255,255,255,.5);}
+        .ca-tracker-pct{font-size:2.2rem;font-weight:700;line-height:1;}
+        .ca-progress-bar{width:100%;height:6px;background:rgba(255,255,255,.15);margin-bottom:20px;}
+        .ca-progress-fill{height:100%;background:#fff;transition:width .8s ease;}
+        .ca-tracker-details{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;border-top:1px solid rgba(255,255,255,.1);padding-top:16px;}
+        .ca-detail{display:flex;flex-direction:column;gap:2px;}
+        .ca-detail-value{font-size:1rem;font-weight:600;}
+        .ca-detail-label{font-size:0.75rem;color:rgba(255,255,255,.5);}
+
+        /* Activity timeline */
+        .activity-timeline{display:flex;flex-direction:column;}
+        .activity-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-soft);align-items:flex-start;}
+        .activity-item:last-child{border-bottom:none;}
+        .activity-dot{width:8px;height:8px;border-radius:50%;margin-top:6px;flex-shrink:0;}
+        .activity-dot.green{background:#2e7d32;}
+        .activity-dot.blue{background:#1565c0;}
+        .activity-dot.orange{background:#e65100;}
+        .activity-dot.gray{background:#999;}
+        .activity-text{font-size:0.88rem;color:var(--text);line-height:1.4;}
+        .activity-time{font-size:0.75rem;color:var(--text-muted);margin-top:2px;}
+
+        /* Top products */
+        .top-products{display:flex;flex-direction:column;}
+        .top-product{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-soft);}
+        .top-product:last-child{border-bottom:none;}
+        .top-product-rank{width:24px;height:24px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:600;color:var(--text-muted);flex-shrink:0;}
+        .top-product-img{width:44px;height:44px;object-fit:cover;flex-shrink:0;}
+        .top-product-info{flex:1;min-width:0;}
+        .top-product-name{font-size:0.88rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+        .top-product-sold{font-size:0.75rem;color:var(--text-muted);}
+        .top-product-revenue{font-size:0.88rem;font-weight:500;white-space:nowrap;}
+
+        /* Recent products */
+        .recent-products{display:flex;gap:16px;overflow-x:auto;padding-bottom:8px;}
+        .recent-product{min-width:180px;max-width:180px;border:1px solid var(--border-soft);flex-shrink:0;text-decoration:none;color:var(--text);transition:border-color .2s;}
+        .recent-product:hover{border-color:var(--text);}
+        .recent-product-img{width:100%;height:120px;object-fit:cover;display:block;}
+        .recent-product-body{padding:10px 12px;}
+        .recent-product-ref{font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;}
+        .recent-product-name{font-size:0.85rem;font-weight:500;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+        /* Stock alerts */
+        .stock-alerts{display:flex;flex-direction:column;}
+        .stock-alert{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-soft);}
+        .stock-alert:last-child{border-bottom:none;}
+        .stock-alert-img{width:40px;height:40px;object-fit:cover;flex-shrink:0;}
+        .stock-alert-info{flex:1;}
+        .stock-alert-name{font-size:0.88rem;font-weight:500;}
+        .stock-alert-ref{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;}
+        .stock-alert-count{font-size:0.85rem;font-weight:600;color:var(--warning);white-space:nowrap;}
+
+        /* Responsive */
+        @media(max-width:768px){
+            .ca-tracker-details{grid-template-columns:repeat(2,1fr);}
+            .quick-actions{gap:8px;}
+            .quick-action-btn{padding:10px 14px;font-size:0.82rem;}
+        }
         @media(max-width:480px){
-            .hub-nav{grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
-            .hub-card{padding:16px 10px;gap:4px}
-            .hub-card i{width:24px!important;height:24px!important}
-            .hub-label{font-size:0.8rem}
-            .hub-desc{display:none}
+            .ca-tracker{padding:20px;}
+            .ca-tracker-amount{font-size:1.4rem;}
+            .ca-tracker-pct{font-size:1.6rem;}
+            .quick-action-btn span{display:none;}
+            .quick-action-btn{padding:10px;}
         }
     </style>
+
     <script src="assets/js/data.js"></script>
     <script src="assets/js/app.js"></script>
     <div class="search-overlay" id="searchOverlay">
@@ -226,10 +339,10 @@
         </div>
     </div>
     <nav class="mobile-bottom-nav">
-        <a href="../dashboard.html" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Accueil</span></a>
-        <a href="../catalogue.html" data-page="catalogue"><i data-lucide="package"></i><span>Catalogue</span></a>
-        <a href="../devis.html" data-page="devis"><i data-lucide="file-text"></i><span>Devis</span></a>
-        <a href="../compte.html" data-page="compte"><i data-lucide="user"></i><span>Compte</span></a>
+        <a href="dashboard.html" data-page="dashboard"><i data-lucide="layout-dashboard"></i><span>Accueil</span></a>
+        <a href="catalogue.html" data-page="catalogue"><i data-lucide="package"></i><span>Catalogue</span></a>
+        <a href="devis.html" data-page="devis"><i data-lucide="file-text"></i><span>Devis</span></a>
+        <a href="compte.html" data-page="compte"><i data-lucide="user"></i><span>Compte</span></a>
     </nav>
     <button class="fab" id="fabBtn" onclick="window.location.href='./devis.html'" aria-label="Nouveau devis">
         <i data-lucide="plus"></i>
@@ -299,6 +412,7 @@
     </style>
 
     <script>
+        // ===== CHATBOT =====
         (function(){
             const toggle=document.getElementById('chatToggle');
             const windowEl=document.getElementById('chatWindow');
@@ -327,14 +441,13 @@
                     const r=pending[0];
                     return '** Dernière demande en attente **\nRéf : '+r.ref+'\nSociété : '+r.entreprise+'\nContact : '+r.prenom+' '+r.nom+'\nEmail : '+r.email+'\nTél : '+r.telephone+'\nDate : '+new Date(r.date).toLocaleDateString('fr-FR')+'\n→ Rendez-vous dans Administration > Clients pour valider.';
                 }
-                if(m.includes('commande')||m.includes('cmd'))return 'Pour suivre vos commandes, rendez-vous dans l\'onglet "Commandes" de votre tableau de bord. Vous y verrez le statut, la date et le montant de chaque commande.';
-                if(m.includes('devis')||m.includes('panier'))return 'Vous pouvez créer un devis personnalisé depuis l\'onglet "Panier & devis". Sélectionnez vos produits et générez un devis en un clic.';
-                if(m.includes('prix')||m.includes('tarif')||m.includes('combien'))return 'Les prix sont affichés directement dans le catalogue privé. Connectez-vous pour voir nos tarifs B2B exclusifs.';
-                if(m.includes('catalogue')||m.includes('produit'))return 'Notre catalogue privé est disponible dans l\'onglet "Catalogue". Vous pouvez filtrer par collection, catégorie ou rechercher par référence.';
-                if(m.includes('compte')||m.includes('profil'))return 'Vous pouvez gérer vos informations dans "Mon compte". Modifiez votre profil, adresse et préférences.';
-                if(m.includes('livraison')||m.includes('délai'))return 'Nos délais de livraison sont de 2 à 3 semaines pour les produits standards. Les commandes spéciales peuvent nécessiter 4 à 6 semaines.';
-                if(m.includes('bonjour')||m.includes('salut')||m.includes('hello'))return 'Bonjour ! Comment puis-je vous aider aujourd\'hui ?\n\n💡 Tapez "demande" pour voir la prochaine demande B2B en attente de validation.';
-                return 'Merci pour votre message. Un conseiller VOL.08 vous répondra dans les plus brefs délais. Vous pouvez aussi contacter le support via l\'onglet "Support".\n\n💡 Tapez "demande" pour consulter les demandes B2B en attente.';
+                if(m.includes('commande')||m.includes('cmd'))return 'Pour suivre vos commandes, rendez-vous dans l\'onglet "Commandes" de votre tableau de bord.';
+                if(m.includes('devis')||m.includes('panier'))return 'Vous pouvez créer un devis personnalisé depuis l\'onglet "Panier & devis".';
+                if(m.includes('prix')||m.includes('tarif'))return 'Les prix sont affichés dans le catalogue privé. Connectez-vous pour voir nos tarifs B2B exclusifs.';
+                if(m.includes('catalogue')||m.includes('produit'))return 'Notre catalogue privé est disponible dans l\'onglet "Catalogue".';
+                if(m.includes('stock'))return 'Consultez la section "Alertes stock" en bas du tableau de bord pour voir les produits en rupture.';
+                if(m.includes('bonjour')||m.includes('salut'))return 'Bonjour ! Comment puis-je vous aider aujourd\'hui ?';
+                return 'Merci pour votre message. Un conseiller VOL.08 vous répondra rapidement.';
             }
 
             function sendMessage(){
@@ -348,6 +461,108 @@
             sendBtn.addEventListener('click',sendMessage);
             input.addEventListener('keydown',e=>{if(e.key==='Enter')sendMessage()});
         })();
+
+        // ===== DASHBOARD DYNAMICS =====
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Activity timeline ---
+            const activities = [
+                { color: 'green', text: 'Commande <strong>CMD-2026-0042</strong> livrée — Maison Dubois', time: 'Il y a 2h' },
+                { color: 'blue', text: 'Devis <strong>DEV-2026-015</strong> validé — Architecture Z', time: 'Il y a 5h' },
+                { color: 'orange', text: 'Nouvelle demande B2B — <strong>Galerie Noor</strong>', time: 'Hier' },
+                { color: 'blue', text: 'Devis <strong>DEV-2026-014</strong> envoyé — Bureau d\'étude LM', time: 'Il y a 2j' },
+                { color: 'green', text: 'Commande <strong>CMD-2026-0041</strong> expédiée — Hôtel Royal Palm', time: 'Il y a 3j' },
+                { color: 'gray', text: 'Nouveau produit ajouté — <strong>Bougie B.OUGY</strong>', time: 'Il y a 5j' },
+            ];
+            const timelineEl = document.getElementById('activityTimeline');
+            if (timelineEl) {
+                timelineEl.innerHTML = activities.map(a => `
+                    <div class="activity-item">
+                        <div class="activity-dot ${a.color}"></div>
+                        <div>
+                            <div class="activity-text">${a.text}</div>
+                            <div class="activity-time">${a.time}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // --- Top products ---
+            const topProducts = [
+                { ref: 'UNITE-001', name: 'Canapé U.NITE 3 places', sold: 12, revenue: '29 400 €', img: 'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_3.webp' },
+                { ref: 'ZLIGE-001', name: 'Bibliothèque Z.LIGE', sold: 9, revenue: '15 120 €', img: 'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_2.webp' },
+                { ref: 'TZANE-001', name: 'Table basse T.ZANE', sold: 8, revenue: '7 120 €', img: 'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection+1+-+T.ZANE/02b26f0a-c9db-4b63-8bb9-19c51b7d7e85.webp' },
+                { ref: 'TCUITE-001', name: 'Fauteuil T.CUITE', sold: 5, revenue: '6 750 €', img: 'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_4.webp' },
+                { ref: 'LUMIZE-001', name: 'Suspension L.UMIZE', sold: 14, revenue: '4 480 €', img: 'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_5.webp' },
+            ];
+            const topEl = document.getElementById('topProducts');
+            if (topEl) {
+                topEl.innerHTML = topProducts.map((p, i) => `
+                    <div class="top-product">
+                        <div class="top-product-rank">${i + 1}</div>
+                        <img class="top-product-img" src="${p.img}" alt="${p.name}">
+                        <div class="top-product-info">
+                            <div class="top-product-name">${p.name}</div>
+                            <div class="top-product-sold">${p.sold} vendus</div>
+                        </div>
+                        <div class="top-product-revenue">${p.revenue}</div>
+                    </div>
+                `).join('');
+            }
+
+            // --- Recently viewed (localStorage) ---
+            const viewed = JSON.parse(localStorage.getItem('vol08_recent_viewed') || '[]');
+            const PRODUITS = typeof PRODUITS_DATA !== 'undefined' ? PRODUITS_DATA : [];
+            const recentEl = document.getElementById('recentProducts');
+            if (recentEl && viewed.length > 0) {
+                const recentHtml = viewed.slice(0, 6).map(ref => {
+                    const p = PRODUITS.find(x => x.ref === ref);
+                    if (!p) return '';
+                    return `
+                    <a href="produit.html?ref=${p.ref}" class="recent-product">
+                        <img class="recent-product-img" src="${p.image}" alt="${p.name}">
+                        <div class="recent-product-body">
+                            <div class="recent-product-ref">${p.ref}</div>
+                            <div class="recent-product-name">${p.name}</div>
+                        </div>
+                    </a>`;
+                }).join('');
+                if (recentHtml.trim()) {
+                    recentEl.innerHTML = recentHtml;
+                } else {
+                    recentEl.innerHTML = '<p style="color:var(--text-muted);font-size:0.85rem;padding:16px 0;">Aucun produit consulté récemment.</p>';
+                }
+            } else if (recentEl) {
+                recentEl.innerHTML = '<p style="color:var(--text-muted);font-size:0.85rem;padding:16px 0;">Parcourez le catalogue pour voir vos produits ici.</p>';
+            }
+
+            // --- Stock alerts ---
+            const stockProds = [
+                { ref: 'TCUITE-001', name: 'Fauteuil T.CUITE', stock: 4, img: 'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_4.webp' },
+                { ref: 'UNITE-001', name: 'Canapé U.NITE 3 places', stock: 6, img: 'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_3.webp' },
+                { ref: 'ZLIGE-001', name: 'Bibliothèque Z.LIGE', stock: 8, img: 'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Collection_2.webp' },
+            ];
+            const stockEl = document.getElementById('stockAlerts');
+            const stockCard = document.getElementById('stockAlertsCard');
+            if (stockEl) {
+                stockEl.innerHTML = stockProds.map(p => `
+                    <div class="stock-alert">
+                        <img class="stock-alert-img" src="${p.img}" alt="${p.name}">
+                        <div class="stock-alert-info">
+                            <div class="stock-alert-name">${p.name}</div>
+                            <div class="stock-alert-ref">${p.ref}</div>
+                        </div>
+                        <div class="stock-alert-count">${p.stock} restant${p.stock > 1 ? 's' : ''}</div>
+                    </div>
+                `).join('');
+            }
+
+            // Animate CA progress bar
+            setTimeout(() => {
+                const fill = document.querySelector('.ca-progress-fill');
+                if (fill) fill.style.width = '71%';
+            }, 300);
+        });
     </script>
 </body>
 </html>

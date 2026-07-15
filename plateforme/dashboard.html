@@ -35,6 +35,72 @@
             <p>Bienvenue sur votre espace B2B VOL.08. Accédez à votre catalogue privé, gérez vos devis et suivez vos commandes.</p>
         </div>
 
+        <!-- ===== RÉSUMÉ CLIENT ===== -->
+        <div class="client-summary">
+            <div class="client-summary-card">
+                <div class="client-summary-icon"><i data-lucide="shopping-bag"></i></div>
+                <div class="client-summary-value" id="totalCA">24 850 €</div>
+                <div class="client-summary-label">Total commandé en 2026</div>
+            </div>
+            <div class="client-summary-card">
+                <div class="client-summary-icon"><i data-lucide="file-text"></i></div>
+                <div class="client-summary-value" id="totalDevis">5</div>
+                <div class="client-summary-label">Devis créés</div>
+            </div>
+            <div class="client-summary-card">
+                <div class="client-summary-icon"><i data-lucide="truck"></i></div>
+                <div class="client-summary-value" id="ordersDelivered">8</div>
+                <div class="client-summary-label">Commandes livrées</div>
+            </div>
+            <div class="client-summary-card">
+                <div class="client-summary-icon"><i data-lucide="heart"></i></div>
+                <div class="client-summary-value" id="totalFavoris">12</div>
+                <div class="client-summary-label">Produits favoris</div>
+            </div>
+        </div>
+
+        <!-- ===== SUIVI COMMANDE ===== -->
+        <div class="dash-card">
+            <div class="dash-card-header">
+                <h3>Suivi de ma dernière commande</h3>
+                <a href="commandes.html" class="dash-link">Voir tout</a>
+            </div>
+            <div class="order-tracker">
+                <div class="order-tracker-info">
+                    <div class="order-tracker-ref">CMD-2026-0042</div>
+                    <div class="order-tracker-client">Pour : Maison Dubois</div>
+                </div>
+                <div class="order-steps">
+                    <div class="order-step done"><div class="order-step-dot"></div><span>Confirmée</span></div>
+                    <div class="order-step done"><div class="order-step-dot"></div><span>En préparation</span></div>
+                    <div class="order-step done"><div class="order-step-dot"></div><span>Expédiée</span></div>
+                    <div class="order-step current"><div class="order-step-dot"></div><span>Livrée</span></div>
+                </div>
+                <div class="order-tracker-date">Livrée le 04/07/2026</div>
+            </div>
+        </div>
+
+        <!-- ===== DEVIS RÉCENTS ===== -->
+        <div class="grid-2">
+            <div class="dash-card">
+                <div class="dash-card-header">
+                    <h3>Mes devis récents</h3>
+                    <a href="devis.html" class="dash-link">Voir tout</a>
+                </div>
+                <div class="devis-list" id="devisList"></div>
+            </div>
+
+            <!-- ===== RECOMMANDÉS ===== -->
+            <div class="dash-card">
+                <div class="dash-card-header">
+                    <h3>Recommandés pour vous</h3>
+                    <a href="catalogue.html" class="dash-link">Voir catalogue</a>
+                </div>
+                <div class="reco-list" id="recoList"></div>
+            </div>
+        </div>
+
+        <!-- ===== NAVIGATION ===== -->
         <div class="plateforme-grid">
             <a href="catalogue.html" class="plateforme-card">
                 <i data-lucide="book-open"></i>
@@ -66,28 +132,104 @@
                 <h3>Support prioritaire</h3>
                 <p>Assistance dédiée pour les professionnels</p>
             </a>
-            <a href="inspirations.html" class="plateforme-card">
-                <i data-lucide="image"></i>
-                <h3>Inspirations</h3>
-                <p>Moodboard et inspirations aménagement</p>
-            </a>
-            <a href="compte.html" class="plateforme-card">
-                <i data-lucide="settings"></i>
-                <h3>Mon compte</h3>
-                <p>Profil, utilisateurs, préférences</p>
-            </a>
         </div>
 
-        <div style="margin-top:1rem;padding:1.5rem;background:#fff;border:1px solid var(--border-color);">
-            <h3 style="font-size:1rem;margin-bottom:1rem;">Votre profil B2B</h3>
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;font-size:0.9rem;">
-                <div><strong style="color:var(--text-secondary);display:block;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;">Société</strong> <span id="profileCompany"></span></div>
-                <div><strong style="color:var(--text-secondary);display:block;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;">Contact</strong> <span id="profileContact"></span></div>
-                <div><strong style="color:var(--text-secondary);display:block;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;">Email</strong> <span id="profileEmail"></span></div>
-                <div><strong style="color:var(--text-secondary);display:block;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;">Statut</strong> <span id="profileStatut"></span></div>
+        <!-- ===== PROFIL ===== -->
+        <div class="dash-card">
+            <div class="dash-card-header">
+                <h3>Votre profil B2B</h3>
+                <a href="compte.html" class="dash-link">Modifier</a>
+            </div>
+            <div class="profile-grid">
+                <div class="profile-field"><span class="profile-label">Société</span><span class="profile-value" id="profileCompany"></span></div>
+                <div class="profile-field"><span class="profile-label">Contact</span><span class="profile-value" id="profileContact"></span></div>
+                <div class="profile-field"><span class="profile-label">Email</span><span class="profile-value" id="profileEmail"></span></div>
+                <div class="profile-field"><span class="profile-label">Téléphone</span><span class="profile-value" id="profilePhone">—</span></div>
+                <div class="profile-field"><span class="profile-label">Adresse</span><span class="profile-value" id="profileAddress">—</span></div>
+                <div class="profile-field"><span class="profile-label">Statut</span><span class="profile-value" id="profileStatut"></span></div>
             </div>
         </div>
     </main>
+
+    <style>
+        /* Summary cards */
+        .client-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:1.5rem;}
+        .client-summary-card{background:#fff;border:1px solid var(--border-color);padding:1.5rem;text-align:center;}
+        .client-summary-icon{margin-bottom:0.75rem;color:var(--text-secondary);}
+        .client-summary-icon .lucide{width:24px;height:24px;}
+        .client-summary-value{font-size:1.6rem;font-weight:600;margin-bottom:0.25rem;}
+        .client-summary-label{font-size:0.78rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.04em;}
+
+        /* Dash card */
+        .dash-card{background:#fff;border:1px solid var(--border-color);padding:1.5rem;margin-bottom:1.5rem;}
+        .dash-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;}
+        .dash-card-header h3{font-size:1rem;font-weight:600;margin:0;}
+        .dash-link{font-size:0.82rem;color:var(--text-secondary);text-decoration:none;}
+        .dash-link:hover{color:var(--text-primary);text-decoration:underline;}
+
+        /* Order tracker */
+        .order-tracker{padding:1rem 0;}
+        .order-tracker-info{margin-bottom:1.25rem;}
+        .order-tracker-ref{font-size:1.1rem;font-weight:600;}
+        .order-tracker-client{font-size:0.85rem;color:var(--text-secondary);margin-top:0.2rem;}
+        .order-steps{display:flex;align-items:center;gap:0;margin-bottom:1rem;}
+        .order-step{display:flex;flex-direction:column;align-items:center;flex:1;position:relative;}
+        .order-step-dot{width:24px;height:24px;border-radius:50%;border:2px solid #ccc;background:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:6px;z-index:1;}
+        .order-step.done .order-step-dot{border-color:#2e7d32;background:#2e7d32;}
+        .order-step.done .order-step-dot::after{content:'✓';color:#fff;font-size:0.7rem;font-weight:700;}
+        .order-step.current .order-step-dot{border-color:#1565c0;background:#1565c0;box-shadow:0 0 0 4px rgba(21,101,192,.2);}
+        .order-step.current .order-step-dot::after{content:'';width:8px;height:8px;border-radius:50%;background:#fff;}
+        .order-step span{font-size:0.72rem;color:var(--text-secondary);text-align:center;}
+        .order-step.done span,.order-step.current span{color:var(--text-primary);font-weight:500;}
+        .order-step::before{content:'';position:absolute;top:12px;left:calc(50% + 14px);right:calc(-50% + 14px);height:2px;background:#ccc;z-index:0;}
+        .order-step:last-child::before{display:none;}
+        .order-step.done::before{background:#2e7d32;}
+        .order-tracker-date{font-size:0.82rem;color:var(--text-secondary);}
+
+        /* Devis list */
+        .devis-list{display:flex;flex-direction:column;}
+        .devis-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border-color);}
+        .devis-item:last-child{border-bottom:none;}
+        .devis-item-ref{font-weight:500;font-size:0.9rem;}
+        .devis-item-amount{font-weight:500;font-size:0.9rem;}
+        .devis-item-date{font-size:0.78rem;color:var(--text-secondary);}
+
+        /* Reco products */
+        .reco-list{display:flex;flex-direction:column;}
+        .reco-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-color);text-decoration:none;color:var(--text);align-items:center;}
+        .reco-item:last-child{border-bottom:none;}
+        .reco-item:hover{background:#fafaf8;}
+        .reco-img{width:56px;height:56px;object-fit:cover;flex-shrink:0;}
+        .reco-info{flex:1;min-width:0;}
+        .reco-name{font-size:0.88rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+        .reco-collection{font-size:0.75rem;color:var(--text-secondary);}
+        .reco-price{font-size:0.88rem;font-weight:500;white-space:nowrap;}
+
+        /* Profile */
+        .profile-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;}
+        .profile-field{display:flex;flex-direction:column;gap:2px;}
+        .profile-label{font-size:0.75rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;font-weight:500;}
+        .profile-value{font-size:0.9rem;}
+
+        /* Grid 2 cols */
+        .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;}
+
+        /* Responsive */
+        @media(max-width:768px){
+            .client-summary{grid-template-columns:repeat(2,1fr);}
+            .grid-2{grid-template-columns:1fr;}
+            .order-steps{gap:0;}
+            .order-step span{font-size:0.65rem;}
+        }
+        @media(max-width:480px){
+            .client-summary{grid-template-columns:1fr 1fr;gap:10px;}
+            .client-summary-card{padding:1rem;}
+            .client-summary-value{font-size:1.2rem;}
+        }
+    </style>
+
+    <script src="../assets/js/produits-data.js"></script>
+    <script src="../assets/js/data.js"></script>
     <script src="../assets/js/plateforme.js"></script>
     <script>
         const session = PLATFORME_UTILS.requireAuth();
@@ -99,8 +241,68 @@
             document.getElementById('profileCompany').textContent = user.entreprise;
             document.getElementById('profileContact').textContent = user.prenom + ' ' + user.nom;
             document.getElementById('profileEmail').textContent = user.email;
-            document.getElementById('profileStatut').textContent = user.statut || '—';
+            document.getElementById('profilePhone').textContent = user.telephone || '—';
+            document.getElementById('profileAddress').textContent = user.adresse || '—';
+            document.getElementById('profileStatut').textContent = user.statut || 'Actif';
         }
+
+        // Devis récents
+        const devis = JSON.parse(localStorage.getItem('vol08_devis') || '[]');
+        const devisEl = document.getElementById('devisList');
+        if (devisEl) {
+            const recent = devis.slice(-4).reverse();
+            if (recent.length === 0) {
+                devisEl.innerHTML = '<div style="padding:16px 0;color:var(--text-secondary);font-size:0.85rem;">Aucun devis pour le moment.</div>';
+            } else {
+                devisEl.innerHTML = recent.map(d => `
+                    <div class="devis-item">
+                        <div>
+                            <div class="devis-item-ref">${d.id || 'DEV-' + Date.now()}</div>
+                            <div class="devis-item-date">${d.date || '—'}</div>
+                        </div>
+                        <div class="devis-item-amount">${(d.total || 0).toLocaleString('fr-FR')} €</div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Recommandés
+        const recoEl = document.getElementById('recoList');
+        const PRODUITS = typeof PRODUITS_DATA !== 'undefined' ? PRODUITS_DATA : [];
+        if (recoEl && PRODUITS.length > 0) {
+            const viewed = JSON.parse(localStorage.getItem('vol08_recent_viewed') || '[]');
+            let recommended;
+            if (viewed.length > 0) {
+                const lastCategory = PRODUITS.find(p => p.ref === viewed[0])?.category;
+                recommended = PRODUITS.filter(p => p.category === lastCategory && !viewed.includes(p.ref)).slice(0, 3);
+                if (recommended.length < 3) {
+                    const extra = PRODUITS.filter(p => !viewed.includes(p.ref) && !recommended.includes(p)).slice(0, 3 - recommended.length);
+                    recommended = recommended.concat(extra);
+                }
+            } else {
+                recommended = PRODUITS.slice(0, 3);
+            }
+            recoEl.innerHTML = recommended.map(p => `
+                <a href="catalogue.html?search=${p.ref}" class="reco-item">
+                    <img class="reco-img" src="${p.image}" alt="${p.name}">
+                    <div class="reco-info">
+                        <div class="reco-name">${p.name}</div>
+                        <div class="reco-collection">${p.collection} · ${p.category}</div>
+                    </div>
+                    <div class="reco-price">${p.prixHT.toLocaleString('fr-FR')} €</div>
+                </a>
+            `).join('');
+        }
+
+        // Update summary from localStorage
+        const orders = JSON.parse(localStorage.getItem('vol08_commandes') || '[]');
+        if (orders.length > 0) {
+            document.getElementById('totalCA').textContent = orders.reduce((s, o) => s + (o.total || 0), 0).toLocaleString('fr-FR') + ' €';
+            document.getElementById('ordersDelivered').textContent = orders.filter(o => o.status === 'Livrée').length;
+        }
+        const favoris = JSON.parse(localStorage.getItem('vol08_favoris') || '[]');
+        document.getElementById('totalFavoris').textContent = favoris.reduce((s, l) => s + l.products.length, 0);
+        document.getElementById('totalDevis').textContent = devis.length || 0;
     </script>
 </body>
 </html>
