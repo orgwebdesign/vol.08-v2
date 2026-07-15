@@ -17,46 +17,7 @@
             <img src="assets/img/logo%20Vol.08.svg" alt="VOL.08">
             <span>Espace Pro</span>
         </div>
-        <nav class="sidebar-nav">
-            <div class="sidebar-label">Navigation</div>
-            <a href="dashboard.html" class="sidebar-item active" data-page="dashboard">
-                <i data-lucide="layout-dashboard"></i> Tableau de bord
-            </a>
-            <a href="catalogue.html" class="sidebar-item" data-page="catalogue">
-                <i data-lucide="package"></i> Catalogue
-            </a>
-            <a href="selections.html" class="sidebar-item" data-page="selections">
-                <i data-lucide="heart"></i> Favoris & sélections
-            </a>
-            <a href="devis.html" class="sidebar-item" data-page="devis">
-                <i data-lucide="file-text"></i> Panier & devis
-            </a>
-            <a href="commandes.html" class="sidebar-item" data-page="commandes">
-                <i data-lucide="truck"></i> Commandes
-            </a>
-            <a href="compte.html" class="sidebar-item" data-page="compte">
-                <i data-lucide="user"></i> Mon compte
-            </a>
-            <div class="sidebar-label">Espace commercial</div>
-            <a href="commercial/" class="sidebar-item" data-page="commercial">
-                <i data-lucide="briefcase"></i> Portefeuille clients
-            </a>
-            <a href="commercial/devis.html" class="sidebar-item" data-page="">
-                <i data-lucide="file-signature"></i> Devis express
-            </a>
-            <div class="sidebar-label">Administration</div>
-            <a href="admin/" class="sidebar-item" data-page="admin">
-                <i data-lucide="settings"></i> Administration
-            </a>
-        </nav>
-        <div class="sidebar-user">
-            <div class="sidebar-avatar">KB</div>
-            <div class="sidebar-user-info">
-                <div class="sidebar-user-name">Karim Benali</div>
-                <div class="sidebar-user-role">Commercial • Benali Design</div>
-            </div>
-        </div>
-    </aside>
+        </aside>
 
     <div class="main-area">
         <header class="topbar">
@@ -96,6 +57,9 @@
         </header>
 
         <div class="page-content">
+            <div class="section-header">
+                <h2 class="section-title">Tableau de bord B2B</h2>
+            </div>
 
             <!-- ===== ACTIONS RAPIDES ===== -->
             <div class="quick-actions">
@@ -253,6 +217,10 @@
     </div>
 
     <style>
+        /* Section header */
+        .section-header{margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--border-soft);}
+        .section-title{font-size:1.3rem;font-weight:600;margin:0;}
+
         /* Quick actions */
         .quick-actions{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;}
         .quick-action-btn{display:flex;align-items:center;gap:8px;padding:12px 20px;background:var(--dark);color:#fff;font-size:0.88rem;font-weight:500;text-decoration:none;transition:opacity .2s;font-family:var(--font);}
@@ -332,6 +300,7 @@
 
     <script src="assets/js/data.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/shared.js"></script>
     <div class="search-overlay" id="searchOverlay">
         <div class="search-overlay-header">
             <input class="search-overlay-input" id="searchOverlayInput" type="text" placeholder="Rechercher un produit, une référence…" autofocus>
