@@ -1,5 +1,30 @@
 <!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Devis — VOL.08 B2B</title><link rel="stylesheet" href="../assets/css/style.css"><link rel="stylesheet" href="../assets/css/plateforme.css"><script src="https://unpkg.com/lucide@latest"></script>
-<style>.devis-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;}</style>
+<style>.devis-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;flex-wrap:wrap;gap:1rem;}
+.devis-tabs{display:flex;gap:0;border-bottom:1px solid var(--border-color);margin-bottom:2rem;}
+.devis-tab{padding:0.75rem 1.5rem;font-size:0.88rem;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.2s;}
+.devis-tab.active{font-weight:500;border-bottom-color:#111;}
+.devis-tab:hover:not(.active){color:var(--text-secondary);}
+.panier-item{display:flex;align-items:center;gap:1rem;padding:1rem;border-bottom:1px solid var(--border-color);}
+.panier-item:last-child{border-bottom:none;}
+.panier-item img{width:64px;height:64px;object-fit:cover;background:#f5f5f5;flex-shrink:0;}
+.panier-item .info{flex:1;}
+.panier-item .info h4{font-size:0.92rem;margin-bottom:0.15rem;}
+.panier-item .info .ref{font-size:0.78rem;color:var(--text-secondary);}
+.panier-item .info .variante{font-size:0.78rem;color:var(--text-secondary);}
+.panier-qty{display:flex;align-items:center;gap:0.5rem;}
+.panier-qty button{width:28px;height:28px;border:1px solid var(--border-color);background:#fff;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;}
+.panier-qty span{font-size:0.95rem;min-width:24px;text-align:center;}
+.panier-item .item-price{font-weight:500;color:#2e7d32;white-space:nowrap;}
+.panier-item .remove-btn{background:none;border:none;cursor:pointer;color:var(--text-secondary);padding:4px;}
+.panier-item .remove-btn:hover{color:#dc2626;}
+.panier-item .remove-btn .lucide{width:16px;height:16px;}
+.panier-total{display:flex;justify-content:space-between;align-items:center;padding:1.5rem;border-top:2px solid #111;font-weight:500;}
+.panier-total .total-price{font-size:1.4rem;color:#2e7d32;}
+.devis-detail-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem;}
+.devis-detail-header h2{font-size:1.1rem;margin:0;}
+.devis-actions{display:flex;gap:0.75rem;}
+.devis-actions .btn{font-size:0.82rem;padding:8px 16px;}
+@media(max-width:640px){.panier-item{flex-wrap:wrap;}.panier-item .item-price{width:100%;text-align:right;margin-top:0.5rem;}}</style>
 </head>
 <body class="plateforme-body">
 <header class="plateforme-header">
@@ -14,9 +39,21 @@
 <div class="plateforme-header-user"><span id="clientName" style="font-size:0.85rem;"></span><a href="#" onclick="PLATFORME_UTILS.logout()" style="font-size:0.8rem;color:#999;text-decoration:underline;margin-left:0.75rem;">Déconnexion</a></div>
 </header>
 <main class="plateforme-main">
-<div class="devis-header"><h1 style="font-size:1.6rem;margin:0;">Mes devis</h1><span id="devisCount" style="color:var(--text-secondary);font-size:0.9rem;"></span></div>
+<div class="devis-header"><h1 style="font-size:1.6rem;margin:0;">Panier & Devis</h1></div>
+<div class="devis-tabs">
+<div class="devis-tab active" onclick="switchDevisTab('panier')">Panier <span id="panierCount"></span></div>
+<div class="devis-tab" onclick="switchDevisTab('devis')">Mes devis <span id="devisCount"></span></div>
+</div>
+
+<div id="tabPanier">
+<div id="panierContent"></div>
+</div>
+
+<div id="tabDevis" style="display:none;">
+<div class="devis-detail-header" id="devisHeader"></div>
 <div class="admin-table-wrap" style="background:#fff;">
-<table><thead><tr><th>Réf.</th><th>Date</th><th>Montant</th><th>Articles</th><th>Statut</th><th>Actions</th></tr></thead><tbody id="devisBody"></tbody></table>
+<table><thead><tr><th>Réf.</th><th>Date</th><th>Client</th><th>Montant</th><th>Articles</th><th>Statut</th><th>Actions</th></tr></thead><tbody id="devisBody"></tbody></table>
+</div>
 </div>
 </main>
 <script src="../assets/js/plateforme.js"></script>
@@ -24,25 +61,179 @@
 const session=PLATFORME_UTILS.requireAuth();
 const user=PLATFORME_UTILS.getUserInfo();
 if(user) document.getElementById('clientName').textContent=user.prenom+' '+user.nom;
-function render(){
-const devis=JSON.parse(localStorage.getItem('vol08_devis')||'[]');
-document.getElementById('devisCount').textContent=devis.length+' devis';
-const tbody=document.getElementById('devisBody');
-if(!devis.length){tbody.innerHTML='<tr><td colspan="6" style="text-align:center;color:#999;padding:3rem;">Aucun devis</td></tr>';return;}
-tbody.innerHTML=devis.map(d=>`<tr>
-<td style="font-weight:500;">${d.id}</td>
-<td style="font-size:0.85rem;color:#999;">${new Date(d.date).toLocaleDateString('fr-FR')}</td>
-<td style="font-weight:500;">${(d.montant).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})}</td>
-<td>${d.articles}</td>
-<td><span class="admin-badge ${d.status==='approuve'?'approved':d.status==='envoye'?'pending':d.status==='refuse'?'rejected':'pending'}" style="background:${d.status==='brouillon'?'#f5f5f5':''};color:${d.status==='brouillon'?'#999':''};">${d.status==='approuve'?'Approuvé':d.status==='envoye'?'Envoyé':d.status==='refuse'?'Refusé':'Brouillon'}</span></td>
-<td class="admin-actions">${d.status==='brouillon'?`<button class="admin-btn-sm green" onclick="envoyerDevis('${d.id}')">Envoyer</button>`:''}<button class="admin-btn-sm outline">Voir</button></td>
-</tr>`).join('');
+const produits=JSON.parse(localStorage.getItem('vol08_produits')||'[]');
+
+function switchDevisTab(tab){
+  document.querySelectorAll('.devis-tab').forEach((t,i)=>{
+    t.classList.toggle('active',(tab==='panier'&&i===0)||(tab==='devis'&&i===1));
+  });
+  document.getElementById('tabPanier').style.display=tab==='panier'?'':'none';
+  document.getElementById('tabDevis').style.display=tab==='devis'?'':'none';
+  if(tab==='panier') renderPanier();
+  if(tab==='devis') renderDevis();
 }
+
+function renderPanier(){
+  const panier=JSON.parse(localStorage.getItem('vol08_panier')||'[]');
+  const userPanier=user?panier.filter(a=>a.email===user.email):panier;
+  document.getElementById('panierCount').textContent='('+userPanier.length+')';
+  const container=document.getElementById('panierContent');
+  if(!userPanier.length){
+    container.innerHTML='<div style="text-align:center;padding:3rem;color:#var(--text-secondary);"><p style="margin-bottom:1rem;">Votre panier est vide.</p><a href="catalogue.html" class="btn btn-black" style="text-decoration:none;">Parcourir le catalogue</a></div>';
+    return;
+  }
+  let total=0;
+  const items=userPanier.map((a,i)=>{
+    const p=produits.find(x=>x.ref===a.ref);
+    if(!p) return '';
+    const itemTotal=p.prixHT*a.quantite;
+    total+=itemTotal;
+    return `<div class="panier-item">
+      <img src="${p.image}" alt="${p.name}">
+      <div class="info">
+        <h4>${p.name}</h4>
+        <div class="ref">${p.ref}</div>
+        ${a.variante?'<div class="variante">'+a.variante+'</div>':''}
+      </div>
+      <div class="panier-qty">
+        <button onclick="updatePanierQty(${i},-1)">−</button>
+        <span>${a.quantite}</span>
+        <button onclick="updatePanierQty(${i},1)">+</button>
+      </div>
+      <div class="item-price">${itemTotal.toLocaleString('fr-FR',{style:'currency',currency:'EUR'})}</div>
+      <button class="remove-btn" onclick="removePanier(${i})"><i data-lucide="trash-2"></i></button>
+    </div>`;
+  }).join('');
+  container.innerHTML=items+`
+    <div class="panier-total">
+      <span>Total HT (${userPanier.reduce((s,a)=>s+a.quantite,0)} articles)</span>
+      <span class="total-price">${total.toLocaleString('fr-FR',{style:'currency',currency:'EUR'})}</span>
+    </div>
+    <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;">
+      <button class="btn btn-black" style="flex:1;min-width:200px;" onclick="convertirEnDevis()">Convertir en devis</button>
+      <button class="btn btn-outline" style="flex:1;min-width:200px;" onclick="viderPanier()">Vider le panier</button>
+    </div>`;
+  lucide.createIcons();
+}
+
+function updatePanierQty(i,delta){
+  const panier=JSON.parse(localStorage.getItem('vol08_panier')||'[]');
+  const userPanier=user?panier.filter(a=>a.email===user.email):panier;
+  const item=userPanier[i];
+  if(!item) return;
+  const realIndex=panier.findIndex(a=>a.ref===item.ref&&a.variante===item.variante&&a.email===item.email);
+  if(realIndex===-1) return;
+  panier[realIndex].quantite=Math.max(1,panier[realIndex].quantite+delta);
+  localStorage.setItem('vol08_panier',JSON.stringify(panier));
+  renderPanier();
+}
+
+function removePanier(i){
+  const panier=JSON.parse(localStorage.getItem('vol08_panier')||'[]');
+  const userPanier=user?panier.filter(a=>a.email===user.email):panier;
+  const item=userPanier[i];
+  if(!item) return;
+  const newPanier=panier.filter(a=>!(a.ref===item.ref&&a.variante===item.variante&&a.email===item.email));
+  localStorage.setItem('vol08_panier',JSON.stringify(newPanier));
+  renderPanier();
+}
+
+function viderPanier(){
+  if(!confirm('Vider tout le panier ?')) return;
+  let panier=JSON.parse(localStorage.getItem('vol08_panier')||'[]');
+  panier=panier.filter(a=>a.email!==user.email);
+  localStorage.setItem('vol08_panier',JSON.stringify(panier));
+  renderPanier();
+}
+
+function convertirEnDevis(){
+  const panier=JSON.parse(localStorage.getItem('vol08_panier')||'[]');
+  const userPanier=user?panier.filter(a=>a.email===user.email):panier;
+  if(!userPanier.length){alert('Panier vide.');return;}
+  let montant=0,nbArticles=0;
+  userPanier.forEach(a=>{
+    const p=produits.find(x=>x.ref===a.ref);
+    if(p){montant+=p.prixHT*a.quantite;nbArticles+=a.quantite;}
+  });
+  const devis=JSON.parse(localStorage.getItem('vol08_devis')||'[]');
+  const id='DEV-'+String(Date.now()).slice(-5);
+  devis.push({id,client:user?user.entreprise:'Client',email:user?user.email:'',montant,nbArticles,articles:nbArticles,date:new Date().toISOString(),status:'brouillon',articles_detail:userPanier.map(a=>{const p=produits.find(x=>x.ref===a.ref);return{ref:a.ref,name:p?p.name:'',variante:a.variante,quantite:a.quantite,prix:p?prixHT:0};})});
+  localStorage.setItem('vol08_devis',JSON.stringify(devis));
+  const newPanier=panier.filter(a=>a.email!==user.email);
+  localStorage.setItem('vol08_panier',JSON.stringify(newPanier));
+  alert('Devis '+id+' créé avec succès !');
+  switchDevisTab('devis');
+}
+
+function renderDevis(){
+  const devis=JSON.parse(localStorage.getItem('vol08_devis')||'[]');
+  const userDevis=user?devis.filter(d=>d.email===user.email):devis;
+  document.getElementById('devisCount').textContent='('+userDevis.length+')';
+  document.getElementById('devisHeader').innerHTML=`<h2>${userDevis.length} devis</h2>`;
+  const tbody=document.getElementById('devisBody');
+  if(!userDevis.length){tbody.innerHTML='<tr><td colspan="7" style="text-align:center;color:#999;padding:3rem;">Aucun devis</td></tr>';return;}
+  tbody.innerHTML=userDevis.map(d=>`<tr>
+  <td style="font-weight:500;">${d.id}</td>
+  <td style="font-size:0.85rem;color:#999;">${new Date(d.date).toLocaleDateString('fr-FR')}</td>
+  <td>${d.client}</td>
+  <td style="font-weight:500;">${(d.montant).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})}</td>
+  <td>${d.articles}</td>
+  <td><span class="admin-badge ${d.status==='approuve'?'approved':d.status==='envoye'?'pending':d.status==='refuse'?'rejected':d.status==='transforme'?'approved':'pending'}" style="${d.status==='brouillon'?'background:#f5f5f5;color:#999;':''}">${d.status==='approuve'?'Approuvé':d.status==='envoye'?'Envoyé':d.status==='refuse'?'Refusé':d.status==='transforme'?'Transformé':'Brouillon'}</span></td>
+  <td class="admin-actions" style="white-space:nowrap;">
+    ${d.status==='brouillon'?`<button class="admin-btn-sm green" onclick="envoyerDevis('${d.id}')">Envoyer</button>`:''}
+    <button class="admin-btn-sm outline" onclick="genererPDF('${d.id}')">PDF</button>
+    ${d.status==='approuve'?`<button class="admin-btn-sm green" onclick="transformerCommande('${d.id}')">Commander</button>`:''}
+    <button class="admin-btn-sm outline">Voir</button>
+  </td>
+  </tr>`).join('');
+}
+
 function envoyerDevis(id){
-const devis=JSON.parse(localStorage.getItem('vol08_devis')||'[]');
-const d=devis.find(x=>x.id===id);
-if(d){d.status='envoye';localStorage.setItem('vol08_devis',JSON.stringify(devis));render();}
+  const devis=JSON.parse(localStorage.getItem('vol08_devis')||'[]');
+  const d=devis.find(x=>x.id===id);
+  if(d){d.status='envoye';localStorage.setItem('vol08_devis',JSON.stringify(devis));renderDevis();}
 }
-render();
+
+function transformerCommande(id){
+  if(!confirm('Transformer ce devis en commande ?')) return;
+  const devis=JSON.parse(localStorage.getItem('vol08_devis')||'[]');
+  const d=devis.find(x=>x.id===id);
+  if(!d) return;
+  d.status='transforme';
+  localStorage.setItem('vol08_devis',JSON.stringify(devis));
+  const commandes=JSON.parse(localStorage.getItem('vol08_commandes')||'[]');
+  const cmdId='CMD-'+String(Date.now()).slice(-5);
+  commandes.push({id:cmdId,date:new Date().toISOString(),email:user?user.email:'',client:d.client,montant:d.montant,articles:d.articles,status:'en_cours',devisId:d.id});
+  localStorage.setItem('vol08_commandes',JSON.stringify(commandes));
+  alert('Commande '+cmdId+' créée à partir du devis '+id);
+  renderDevis();
+}
+
+function genererPDF(id){
+  const devis=JSON.parse(localStorage.getItem('vol08_devis')||'[]');
+  const d=devis.find(x=>x.id===id);
+  if(!d) return;
+  let content='DEVIS '+d.id+'\n\n';
+  content+='Client: '+d.client+'\n';
+  content+='Date: '+new Date(d.date).toLocaleDateString('fr-FR')+'\n';
+  content+='Statut: '+d.status+'\n\n';
+  content+='--- DÉTAIL DES ARTICLES ---\n\n';
+  if(d.articles_detail){
+    d.articles_detail.forEach(a=>{
+      content+=a.ref+' — '+a.name+(a.variante?' ('+a.variante+')':'')+'\n';
+      content+='  Qté: '+a.quantite+' × '+a.prix+' EUR = '+(a.quantite*a.prix)+' EUR\n\n';
+    });
+  } else {
+    content+='Articles: '+d.articles+'\n';
+  }
+  content+='---\n\nTOTAL HT: '+d.montant.toLocaleString('fr-FR',{style:'currency',currency:'EUR'})+'\n';
+  content+='TVA (20%): '+Math.round(d.montant*0.2).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})+'\n';
+  content+='TOTAL TTC: '+Math.round(d.montant*1.2).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})+'\n\n';
+  content+='VOL.08 — Plateforme B2B\nvol08.ma\n';
+  const blob=new Blob([content],{type:'text/plain'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Devis_'+id+'.txt';a.click();
+}
+
+renderPanier();
 </script>
 </body></html>

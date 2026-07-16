@@ -1,4 +1,26 @@
 <!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Favoris — VOL.08 B2B</title><link rel="stylesheet" href="../assets/css/style.css"><link rel="stylesheet" href="../assets/css/plateforme.css"><script src="https://unpkg.com/lucide@latest"></script>
+<style>.fav-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem;}
+.fav-item{background:#fff;border:1px solid var(--border-color);padding:1rem;position:relative;transition:box-shadow 0.25s ease,transform 0.25s ease;}
+.fav-item:hover{box-shadow:0 8px 24px rgba(0,0,0,0.06);transform:translateY(-2px);}
+.fav-item img{width:100%;aspect-ratio:1/1;object-fit:cover;margin-bottom:1rem;background:#f5f5f5;}
+.fav-item h3{font-size:0.95rem;margin-bottom:0.25rem;}
+.fav-item .ref{font-size:0.78rem;color:var(--text-secondary);margin-bottom:0.5rem;}
+.fav-item .price{font-size:1.1rem;font-weight:500;color:#2e7d32;margin-bottom:0.75rem;}
+.fav-remove{position:absolute;top:12px;right:12px;background:#fff;border:1px solid var(--border-color);width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.2s;}
+.fav-remove:hover{background:#fef2f2;border-color:#fecaca;color:#dc2626;}
+.fav-remove .lucide{width:14px;height:14px;}
+.fav-tabs{display:flex;gap:0;margin-bottom:2rem;border-bottom:1px solid var(--border-color);}
+.fav-tab{padding:0.75rem 1.5rem;font-size:0.88rem;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.2s;}
+.fav-tab.active{font-weight:500;border-bottom-color:#111;}
+.fav-tab:hover:not(.active){color:var(--text-secondary);}
+.selection-card{background:#fff;border:1px solid var(--border-color);padding:1.5rem;transition:box-shadow 0.25s ease;}
+.selection-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.06);}
+.selection-card h3{font-size:1rem;margin-bottom:0.5rem;}
+.selection-card .meta{font-size:0.82rem;color:var(--text-secondary);margin-bottom:1rem;}
+.selection-thumbs{display:flex;gap:0.5rem;margin-bottom:1rem;}
+.selection-thumbs img{width:48px;height:48px;object-fit:cover;background:#f5f5f5;}
+.selection-actions{display:flex;gap:0.75rem;}
+.selection-actions .btn{flex:1;font-size:0.78rem;padding:8px 12px;}</style>
 </head>
 <body class="plateforme-body">
 <header class="plateforme-header">
@@ -13,9 +35,20 @@
 <div class="plateforme-header-user"><span id="clientName" style="font-size:0.85rem;"></span><a href="#" onclick="PLATFORME_UTILS.logout()" style="font-size:0.8rem;color:#999;text-decoration:underline;margin-left:0.75rem;">Déconnexion</a></div>
 </header>
 <main class="plateforme-main">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;"><h1 style="font-size:1.6rem;margin:0;">Favoris & sélections</h1></div>
-<div class="cat-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem;" id="favGrid">
-<p style="grid-column:1/-1;text-align:center;color:#999;padding:3rem;">Parcourez le catalogue et ajoutez des produits à vos favoris.</p>
+<h1 style="font-size:1.6rem;margin-bottom:0.5rem;">Favoris & sélections</h1>
+<p style="color:var(--text-secondary);margin-bottom:2rem;">Vos produits sauvegardés et sélections par projet.</p>
+<div class="fav-tabs">
+<div class="fav-tab active" onclick="switchTab('favoris')">Favoris <span id="favCount"></span></div>
+<div class="fav-tab" onclick="switchTab('selections')">Sélections <span id="selCount"></span></div>
+</div>
+<div id="tabFavoris">
+<div class="fav-grid" id="favGrid"></div>
+</div>
+<div id="tabSelections" style="display:none;">
+<div style="display:flex;justify-content:flex-end;margin-bottom:1.5rem;">
+<button class="btn btn-black" style="font-size:0.82rem;padding:8px 16px;" onclick="creerSelection()">+ Nouvelle sélection</button>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;" id="selGrid"></div>
 </div>
 </main>
 <script src="../assets/js/plateforme.js"></script>
@@ -23,5 +56,122 @@
 const session=PLATFORME_UTILS.requireAuth();
 const user=PLATFORME_UTILS.getUserInfo();
 if(user) document.getElementById('clientName').textContent=user.prenom+' '+user.nom;
+const produits=JSON.parse(localStorage.getItem('vol08_produits')||'[]');
+
+function getFavoris(){
+  const all=JSON.parse(localStorage.getItem('vol08_favoris')||'[]');
+  return user?all.filter(f=>f.email===user.email):all;
+}
+function saveFavoris(favs){localStorage.setItem('vol08_favoris',JSON.stringify(favs));}
+function getSelections(){
+  const all=JSON.parse(localStorage.getItem('vol08_selections')||'[]');
+  return user?all.filter(s=>s.email===user.email):all;
+}
+function saveSelections(sels){localStorage.setItem('vol08_selections',JSON.stringify(sels));}
+
+function switchTab(tab){
+  document.querySelectorAll('.fav-tab').forEach((t,i)=>{
+    t.classList.toggle('active',(tab==='favoris'&&i===0)||(tab==='selections'&&i===1));
+  });
+  document.getElementById('tabFavoris').style.display=tab==='favoris'?'':'none';
+  document.getElementById('tabSelections').style.display=tab==='selections'?'':'none';
+  if(tab==='favoris') renderFavoris();
+  if(tab==='selections') renderSelections();
+}
+
+function renderFavoris(){
+  const favs=getFavoris();
+  document.getElementById('favCount').textContent='('+favs.length+')';
+  const grid=document.getElementById('favGrid');
+  if(!favs.length){grid.innerHTML='<p style="grid-column:1/-1;text-align:center;color:#999;padding:3rem;">Parcourez le catalogue et ajoutez des produits à vos favoris.</p>';return;}
+  grid.innerHTML=favs.map(f=>{
+    const p=produits.find(x=>x.ref===f.ref);
+    if(!p) return '';
+    return `<div class="fav-item">
+      <button class="fav-remove" onclick="removeFavori('${p.ref}')" title="Retirer"><i data-lucide="x"></i></button>
+      <img src="${p.image}" alt="${p.name}" loading="lazy">
+      <div class="ref">${p.ref}</div>
+      <h3>${p.name}</h3>
+      <div class="price">${(p.prixHT).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})} HT</div>
+      <button class="btn btn-black" style="width:100%;font-size:0.82rem;padding:8px;" onclick="ajouterAuDevis('${p.ref}')">Ajouter au devis</button>
+    </div>`;
+  }).join('');
+  lucide.createIcons();
+}
+
+function removeFavori(ref){
+  let favs=getFavoris();
+  favs=favs.filter(f=>f.ref!==ref);
+  saveFavoris(favs);
+  renderFavoris();
+}
+
+function ajouterAuDevis(ref){
+  const p=produits.find(x=>x.ref===ref);
+  if(!p) return;
+  const devis=JSON.parse(localStorage.getItem('vol08_devis')||'[]');
+  const existant=devis.find(d=>d.status==='brouillon');
+  if(existant){
+    existant.articles+=1;
+    existant.montant+=p.prixHT;
+    localStorage.setItem('vol08_devis',JSON.stringify(devis));
+  } else {
+    const id='DEV-'+String(Date.now()).slice(-5);
+    devis.push({id,client:user?user.entreprise:'Client',email:user?user.email:'',montant:p.prixHT,articles:1,date:new Date().toISOString(),status:'brouillon'});
+    localStorage.setItem('vol08_devis',JSON.stringify(devis));
+  }
+  alert(p.name+' ajouté au devis');
+}
+
+function renderSelections(){
+  const sels=getSelections();
+  document.getElementById('selCount').textContent='('+sels.length+')';
+  const grid=document.getElementById('selGrid');
+  if(!sels.length){grid.innerHTML='<p style="grid-column:1/-1;text-align:center;color:#999;padding:3rem;">Aucune sélection. Créez une sélection pour organiser vos produits par projet.</p>';return;}
+  grid.innerHTML=sels.map((s,i)=>{
+    const thumbs=s.refs.slice(0,4).map(r=>{const p=produits.find(x=>x.ref===r);return p?`<img src="${p.image}" alt="">`:'';}).join('');
+    return `<div class="selection-card">
+      <h3>${s.name}</h3>
+      <div class="meta">${s.refs.length} produit${s.refs.length>1?'s':''} · Créée le ${new Date(s.date).toLocaleDateString('fr-FR')}</div>
+      <div class="selection-thumbs">${thumbs}</div>
+      <div class="selection-actions">
+        <button class="btn btn-black" onclick="demanderDevisSelection(${i})">Demander devis</button>
+        <button class="btn btn-outline" onclick="supprimerSelection(${i})">Supprimer</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function creerSelection(){
+  const name=prompt('Nom de la sélection (ex: Projet Hotel Palm):');
+  if(!name) return;
+  const sels=getSelections();
+  sels.push({name,refs:[],date:new Date().toISOString(),email:user?user.email:''});
+  saveSelections(sels);
+  renderSelections();
+}
+
+function demanderDevisSelection(i){
+  const sels=getSelections();
+  const s=sels[i];
+  if(!s||!s.refs.length){alert('Aucun produit dans cette sélection.');return;}
+  let montant=0;
+  s.refs.forEach(r=>{const p=produits.find(x=>x.ref===r);if(p) montant+=p.prixHT;});
+  const devis=JSON.parse(localStorage.getItem('vol08_devis')||'[]');
+  const id='DEV-'+String(Date.now()).slice(-5);
+  devis.push({id,client:user?user.entreprise:'Client',email:user?user.email:'',montant,s.refs.length,date:new Date().toISOString(),status:'brouillon',selection:s.name});
+  localStorage.setItem('vol08_devis',JSON.stringify(devis));
+  alert('Devis créé pour la sélection "'+s.name+'"');
+}
+
+function supprimerSelection(i){
+  if(!confirm('Supprimer cette sélection ?')) return;
+  let sels=getSelections();
+  sels.splice(i,1);
+  saveSelections(sels);
+  renderSelections();
+}
+
+renderFavoris();renderSelections();
 </script>
 </body></html>

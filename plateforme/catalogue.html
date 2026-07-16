@@ -4,13 +4,28 @@
 .cat-filters select,.cat-filters input{padding:10px 14px;border:1px solid var(--border-color);font-family:var(--font-primary);font-size:0.88rem;background:#fff;}
 .cat-filters input{flex:1;min-width:200px;}
 .cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem;margin-bottom:2rem;}
+.cat-grid.list-view{grid-template-columns:1fr;}
 .cat-item{background:#fff;border:1px solid var(--border-color);padding:1rem;cursor:pointer;transition:box-shadow 0.25s ease,transform 0.25s ease;}
 .cat-item:hover{box-shadow:0 8px 24px rgba(0,0,0,0.06);transform:translateY(-2px);}
 .cat-item img{width:100%;aspect-ratio:1/1;object-fit:cover;margin-bottom:1rem;background:#f5f5f5;}
 .cat-item h3{font-size:0.95rem;margin-bottom:0.25rem;}
 .cat-item .ref{font-size:0.78rem;color:var(--text-secondary);margin-bottom:0.5rem;}
 .cat-item .price{font-size:1.1rem;font-weight:500;color:#2e7d32;}
-.cat-item .stock{font-size:0.78rem;color:var(--text-secondary);}</style>
+.cat-item .stock{font-size:0.78rem;color:var(--text-secondary);}
+.cat-item .delai{font-size:0.78rem;color:var(--text-secondary);margin-top:0.25rem;}
+.list-view .cat-item{display:grid;grid-template-columns:80px 1fr auto;gap:1rem;align-items:center;padding:0.75rem 1rem;}
+.list-view .cat-item img{width:80px;height:80px;aspect-ratio:1/1;margin-bottom:0;}
+.list-view .cat-item .info{display:flex;flex-direction:column;gap:0.15rem;}
+.list-view .cat-item .info h3{margin:0;font-size:0.92rem;}
+.list-view .cat-item .info .ref{margin:0;}
+.list-view .cat-item .info .stock{margin:0;}
+.list-view .cat-item .info .delai{margin:0;}
+.list-view .cat-item .price-col{text-align:right;white-space:nowrap;}
+.view-toggle{display:flex;gap:0;border:1px solid var(--border-color);overflow:hidden;}
+.view-toggle button{padding:8px 12px;border:none;background:#fff;cursor:pointer;font-size:0.82rem;display:flex;align-items:center;gap:0.35rem;transition:background 0.2s;}
+.view-toggle button.active{background:#111;color:#fff;}
+.view-toggle button .lucide{width:14px;height:14px;}
+@media(max-width:640px){.list-view .cat-item{grid-template-columns:60px 1fr;}.list-view .cat-item .price-col{grid-column:1/-1;text-align:left;}}</style>
 </head>
 <body class="plateforme-body">
 <header class="plateforme-header">
@@ -28,11 +43,32 @@
 </div>
 </header>
 <main class="plateforme-main">
-<div class="cat-header"><h1 style="font-size:1.6rem;margin:0;">Catalogue privé</h1><span id="prodCount" style="color:var(--text-secondary);font-size:0.9rem;"></span></div>
+<div class="cat-header">
+<div><h1 style="font-size:1.6rem;margin:0;">Catalogue privé</h1><span id="prodCount" style="color:var(--text-secondary);font-size:0.9rem;"></span></div>
+<div class="view-toggle">
+<button id="viewGrid" class="active" onclick="setView('grid')"><i data-lucide="grid-3x3"></i> Grille</button>
+<button id="viewList" onclick="setView('list')"><i data-lucide="list"></i> Liste</button>
+</div>
+</div>
 <div class="cat-filters">
 <input type="text" id="searchInput" placeholder="Rechercher par nom ou référence..." oninput="renderCatalogue()">
 <select id="filterCollection" onchange="renderCatalogue()"><option value="">Toutes les collections</option></select>
 <select id="filterCategorie" onchange="renderCatalogue()"><option value="">Toutes les catégories</option></select>
+<select id="filterStock" onchange="renderCatalogue()">
+<option value="">Tout le stock</option>
+<option value="en_stock">En stock</option>
+<option value="low_stock">Stock faible (≤5)</option>
+<option value="rupture">Rupture de stock</option>
+</select>
+<select id="sortBy" onchange="renderCatalogue()">
+<option value="">Trier par</option>
+<option value="prix_asc">Prix croissant</option>
+<option value="prix_desc">Prix décroissant</option>
+<option value="nom_asc">Nom A → Z</option>
+<option value="nom_desc">Nom Z → A</option>
+<option value="stock_desc">Stock décroissant</option>
+<option value="ref">Référence</option>
+</select>
 </div>
 <div class="cat-grid" id="catalogueGrid"></div>
 </main>
@@ -41,17 +77,18 @@
 const session=PLATFORME_UTILS.requireAuth();
 const user=PLATFORME_UTILS.getUserInfo();
 if(user) document.getElementById('clientName').textContent=user.prenom+' '+user.nom;
+let currentView='grid';
 let produits=JSON.parse(localStorage.getItem('vol08_produits')||'[]');
 if(!produits.length){
   produits=[
-    {ref:'T.ZANE',name:'Table basse T.ZANE',collection:'Mobilier',categorie:'Tables',stock:12,prixHT:890,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/TableBasse.webp'},
-    {ref:'U.NITE',name:'Canapé U.NITE',collection:'Mobilier',categorie:'Assises',stock:5,prixHT:2490,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Canape.webp'},
-    {ref:'Z.LIGE',name:'Bibliothèque Z.LIGE',collection:'Mobilier',categorie:'Rangements',stock:8,prixHT:1750,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Bibliotheque.webp'},
-    {ref:'T.CUITE',name:'Fauteuil T.CUITE',collection:'Mobilier',categorie:'Assises',stock:3,prixHT:1340,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Fauteuil.webp'},
-    {ref:'L.UMIZE',name:'Suspension L.UMIZE',collection:'Luminaires',categorie:'Suspensions',stock:20,prixHT:620,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Suspension.webp'},
-    {ref:'A.SSISE',name:'Tabouret A.SSISE',collection:'Mobilier',categorie:'Assises',stock:15,prixHT:450,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Tabouret.webp'},
-    {ref:'D.CORE',name:'Vase D.CORE',collection:'Décoration',categorie:'Accessoires',stock:25,prixHT:180,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Vase.webp'},
-    {ref:'B.OUGY',name:'Bougie B.OUGY',collection:'Décoration',categorie:'Accessoires',stock:40,prixHT:65,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Bougie.webp'}
+    {ref:'T.ZANE',name:'Table basse T.ZANE',collection:'Mobilier',categorie:'Tables',stock:12,prixHT:890,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/TableBasse.webp',delai:'3-4 semaines',description:'Table basse en bois massif et métal brossé. Structure en hêtre avec finition laque mate, pieds en métal brossé bronze. Assemblage traditionnel à queue d\'aronde.',dimensions:'120 × 70 × 35 cm',materiaux:'Hêtre massif, métal brossé',poids:'18 kg'},
+    {ref:'U.NITE',name:'Canapé U.NITE',collection:'Mobilier',categorie:'Assises',stock:5,prixHT:2490,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Canape.webp',delai:'4-6 semaines',description:'Canapé 3 places au design contemporain. Structure en bois massif, coussins en mousse haute densité, revêtement en tissu premium.',dimensions:'220 × 90 × 80 cm',materiaux:'Bois massif, tissu premium',poids:'45 kg'},
+    {ref:'Z.LIGE',name:'Bibliothèque Z.LIGE',collection:'Mobilier',categorie:'Rangements',stock:8,prixHT:1750,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Bibliotheque.webp',delai:'4-6 semaines',description:'Bibliothèque murale au design épuré. Étagères en bois massif avec structure métallique noire.',dimensions:'180 × 35 × 200 cm',materiaux:'Bois massif, métal peint',poids:'62 kg'},
+    {ref:'T.CUITE',name:'Fauteuil T.CUITE',collection:'Mobilier',categorie:'Assises',stock:3,prixHT:1340,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Fauteuil.webp',delai:'3-5 semaines',description:'Fauteuil de confort avec coque en bois courbé et assise rembourrée. Pieds en bois massif.',dimensions:'75 × 80 × 85 cm',materiaux:'Bois courbé, tissu',poids:'12 kg'},
+    {ref:'L.UMIZE',name:'Suspension L.UMIZE',collection:'Luminaires',categorie:'Suspensions',stock:20,prixHT:620,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Suspension.webp',delai:'2-3 semaines',description:'Lampe suspendue en métal laqué avec abat-jour en tissu. Diffusion lumineuse douce et uniforme.',dimensions:'Ø 35 × H 40 cm',materiaux:'Métal laqué, tissu',poids:'3 kg'},
+    {ref:'A.SSISE',name:'Tabouret A.SSISE',collection:'Mobilier',categorie:'Assises',stock:15,prixHT:450,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Tabouret.webp',delai:'2-3 semaines',description:'Tabouret de bar en bois massif avec assise sculptée. Design ergonomique et esthétique.',dimensions:'45 × 45 × 75 cm',materiaux:'Bois massif',poids:'5 kg'},
+    {ref:'D.CORE',name:'Vase D.CORE',collection:'Décoration',categorie:'Accessoires',stock:25,prixHT:180,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Vase.webp',delai:'1-2 semaines',description:'Vase artisanal en céramique émaillée. Chaque pièce est unique avec des variations naturelles de couleur.',dimensions:'Ø 15 × H 30 cm',materiaux:'Céramique émaillée',poids:'2 kg'},
+    {ref:'B.OUGY',name:'Bougie B.OUGY',collection:'Décoration',categorie:'Accessoires',stock:40,prixHT:65,image:'https://d392ke4nwqmbdz.cloudfront.net/Images/Vol08/Bougie.webp',delai:'1 semaine',description:'Bougie parfumée artisanale en cire naturelle. Notes de bois de santal et vanille.',dimensions:'Ø 8 × H 10 cm',materiaux:'Cire naturelle',poids:'0.4 kg'}
   ];
   localStorage.setItem('vol08_produits',JSON.stringify(produits));
 }
@@ -64,25 +101,51 @@ cats.forEach(c=>{const o=document.createElement('option');o.value=c;o.textConten
 const urlParams=new URLSearchParams(window.location.search);
 if(urlParams.has('search')) document.getElementById('searchInput').value=urlParams.get('search');
 }
+
+function setView(v){
+  currentView=v;
+  document.getElementById('viewGrid').classList.toggle('active',v==='grid');
+  document.getElementById('viewList').classList.toggle('active',v==='list');
+  renderCatalogue();
+}
+
 function renderCatalogue(){
 const q=document.getElementById('searchInput').value.toLowerCase();
-const col=document.getElementById('filterCollection').value,cat=document.getElementById('filterCategorie').value;
+const col=document.getElementById('filterCollection').value;
+const cat=document.getElementById('filterCategorie').value;
+const stock=document.getElementById('filterStock').value;
+const sort=document.getElementById('sortBy').value;
 let filtered=produits.filter(p=>{
 if(q&&!p.name.toLowerCase().includes(q)&&!p.ref.toLowerCase().includes(q))return false;
 if(col&&p.collection!==col)return false;
 if(cat&&p.categorie!==cat)return false;
+if(stock==='en_stock'&&p.stock<=0)return false;
+if(stock==='low_stock'&&(p.stock<=0||p.stock>5))return false;
+if(stock==='rupture'&&p.stock>0)return false;
 return true;
 });
+if(sort==='prix_asc')filtered.sort((a,b)=>a.prixHT-b.prixHT);
+else if(sort==='prix_desc')filtered.sort((a,b)=>b.prixHT-a.prixHT);
+else if(sort==='nom_asc')filtered.sort((a,b)=>a.name.localeCompare(b.name));
+else if(sort==='nom_desc')filtered.sort((a,b)=>b.name.localeCompare(a.name));
+else if(sort==='stock_desc')filtered.sort((a,b)=>b.stock-a.stock);
+else if(sort==='ref')filtered.sort((a,b)=>a.ref.localeCompare(b.ref));
 document.getElementById('prodCount').textContent=filtered.length+' produit'+(filtered.length>1?'s':'');
 const grid=document.getElementById('catalogueGrid');
+grid.className=currentView==='list'?'cat-grid list-view':'cat-grid';
 if(!filtered.length){grid.innerHTML='<p style="text-align:center;color:#999;padding:3rem;">Aucun produit trouvé</p>';return;}
 grid.innerHTML=filtered.map(p=>`
 <div class="cat-item" onclick="window.location.href='produit.html?ref=${p.ref}'">
 <img src="${p.image}" alt="${p.name}" loading="lazy">
+<div class="${currentView==='list'?'info':''}">
 <div class="ref">${p.ref}</div>
 <h3>${p.name}</h3>
-<div class="price">${(p.prixHT).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})} HT</div>
 <div class="stock">${p.collection} · ${p.stock>0?p.stock+' en stock':'Rupture'}</div>
+${p.delai?'<div class="delai">Livraison : '+p.delai+'</div>':''}
+</div>
+<div class="${currentView==='list'?'price-col':''}">
+<div class="price">${(p.prixHT).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})} HT</div>
+</div>
 </div>`).join('');
 }
 initFilters();renderCatalogue();

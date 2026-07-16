@@ -1,4 +1,18 @@
-<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Commandes — VOL.08 B2B</title><link rel="stylesheet" href="../assets/css/style.css"><link rel="stylesheet" href="../assets/css/plateforme.css"><script src="https://unpkg.com/lucide@latest"></script></head>
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Commandes — VOL.08 B2B</title><link rel="stylesheet" href="../assets/css/style.css"><link rel="stylesheet" href="../assets/css/plateforme.css"><script src="https://unpkg.com/lucide@latest"></script>
+<style>.cmd-detail{background:#fff;border:1px solid var(--border-color);padding:1.5rem;margin-bottom:1.5rem;display:none;}
+.cmd-detail.active{display:block;}
+.cmd-tracker{display:flex;align-items:center;justify-content:space-between;margin:1.5rem 0;position:relative;}
+.cmd-tracker::before{content:'';position:absolute;top:18px;left:0;right:0;height:2px;background:#e0e0e0;}
+.cmd-step{text-align:center;position:relative;z-index:1;flex:1;}
+.cmd-step .dot{width:36px;height:36px;border-radius:50%;background:#e0e0e0;display:flex;align-items:center;justify-content:center;margin:0 auto 0.5rem;font-size:0.82rem;font-weight:500;color:#999;transition:all 0.3s;}
+.cmd-step.done .dot{background:#4d7a4d;color:#fff;}
+.cmd-step.active .dot{background:#111;color:#fff;box-shadow:0 0 0 4px rgba(0,0,0,0.1);}
+.cmd-step .label{font-size:0.72rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.05em;}
+.cmd-step.done .label,.cmd-step.active .label{color:#111;font-weight:500;}
+.cmd-step.done .dot::after{content:'✓';font-size:1rem;}
+.cmd-step.active .dot::after{content:'';}
+@media(max-width:640px){.cmd-tracker{flex-wrap:wrap;gap:1rem;}.cmd-step{flex:none;width:calc(50% - 0.5rem);}}</style>
+</head>
 <body class="plateforme-body">
 <header class="plateforme-header">
 <div class="plateforme-header-logo"><img src="../assets/img/logo%20Vol.08.svg" alt="VOL.08"><span>Plateforme B2B</span></div>
@@ -16,12 +30,16 @@
 <div class="admin-table-wrap" style="background:#fff;">
 <table><thead><tr><th>Réf.</th><th>Date</th><th>Montant</th><th>Articles</th><th>Statut</th><th>Actions</th></tr></thead><tbody id="commandesBody"></tbody></table>
 </div>
+<div id="detailContainer"></div>
 </main>
 <script src="../assets/js/plateforme.js"></script>
 <script>
 const session=PLATFORME_UTILS.requireAuth();
 const user=PLATFORME_UTILS.getUserInfo();
 if(user) document.getElementById('clientName').textContent=user.prenom+' '+user.nom;
+const statutLabels={validee:'Validée',en_cours:'En préparation',expediee:'Expédiée',livree:'Livrée',annulee:'Annulée'};
+const statutSteps=['validee','en_cours','expediee','livree'];
+
 function render(){
 const cmds=JSON.parse(localStorage.getItem('vol08_commandes')||'[]');
 const mesCommandes=user?cmds.filter(c=>c.email===user.email):cmds;
@@ -33,10 +51,37 @@ tbody.innerHTML=mesCommandes.map(c=>`<tr>
 <td style="font-size:0.85rem;color:#999;">${new Date(c.date).toLocaleDateString('fr-FR')}</td>
 <td style="font-weight:500;">${(c.montant).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})}</td>
 <td>${c.articles}</td>
-<td><span class="admin-badge ${c.status}">${c.status==='livree'?'Livrée':c.status==='en_cours'?'En cours':c.status==='annulee'?'Annulée':c.status}</span></td>
-<td><button class="admin-btn-sm outline">Détails</button></td>
+<td><span class="admin-badge ${c.status==='livree'?'approved':c.status==='annulee'?'rejected':'pending'}">${statutLabels[c.status]||c.status}</span></td>
+<td><button class="admin-btn-sm outline" onclick="showDetail('${c.id}')">Suivi</button></td>
 </tr>`).join('');
 }
+
+function showDetail(id){
+const cmds=JSON.parse(localStorage.getItem('vol08_commandes')||'[]');
+const c=cmds.find(x=>x.id===id);
+if(!c) return;
+const currentIdx=statutSteps.indexOf(c.status);
+const steps=statutSteps.map((s,i)=>`<div class="cmd-step ${i<currentIdx?'done':i===currentIdx?'active':''}"><div class="dot"></div><div class="label">${statutLabels[s]}</div></div>`).join('');
+const container=document.getElementById('detailContainer');
+container.innerHTML=`
+<div class="cmd-detail active">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+    <h2 style="font-size:1.1rem;margin:0;">Commande ${c.id}</h2>
+    <button class="btn btn-outline" style="font-size:0.78rem;padding:6px 12px;" onclick="this.closest('.cmd-detail').classList.remove('active')">Fermer</button>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;font-size:0.88rem;">
+    <div><strong style="color:var(--text-secondary);">Date:</strong> ${new Date(c.date).toLocaleDateString('fr-FR')}</div>
+    <div><strong style="color:var(--text-secondary);">Montant:</strong> ${(c.montant).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})}</div>
+    <div><strong style="color:var(--text-secondary);">Articles:</strong> ${c.articles}</div>
+    <div><strong style="color:var(--text-secondary);">Statut:</strong> ${statutLabels[c.status]}</div>
+    ${c.devisId?'<div><strong style="color:var(--text-secondary);">Devis source:</strong> '+c.devisId+'</div>':''}
+  </div>
+  <div class="cmd-tracker">${steps}</div>
+  ${c.status==='annulee'?'<p style="color:#dc2626;font-size:0.88rem;margin-top:1rem;">Cette commande a été annulée.</p>':''}
+</div>`;
+window.scrollTo({top:container.offsetTop-100,behavior:'smooth'});
+}
+
 render();
 </script>
 </body></html>

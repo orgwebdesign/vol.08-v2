@@ -1,17 +1,54 @@
 <!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Fiche produit — VOL.08 B2B</title><link rel="stylesheet" href="../assets/css/style.css"><link rel="stylesheet" href="../assets/css/plateforme.css"><script src="https://unpkg.com/lucide@latest"></script>
-<style>.prod-detail{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:2rem;}
-.prod-detail img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#f5f5f5;}
+<style>
+.prod-detail{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
+.prod-gallery{position:relative;}
+.prod-main-img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#f5f5f5;display:block;}
+.prod-thumbs{display:flex;gap:0.5rem;margin-top:0.75rem;}
+.prod-thumbs img{width:64px;height:64px;object-fit:cover;background:#f5f5f5;cursor:pointer;border:2px solid transparent;transition:border-color 0.2s;}
+.prod-thumbs img.active,.prod-thumbs img:hover{border-color:#111;}
+.prod-video-btn{position:absolute;top:12px;left:12px;background:rgba(0,0,0,0.7);color:#fff;border:none;padding:6px 12px;font-size:0.78rem;cursor:pointer;display:flex;align-items:center;gap:0.35rem;font-family:var(--font-primary);}
+.prod-video-btn .lucide{width:14px;height:14px;}
 .prod-detail .ref{font-size:0.82rem;color:var(--text-secondary);margin-bottom:0.5rem;}
 .prod-detail h1{font-size:2rem;margin-bottom:1rem;}
-.prod-detail .price{font-size:1.8rem;font-weight:500;color:#2e7d32;margin-bottom:1.5rem;}
-.prod-detail .price small{font-size:0.9rem;font-weight:400;color:var(--text-secondary);}
+.prod-detail .price{font-size:1.8rem;font-weight:500;color:#2e7d32;margin-bottom:0.25rem;}
+.prod-detail .price-ttc{font-size:0.88rem;color:var(--text-secondary);margin-bottom:1.5rem;}
 .prod-meta{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;padding:1.5rem 0;border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color);}
 .prod-meta div strong{display:block;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-secondary);margin-bottom:0.25rem;}
 .prod-meta div span{font-size:0.95rem;}
+.prod-variants{margin-bottom:1.5rem;}
+.prod-variants label{display:block;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-secondary);margin-bottom:0.5rem;}
+.variant-options{display:flex;gap:0.5rem;flex-wrap:wrap;}
+.variant-opt{padding:8px 16px;border:1px solid var(--border-color);font-size:0.85rem;cursor:pointer;transition:all 0.2s;font-family:var(--font-primary);background:#fff;}
+.variant-opt.active{border-color:#111;background:#111;color:#fff;}
+.variant-opt:hover:not(.active){border-color:#999;}
+.variant-color{width:28px;height:28px;border-radius:50%;border:2px solid var(--border-color);cursor:pointer;transition:all 0.2s;}
+.variant-color.active{border-color:#111;box-shadow:0 0 0 2px #fff,0 0 0 4px #111;}
 .prod-actions{display:flex;gap:1rem;margin-top:1.5rem;}
 .prod-actions .btn{flex:1;}
 .prod-back{margin-bottom:1.5rem;display:inline-flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--text-secondary);}
-@media(max-width:768px){.prod-detail{grid-template-columns:1fr;}}</style>
+.prod-tabs{display:flex;gap:0;border-bottom:1px solid var(--border-color);margin-bottom:1.5rem;}
+.prod-tab{padding:0.75rem 1.5rem;font-size:0.88rem;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.2s;}
+.prod-tab.active{font-weight:500;border-bottom-color:#111;}
+.prod-tab:hover:not(.active){color:var(--text-secondary);}
+.prod-tab-content{display:none;margin-bottom:2.5rem;}
+.prod-tab-content.active{display:block;}
+.prod-specs{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.prod-specs dt{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-secondary);margin-bottom:0.15rem;}
+.prod-specs dd{font-size:0.95rem;margin:0 0 1rem;}
+.prod-desc{font-size:0.95rem;line-height:1.7;color:var(--text-secondary);}
+.prod-video-container{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin-top:1rem;}
+.prod-video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;}
+.prod-pdf-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:10px 20px;border:1px solid var(--border-color);background:#fff;font-size:0.88rem;cursor:pointer;transition:all 0.2s;font-family:var(--font-primary);margin-top:1rem;}
+.prod-pdf-btn:hover{background:#f5f5f5;}
+.prod-pdf-btn .lucide{width:16px;height:16px;}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.25rem;}
+.related-item{background:#fff;border:1px solid var(--border-color);padding:0.75rem;cursor:pointer;transition:box-shadow 0.25s ease;}
+.related-item:hover{box-shadow:0 8px 24px rgba(0,0,0,0.06);}
+.related-item img{width:100%;aspect-ratio:1/1;object-fit:cover;margin-bottom:0.75rem;background:#f5f5f5;}
+.related-item h4{font-size:0.88rem;margin-bottom:0.25rem;}
+.related-item .rprice{font-size:0.95rem;font-weight:500;color:#2e7d32;}
+@media(max-width:768px){.prod-detail{grid-template-columns:1fr;}.prod-specs{grid-template-columns:1fr;}}
+</style>
 </head>
 <body class="plateforme-body">
 <header class="plateforme-header">
@@ -37,26 +74,167 @@ const params=new URLSearchParams(window.location.search),ref=params.get('ref');
 const produits=JSON.parse(localStorage.getItem('vol08_produits')||'[]');
 const p=produits.find(x=>x.ref===ref);
 const container=document.getElementById('productContainer');
+
+function getFavoris(){const all=JSON.parse(localStorage.getItem('vol08_favoris')||'[]');return user?all.filter(f=>f.email===user.email):all;}
+function saveFavoris(favs){localStorage.setItem('vol08_favoris',JSON.stringify(favs));}
+function isFavori(ref){return getFavoris().some(f=>f.ref===ref);}
+function toggleFavori(ref){
+  let favs=getFavoris();
+  if(isFavori(ref)){favs=favs.filter(f=>f.ref!==ref);}
+  else{favs.push({ref,email:user?user.email:'',date:new Date().toISOString()});}
+  saveFavoris(favs);
+  renderFavoriBtn();
+}
+function renderFavoriBtn(){
+  const btn=document.getElementById('favBtn');
+  if(!btn) return;
+  const fav=isFavori(ref);
+  btn.innerHTML=fav?'<i data-lucide="heart" style="width:16px;height:16px;fill:#dc2626;color:#dc2626;"></i>':'<i data-lucide="heart" style="width:16px;height:16px;"></i>';
+  lucide.createIcons();
+}
+
+function ajouterDevis(ref){
+  const p=produits.find(x=>x.ref===ref);
+  if(!p) return;
+  const quantite=parseInt(document.getElementById('qtyInput')?.value||'1');
+  const variante=document.querySelector('.variant-opt.active')?.textContent||'';
+  const devis=JSON.parse(localStorage.getItem('vol08_devis')||'[]');
+  const existant=devis.find(d=>d.status==='brouillon');
+  if(existant){
+    existant.articles+=quantite;
+    existant.montant+=p.prixHT*quantite;
+    localStorage.setItem('vol08_devis',JSON.stringify(devis));
+  } else {
+    const id='DEV-'+String(Date.now()).slice(-5);
+    devis.push({id,client:user?user.entreprise:'Client',email:user?user.email:'',montant:p.prixHT*quantite,articles:quantite,date:new Date().toISOString(),status:'brouillon'});
+    localStorage.setItem('vol08_devis',JSON.stringify(devis));
+  }
+  alert(quantite+' × '+p.name+(variante?' ('+variante+')':'')+' ajouté au devis');
+}
+
+function ajouterPanier(ref){
+  const p=produits.find(x=>x.ref===ref);
+  if(!p) return;
+  const quantite=parseInt(document.getElementById('qtyInput')?.value||'1');
+  const variante=document.querySelector('.variant-opt.active')?.textContent||'';
+  const panier=JSON.parse(localStorage.getItem('vol08_panier')||'[]');
+  const existant=panier.find(a=>a.ref===ref&&a.variante===variante);
+  if(existant){existant.quantite+=quantite;}
+  else{panier.push({ref,variante,quantite,email:user?user.email:'',date:new Date().toISOString()});}
+  localStorage.setItem('vol08_panier',JSON.stringify(panier));
+  alert(p.name+(variante?' ('+variante+')':'')+' ajouté au panier');
+}
+
 if(!p){container.innerHTML+=`<p style="text-align:center;color:#999;padding:3rem;">Produit non trouvé</p>`;}else{
 const pvp=Math.round(p.prixHT*1.2/0.75);
+const images=[p.image,p.image,p.image];
+const variants=p.collection==='Luminaires'?['Blanc','Noir','Bronze']:p.collection==='Décoration'?['Naturel','Gris','Terracotta']:['Chêne Naturel','Noir Mat','Gris Ardoise'];
+const stockLabel=p.stock<=0?'Rupture de stock':p.stock<=3?'Stock faible ('+p.stock+')':p.stock+' unités en stock';
+const stockColor=p.stock<=0?'#dc2626':p.stock<=3?'#e65100':'#2e7d32';
+const related=produits.filter(x=>x.ref!==ref&&x.collection===p.collection).slice(0,4);
+if(!related.length) related.push(...produits.filter(x=>x.ref!==ref).slice(0,3));
+
 container.innerHTML+=`
 <div class="prod-detail">
-<div><img src="${p.image}" alt="${p.name}"></div>
+<div class="prod-gallery">
+<img class="prod-main-img" id="mainImg" src="${images[0]}" alt="${p.name}">
+<div class="prod-thumbs" id="thumbs">${images.map((img,i)=>`<img src="${img}" alt="" class="${i===0?'active':''}" onclick="changeImg(${i})">`).join('')}</div>
+${p.video?'<button class="prod-video-btn" onclick="document.getElementById(\'videoSection\').style.display=\'block\'"><i data-lucide="play-circle"></i> Vidéo</button>':''}
+</div>
 <div>
 <div class="ref">${p.ref}</div>
 <h1>${p.name}</h1>
-<div class="price">${(p.prixHT).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})} HT <small>(${(pvp).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})} TTC)</small></div>
+<div class="price">${(p.prixHT).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})} HT</div>
+<div class="price-ttc">${(pvp).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})} TTC (TVA 20%)</div>
 <div class="prod-meta">
 <div><strong>Collection</strong><span>${p.collection}</span></div>
 <div><strong>Catégorie</strong><span>${p.categorie}</span></div>
-<div><strong>Stock</strong><span style="${p.stock<=3?'color:#e65100;':''}">${p.stock>0?p.stock+' unités':'Rupture'}</span></div>
-<div><strong>Statut</strong><span>${p.status==='active'?'Disponible':'Indisponible'}</span></div>
+<div><strong>Stock</strong><span style="color:${stockColor};font-weight:500;">${stockLabel}</span></div>
+<div><strong>Délai</strong><span>${p.delai||'2-4 semaines'}</span></div>
+${p.dimensions?'<div><strong>Dimensions</strong><span>'+p.dimensions+'</span></div>':''}
+${p.poids?'<div><strong>Poids</strong><span>'+p.poids+'</span></div>':''}
+</div>
+<div class="prod-variants">
+<label>Couleur / Variante</label>
+<div class="variant-options" id="variantOpts">${variants.map((v,i)=>`<div class="variant-opt${i===0?' active':''}" onclick="selectVariant(this)">${v}</div>`).join('')}</div>
+</div>
+<div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem;">
+<label style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-secondary);">Quantité</label>
+<input type="number" id="qtyInput" value="1" min="1" max="999" style="width:80px;padding:8px 12px;border:1px solid var(--border-color);font-family:var(--font-primary);font-size:0.95rem;text-align:center;">
 </div>
 <div class="prod-actions">
 <button class="btn btn-black" onclick="ajouterDevis('${p.ref}')">Ajouter au devis</button>
-<button class="btn btn-outline" onclick="alert('Ajouté aux favoris')"><i data-lucide="heart" style="width:16px;height:16px;"></i></button>
+<button class="btn btn-outline" onclick="ajouterPanier('${p.ref}')"><i data-lucide="shopping-cart" style="width:16px;height:16px;"></i> Panier</button>
+<button class="btn btn-outline" id="favBtn" onclick="toggleFavori('${p.ref}')"><i data-lucide="heart" style="width:16px;height:16px;"></i></button>
 </div>
-</div></div>`;lucide.createIcons();}
-function ajouterDevis(ref){const devis=JSON.parse(localStorage.getItem('vol08_devis')||'[]');const p=produits.find(x=>x.ref===ref);if(p){const existant=devis.find(d=>d.status==='brouillon');if(existant){existant.articles+=1;existant.montant+=p.prixHT;localStorage.setItem('vol08_devis',JSON.stringify(devis));alert('Produit ajouté au devis en cours');}else{const id='DEV-'+String(Date.now()).slice(-5);devis.push({id,client:user?user.entreprise:'Client',email:user?user.email:'',montant:p.prixHT,articles:1,date:new Date().toISOString(),status:'brouillon'});localStorage.setItem('vol08_devis',JSON.stringify(devis));alert('Nouveau devis créé avec '+p.ref);}}}
+</div></div>
+
+<div id="videoSection" style="display:none;margin-bottom:2.5rem;">
+<h3 style="font-size:1rem;margin-bottom:1rem;">Vidéo produit</h3>
+<div class="prod-video-container">
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen title="Vidéo ${p.name}"></iframe>
+</div>
+</div>
+
+<div class="prod-tabs">
+<div class="prod-tab active" onclick="switchProdTab('description')">Description</div>
+<div class="prod-tab" onclick="switchProdTab('specs')">Fiche technique</div>
+<div class="prod-tab" onclick="switchProdTab('docs')">Documents</div>
+</div>
+
+<div class="prod-tab-content active" id="tabDescription">
+<p class="prod-desc">${p.description||'Produit de la collection '+p.collection+'. Fabriqué artisanalement au Maroc avec des matériaux de première qualité. Chaque pièce est unique et peut présenter de légères variations caractéristiques de la fabrication artisanale.'}</p>
+${p.materiaux?'<div style="margin-top:1.5rem;"><strong style="font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-secondary);">Matériaux</strong><p style="font-size:0.95rem;margin-top:0.25rem;">'+p.materiaux+'</p></div>':''}
+</div>
+
+<div class="prod-tab-content" id="tabSpecs">
+<dl class="prod-specs">
+<dt>Référence</dt><dd>${p.ref}</dd>
+<dt>Collection</dt><dd>${p.collection}</dd>
+<dt>Catégorie</dt><dd>${p.categorie}</dd>
+${p.dimensions?'<dt>Dimensions</dt><dd>'+p.dimensions+'</dd>':''}
+${p.materiaux?'<dt>Matériaux</dt><dd>'+p.materiaux+'</dd>':''}
+${p.poids?'<dt>Poids</dt><dd>'+p.poids+'</dd>':''}
+<dt>Stock</dt><dd>${stockLabel}</dd>
+<dt>Délai de livraison</dt><dd>${p.delai||'2-4 semaines'}</dd>
+<dt>Usage</dt><dd>Intérieur</dd>
+<dt>Entretien</dt><dd>Ne pas utiliser de produits chimiques. Essuier avec un chiffon humide.</dd>
+</dl>
+</div>
+
+<div class="prod-tab-content" id="tabDocs">
+<div style="display:flex;flex-direction:column;gap:1rem;">
+<a class="prod-pdf-btn" href="#" onclick="genererFichePDF('${p.ref}');return false;">
+<i data-lucide="file-text"></i> Fiche technique PDF
+</a>
+<a class="prod-pdf-btn" href="#" onclick="genererFichePDF('${p.ref}');return false;">
+<i data-lucide="image"></i> Photos HD (ZIP)
+</a>
+<a class="prod-pdf-btn" href="#" onclick="document.getElementById('videoSection').style.display='block';">
+<i data-lucide="film"></i> Vidéo produit
+</a>
+</div>
+</div>
+
+${related.length?`<h3 style="font-size:1.1rem;margin-bottom:1rem;">Produits associés</h3><div class="related-grid">${related.map(r=>`<div class="related-item" onclick="window.location.href='produit.html?ref=${r.ref}'"><img src="${r.image}" alt="${r.name}" loading="lazy"><h4>${r.name}</h4><div class="rprice">${(r.prixHT).toLocaleString('fr-FR',{style:'currency',currency:'EUR'})} HT</div></div>`).join('')}</div>`:''}
+`;}
+function changeImg(i){document.getElementById('mainImg').src=images[i];document.querySelectorAll('.prod-thumbs img').forEach((t,j)=>t.classList.toggle('active',j===i));}
+function selectVariant(el){document.querySelectorAll('.variant-opt').forEach(v=>v.classList.remove('active'));el.classList.add('active');}
+function switchProdTab(tab){
+  document.querySelectorAll('.prod-tab').forEach((t,i)=>{
+    t.classList.toggle('active',(tab==='description'&&i===0)||(tab==='specs'&&i===1)||(tab==='docs'&&i===2));
+  });
+  document.getElementById('tabDescription').classList.toggle('active',tab==='description');
+  document.getElementById('tabSpecs').classList.toggle('active',tab==='specs');
+  document.getElementById('tabDocs').classList.toggle('active',tab==='docs');
+}
+function genererFichePDF(ref){
+  const prod=produits.find(x=>x.ref===ref);
+  if(!prod) return;
+  const content='FICHE TECHNIQUE — '+prod.name+'\n\nRéférence: '+prod.ref+'\nCollection: '+prod.collection+'\nCatégorie: '+prod.categorie+'\n\nDimensions: '+(prod.dimensions||'N/A')+'\nMatériaux: '+(prod.materiaux||'N/A')+'\nPoids: '+(prod.poids||'N/A')+'\n\nDescription:\n'+(prod.description||'N/A')+'\n\nPrix HT: '+prod.prixHT+' EUR\nPrix TTC: '+Math.round(prod.prixHT*1.2/0.75)+' EUR\n\nDélai de livraison: '+(prod.delai||'2-4 semaines')+'\nStock: '+prod.stock+' unités';
+  const blob=new Blob([content],{type:'text/plain'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='Fiche_Technique_'+ref.replace(/\./g,'_')+'.txt';a.click();
+}
+renderFavoriBtn();lucide.createIcons();
 </script>
 </body></html>
